@@ -1,0 +1,185 @@
+<nav class="page-sidebar" data-pages="sidebar">
+    <div class="sidebar-header">
+        <img src="assets/img/display-plan/connie-white.png" alt="logo" class="brand" data-src="assets/img/display-plan/connie-white.png" data-src-retina="assets/img/display-plan/connie-black.jpg" width="140">
+        <div class="sidebar-header-controls">
+            <button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
+            </button>
+        </div>
+    </div>
+    <div class="sidebar-menu">
+        <ul class="menu-items">
+            <li ng-show="$root.isAllowedTo('dashboard', 'read')">
+                <a href="#dashboard" class="detailed">
+                    <span class="title">Dashboard</span>
+                    <span class="details"></span>
+                </a>
+                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('dashboard')}"><i class="fa fa-tachometer"></i></span>
+            </li>
+            <li ng-show="$root.isAllowedTo('displays', 'read')">
+                <a href="#displays" class="detailed">
+                    <span class="title">Displays</span>
+                    <span class="details"></span>
+                </a>
+                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('displays')}"><i class="fa fa-desktop"></i></span>
+            </li>
+            <li ng-show="$root.isAllowedTo('locations', 'read')">
+                <a href="#locations" class="detailed">
+                    <span class="title">Locations</span>
+                    <span class="details"></span>
+                </a>
+                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('locations')}"><i class="fa fa-map-marker"></i></span>                    
+            </li>
+            <li ng-show="$root.isAllowedTo('campaigns', 'read')" ng-class="{'active open' : $root.isBrowsingCampaignSections()}">
+                <a href="javascript:;" class="detailed">
+                    <span class="title">Revenue</span><span class=" arrow"></span>
+                    <span class="details"></span>
+                </a>
+                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isBrowsingCampaignSections()}"><i class="pg-movie"></i></span>
+
+                <ul class="sub-menu">
+                    <li class="">
+                        <a href="#campaigns/all">All</a>
+                        <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('all')}"><i class="fa fa-home"></i></span>
+                    </li>
+                    <li class="">
+                        <a href="#campaigns/default">Default</a>
+                        <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('default')}"><i class="fa fa-home"></i></span>
+                    </li>
+                </ul>
+            </li>
+
+            <li ng-show="$root.isAllowedTo('reports', 'read')">
+                <a href="#reports" class="detailed">
+                    <span class="title">Reports</span>
+                    <span class="details"></span>
+                </a>
+                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('reports')}"><i class="fa fa-bar-chart"></i></span>                    
+            </li>
+            <li ng-show="$root.isAllowedTo('support', 'read')">
+                <a href="#support" class="detailed">
+                    <span class="title">Support</span>
+                    <span class="details"></span>
+                </a>
+                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('support')}"><i class="fa fa-support"></i></span>                    
+            </li>
+            <li>
+                <a href="#maintenance" class="detailed">
+                    <span class="title">Maintenance</span>
+                    <span class="details"></span>
+                </a>
+                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('maintenance')}"><i class="fa fa-eye"></i></span>                    
+            </li>
+            <li ng-show="$root.isAllowedTo('help', 'read')">
+                <a href="#help" class="detailed">
+                    <span class="title">Help</span>
+                    <span class="details"></span>
+                </a>
+                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('help')}"><i class="fa fa-question-circle"></i></span>                    
+            </li>
+            <li ng-show="$root.isAdmin()" ng-class="{'active open' : $root.isBrowsingAnAdminSection()}">
+                <a href="javascript:;"><span class="title">Admin</span>
+                    <span class=" arrow"></span></a>
+                <span class="icon-thumbnail" ng-class="{'bg-success' :  $root.isBrowsingAnAdminSection()}"><i class="fa fa-briefcase"></i></span>
+                <ul class="sub-menu">
+
+
+                    <li ng-class="{'active open' :  $root.isCurrentlyBrowsing('general/')}">
+                        <a href="javascript:;">General <span class="arrow"></span></a>
+                        <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('general')}"><i class="fa fa-users"></i></span>
+
+                        <ul class="sub-menu">
+                            <li class="">
+                                <a href="#general/manufacturers">Manufacturers</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('manufacturers')}"><i class="fa fa-building-o"></i></span>
+                            </li>
+                            <li class="">
+                                <a href="#general/bands">Bands</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('bands')}"><i class="fa fa-home"></i></span>
+                            </li>
+                            <li class="">
+                                <a href="#general/organisations">Retailers</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('organisations')}"><i class="fa fa-home"></i></span>
+                            </li>
+                            <li class="">
+                                <a href="#general/brands">Brands</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('brands')}"><i class="fa fa-home"></i></span>
+                            </li>
+                            <li class="">
+                                <a href="#general/countries">Countries</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('countries')}"><i class="fa fa-dribbble"></i></span>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                    <li ng-class="{'active open' :  $root.isCurrentlyBrowsing('users')}">
+                        <a href="javascript:;">Users <span class="arrow"></span></a>
+                        <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('users')}"><i class="fa fa-users"></i></span>
+
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#users/management">Management</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('management')}">M</span>
+                            </li>
+                            <li>
+                                <a href="#users/rights">Roles</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('rights')}">R</span>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li ng-class="{'active open' :  $root.isCurrentlyBrowsing('settings')}">
+                        <a href="javascript:;">Settings <span class="arrow"></span></a>
+                        <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('settings')}"><i class="pg-settings"></i></span>
+
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#settings/general">General</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('settings/general')}">G</span>
+                            </li>
+                            <li>
+                                <a href="#settings/blacklist">IP Blacklist</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('blacklist')}">IP</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li ng-class="{'active open' :  $root.isCurrentlyBrowsing('documents')}">
+                        <a href="javascript:;">Documents <span class="arrow"></span></a>
+                        <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('documents')}"><i class="fa  fa-newspaper-o"></i></span>
+
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#documents/support">Support</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('documents/support')}">S</span>
+                            </li>
+                            <li>
+                                <a href="#documents/api">API</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('documents/api')}">A</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li ng-class="{'active open' :  $root.isCurrentlyBrowsing('pages')}">
+                        <a href="javascript:;">Pages <span class="arrow"></span></a>
+                        <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('pages')}"><i class="fa  fa-newspaper-o"></i></span>
+
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#pages/tos">Terms of Service</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('tos')}">T</span>
+                            </li>
+                            <li>
+                                <a href="#pages/privacy">Privacy Policy</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('privacy')}">P</span>
+                            </li>
+                            <li>
+                                <a href="#pages/help">Help</a>
+                                <span class="icon-thumbnail" ng-class="{'bg-success': $root.isCurrentlyBrowsing('help')}">H</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+</nav>

@@ -1,0 +1,107 @@
+<div sidebar-menu></div>
+<div class="page-container ">
+    <div header></div>
+    <div display-manufacturer callback-fn="reloadManufacturers()"></div>
+    <div class="page-content-wrapper content-manager">    
+        <div class="content full-width">
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li><a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#campaigns" class="active">Manufacturers</a>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-5 col-md-6">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Getting started</div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>Manufacturers Manager</h3>
+                                        <br />
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+
+                                <!-- END PANEL -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid container-fixed-lg">
+                <!-- START PANEL -->
+                <div class="panel panel-transparent">
+                    <div class="panel-heading">
+                        <div class="m-t-15 pull-right">
+                            <button  type="button" class="btn btn-primary btn-cons btn-animated from-left pg pg-plus" ng-click="create()">
+                                <span>Add new</span>
+                            </button>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="row" ng-show="manufacturers.length > 0">
+
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="basicTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Brand</th>
+                                            <th>Model</th>
+                                            <th>Size</th>
+                                            <th>Resolution</th>
+                                            <th>OS</th>
+                                            <th>Version</th>
+                                            <th>Rooted</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="manufacturer in manufacturers">
+                                            <td>{{manufacturer.display_manufacturer_brand.name}}</td>
+                                            <td>{{manufacturer.model}}</td>
+                                            <td>{{manufacturer.display_size.name}}</td>
+                                            <td>{{manufacturer.resolution.name}}</td>
+                                            <td>{{manufacturer.display_operating_system.name}}</td>
+                                            <td>{{manufacturer.tech_specs.version}}</td>
+                                            <td>{{(manufacturer.rooted) ? "YES" : "NO"}}</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    
+                                                    <button type="button" class="btn btn-default" ng-click="edit(manufacturer)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-default" ng-click="remove(manufacturer)" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- END PANEL -->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>

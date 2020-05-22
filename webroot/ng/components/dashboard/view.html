@@ -1,0 +1,205 @@
+<div sidebar-menu></div>
+<div class="page-container ">
+    <div header></div>
+    <div class="page-content-wrapper ">
+        <div class="content sm-gutter">
+            <!-- START CONTAINER FLUID -->
+            <div class="container-fluid padding-25 sm-padding-10">
+
+                <div class="row">
+                    <div class="col-md-3 m-b-10">
+                        <div class="widget-10 panel no-border bg-white no-margin widget-loader-bar">
+                            <div class="panel-heading top-left top-right ">
+                                <div class="panel-title text-black hint-text">
+                                    <span class="font-montserrat fs-11 all-caps">Displays <i class="fa fa-chevron-right"></i>
+                                    </span>
+                                </div>
+                                <div class="panel-controls">
+                                    <ul>
+                                        <li><a data-toggle="refresh" class="portlet-refresh text-black" href="#"><i class="portlet-icon portlet-icon-refresh"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel-body p-t-40">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4 class="no-margin p-b-5 text-info semi-bold">{{data.displays.total}}</h4>
+                                        <div class="pull-left small">
+                                            <span>Online</span>
+                                            <span class=" text-success font-montserrat">
+                                                <i class="fa fa-caret-up m-l-10"></i> {{data.displays.online}}
+                                            </span>
+                                        </div>
+                                        <div class="pull-left m-l-20 small">
+                                            <span>Offline</span>
+                                            <span class=" text-danger font-montserrat">
+                                                <i class="fa fa-caret-up m-l-10"></i> {{data.displays.offline}}
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="pull-left small">
+                                            <span>Pending</span>
+                                            <span class=" text-danger font-montserrat">
+                                                <i class="fa fa-caret-up m-l-10"></i> {{data.displays.pending}}
+                                            </span>
+                                        </div>
+                                        <div class="pull-left m-l-20 small">
+                                            <span>Independent</span>
+                                            <span class=" text-danger font-montserrat">
+                                                <i class="fa fa-caret-up m-l-10"></i> {{data.displays.independent}}
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 m-b-10">
+                        <!-- START WIDGET D3 widget_graphTileFlat-->
+                        <div class="widget-8 panel no-border bg-success no-margin widget-loader-bar">
+                            <div class="container-xs-height full-height">
+                                <div class="row-xs-height">
+                                    <div class="col-xs-height col-top">
+                                        <div class="panel-heading top-left top-right">
+                                            <div class="panel-title text-black hint-text">
+                                                <span class="font-montserrat fs-11 all-caps">Campaigns <i class="fa fa-chevron-right"></i>
+                                                </span>
+                                            </div>
+                                            <div class="panel-controls">
+                                                <ul>
+                                                    <li>
+                                                        <a data-toggle="refresh" class="portlet-refresh text-black" href="#"><i class="portlet-icon portlet-icon-refresh"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-xs-height ">
+                                    <div class="col-xs-height col-top relative">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="p-l-20">
+                                                    <h3 class="no-margin p-b-5 text-white">{{data.campaigns}}</h3>
+                                                    <a ui-sref="campaigns" class="btn-circle-arrow text-white"><i class="pg-arrow_minimize"></i>
+                                                    </a>
+                                                    <span class="small hint-text">Show More</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                            </div>
+                                        </div>
+                                        <div class="widget-8-chart line-chart" data-line-color="black" data-points="true" data-point-color="success" data-stroke-width="2">
+                                            <svg><g class="nvd3 nv-wrap nv-lineChart" transform="translate(-10,10)"><g><rect width="228" height="103" style="opacity: 0;"></rect><g class="nv-x nv-axis"></g><g class="nv-y nv-axis"></g><g class="nv-linesWrap"><g class="nvd3 nv-wrap nv-line" transform="translate(0,0)"><defs><clipPath id="nv-edge-clip-50122"><rect width="228" height="103"></rect></clipPath></defs><g clip-path=""><g class="nv-groups"><g class="nv-group nv-series-0" style="stroke-opacity: 1; fill-opacity: 0.5; fill: #000000; stroke: #000000;"><path class="nv-line" d="M0,103L38.00000000000001,75.53333333333333L76.00000000000001,34.33333333333334L114,27.46666666666667L152.00000000000003,0L190,13.733333333333334L228,68.66666666666667"></path></g></g><g class="nv-scatterWrap" clip-path=""><g class="nvd3 nv-wrap nv-scatter nv-chart-50122" transform="translate(0,0)"><defs><clipPath id="nv-edge-clip-50122"><rect width="228" height="103"></rect></clipPath></defs><g clip-path=""><g class="nv-groups"><g class="nv-group nv-series-0" style="stroke-opacity: 1; fill-opacity: 0.5; stroke: #000000; fill: #000000;"><circle cx="0" cy="103" r="3" class="nv-point nv-point-0" style="stroke-width: 2px;"></circle><circle cx="38.00000000000001" cy="75.53333333333333" r="3" class="nv-point nv-point-1" style="stroke-width: 2px;"></circle><circle cx="76.00000000000001" cy="34.33333333333334" r="3" class="nv-point nv-point-2" style="stroke-width: 2px;"></circle><circle cx="114" cy="27.46666666666667" r="3" class="nv-point nv-point-3" style="stroke-width: 2px;"></circle><circle cx="152.00000000000003" cy="0" r="3" class="nv-point nv-point-4" style="stroke-width: 2px;"></circle><circle cx="190" cy="13.733333333333334" r="3" class="nv-point nv-point-5" style="stroke-width: 2px;"></circle><circle cx="228" cy="68.66666666666667" r="3" class="nv-point nv-point-6" style="stroke-width: 2px;"></circle></g></g><g class="nv-point-paths"></g></g></g></g></g></g></g><g class="nv-legendWrap"></g><g class="nv-interactive"></g></g></g></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END WIDGET -->
+                    </div>
+
+                    <div class="col-md-3 m-b-10">
+                        <div class="widget-9 panel no-border bg-success no-margin widget-loader-bar">
+                            <div class="container-xs-height full-height">
+                                <div class="row-xs-height">
+                                    <div class="col-xs-height col-top">
+                                        <div class="panel-heading  top-left top-right">
+                                            <div class="panel-title text-black">
+                                                <span class="font-montserrat fs-11 all-caps">Locations <i class="fa fa-chevron-right"></i>
+                                                </span>
+                                            </div>
+                                            <div class="panel-controls">
+                                                <ul>
+                                                    <li><a href="javascript:;" class="portlet-refresh text-black" data-toggle="refresh"><i class="portlet-icon portlet-icon-refresh"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-xs-height">
+                                    <div class="col-xs-height col-top">
+                                        <div class="p-l-20 p-t-15">
+                                            <h3 class="no-margin p-b-5 text-white">{{data.locations}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-xs-height">
+                                    <div class="col-xs-height col-bottom">
+                                        <div class="progress progress-small m-b-20">
+                                            <!-- START BOOTSTRAP PROGRESS (http://getbootstrap.com/components/#progress) -->
+                                            <div class="progress-bar progress-bar-white" style="width:45%"></div>
+                                            <!-- END BOOTSTRAP PROGRESS -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 m-b-10">
+                        <div class="widget-9 panel no-border bg-success no-margin widget-loader-bar">
+                            <div class="container-xs-height full-height">
+                                <div class="row-xs-height">
+                                    <div class="col-xs-height col-top">
+                                        <div class="panel-heading  top-left top-right">
+                                            <div class="panel-title text-black">
+                                                <span class="font-montserrat fs-11 all-caps">Support <i class="fa fa-chevron-right"></i>
+                                                </span>
+                                            </div>
+                                            <div class="panel-controls">
+                                                <ul>
+                                                    <li><a href="javascript:;" class="portlet-refresh text-black" data-toggle="refresh"><i class="portlet-icon portlet-icon-refresh"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-xs-height">
+                                    <div class="col-xs-height col-top">
+                                        <div class="p-l-20 p-t-15">
+                                            <h3 class="no-margin p-b-5 text-white">{{data.tickets}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-xs-height">
+                                    <div class="col-xs-height col-bottom">
+                                        <div class="progress progress-small m-b-20">
+                                            <!-- START BOOTSTRAP PROGRESS (http://getbootstrap.com/components/#progress) -->
+                                            <div class="progress-bar progress-bar-white" style="width:45%"></div>
+                                            <!-- END BOOTSTRAP PROGRESS -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <iframe id="embedded-map" src="" width="100%" height="800"></iframe>
+                    </div>
+                    
+                </div>
+
+
+
+            </div>
+
+
+            <!-- END CONTAINER FLUID -->
+        </div>
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>

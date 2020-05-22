@@ -1,0 +1,27 @@
+<td>{{issue.id}}</td>
+<td ng-show="isDisplayKnown()">{{issue.display.identifier}}</td>
+<td>{{issue.created | date : 'dd/MM/yy HH:mm' : 'UTC'}}</td>
+<td>{{issue.display_issue_type.name}}</td>
+<td>{{issue.reporter.first_name}} {{issue.reporter.last_name}}</td>
+<td>{{getTakenAction()}}</td>
+<td>
+    <div ng-show="issue.status === 2">
+        {{issue.solver.first_name}} {{issue.solver.last_name}}
+    </div>
+    <div ng-show="issue.status !== 2">
+        -
+    </div>
+</td>
+<td>
+    <div ng-show="issue.status === 2">
+        {{issue.modified | date : 'dd/MM/yy HH:mm' : 'UTC'}}
+    </div>
+    <div ng-show="issue.status !== 2">
+        To be resolved
+    </div>
+</td>
+<td><span class="label {{getCurrentStatusClass()}}">{{getCurrentStatus()}}</span></td>
+<td>
+    <button ng-show="$root.isAdmin()" type="button" class="btn btn-default" ng-class="{'disabled': issue.status === 2}" ng-click="editFn({issue:issue})"><i class="fa fa-edit"></i></button>
+    <button type="button" class="btn btn-default" ui-sref="ticket({id: issue.id})"><i class="fa fa-file-text-o"></i></button>
+</td>

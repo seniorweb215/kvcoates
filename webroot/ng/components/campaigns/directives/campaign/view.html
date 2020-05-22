@@ -1,0 +1,39 @@
+<td class="v-align-middle ">
+    <p>ID : {{campaign.id}}</p>
+    <p>{{campaign.name}}</p>
+    <p><i class="fa" aria-hidden="true" ng-class="getCampaignTypeIcon()"> {{getCampaignTypeName()}}</i></p>
+</td>
+
+<td class="v-align-middle ">
+    <p class="bold">{{getStatus()}}</p>
+    <p>L: {{countLocations()}}, D: {{countDisplays()}}</p>
+    <p><span class="label {{getCurrentStatusClass()}}">{{getCurrentStatus()}}</span></p>
+</td>
+<td class="v-align-middle ">
+    <p ng-show="!campaign.set_as_default">{{campaign.start| date : 'dd/MM/yy HH:mm' : 'UTC'}} - {{campaign.end| date : 'dd/MM/yy HH:mm' : 'UTC'}} <br /><strong ng-show="campaign.tod"> Time of Day</strong></p>
+    <p ng-show="campaign.set_as_default"> &infin; Infinite Loop</p>
+</td>
+<td class="v-align-middle ">
+    <p>{{campaign.brand.name}}</p>
+</td>
+<td class="v-align-middle ">
+    <p>{{campaign.country.countryName}}</p>
+</td>
+
+<td class="v-align-middle">
+    <div class="btn-group" ng-show="!campaign.set_as_default">
+        <button ng-show="$root.isAllowedTo('campaigns', 'update')" type="button" class="btn btn-default" ng-click="editFn(campaign)" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+        <button ng-show="$root.isAllowedTo('campaigns', 'update')" type="button" class="btn btn-default" ui-sref="campaign({id:campaign.id})" data-toggle="tooltip" data-placement="top" title="Add Content"><i class="fa fa-file-o"></i></button>
+        <button ng-show="$root.isAllowedTo('campaigns', 'create')" type="button" class="btn btn-default" ng-click="duplicateFn(campaign)" data-toggle="tooltip" data-placement="top" title="Duplicate"><i class="fa fa-files-o"></i></button>
+        <button ng-show="$root.isAllowedTo('campaigns', 'download')" type="button" class="btn btn-default" ng-class="{'disabled': campaign.type_id === 1}" ng-click="downloadFn(campaign)" data-toggle="tooltip" data-placement="top" title="Download"><i class="fa fa-download"></i></button>
+        <button ng-show="$root.isAllowedTo('campaigns', 'update')" type="button" class="btn btn-default" ng-click="stopFn(campaign)" data-toggle="tooltip" data-placement="top" title="Stop"><i class="fa fa-stop"></i></button>
+        <button ng-show="$root.isAllowedTo('campaigns', 'delete')" type="button" class="btn btn-default" ng-click="deleteFn(campaign)" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close"></i></button>
+    </div>
+    
+    <div class="btn-group" style="margin-top:10px;">
+        <button type="button" class="btn btn-default" ng-click="reportFn(campaign)" data-toggle="tooltip" data-placement="top" title="View"><i class="fa fa-file-excel-o"></i></button>
+        <button type="button" class="btn btn-default" ui-sref="campaignstats({id:campaign.id})" data-toggle="tooltip" data-placement="top" title="Stats"><i class="fa fa-pie-chart"></i></button>
+        <button ng-show="$root.isAllowedTo('campaigns', 'update')" type="button" class="btn btn-default" ng-click="mappingsFn(campaign)" data-toggle="tooltip" data-placement="top" title="Mappings"><i class="fa fa-map"></i></button>
+        <button ng-show="$root.isAllowedTo('campaigns', 'read')" type="button" class="btn btn-default" ng-click="previewFn(campaign)" data-toggle="tooltip" data-placement="top" title="Preview"><i class="fa fa-play"></i></button>
+    </div>
+</td>

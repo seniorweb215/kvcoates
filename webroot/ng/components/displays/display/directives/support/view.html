@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-transparent">
+                <div class="panel-heading">
+                    <div class="panel-title">Issues 
+                    </div>
+
+                    <div class="m-t-15 pull-right">
+                        <button type="button" class="btn btn-primary btn-cons btn-animated from-left pg pg-plus" ng-click="createFn()">
+                            <span>Add new</span>
+                        </button>
+                    </div>
+
+                    <div class="m-t-15 pull-right">
+                        <div class="col-xs-12">
+                            <input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover displays-table" id="basicTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Issue</th>
+                                    <th>Raised by</th>
+                                    <th>Action Taken</th>
+                                    <th>Fixed by</th>
+                                    <th>Resolved</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ticket-tr ng-repeat="issue in issues" issue="issue" edit-fn="editFn({issue:issue})"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

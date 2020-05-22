@@ -1,0 +1,17 @@
+<script src="ng/components/displays/displays.js"></script>
+<script src="ng/components/displays/dashboard/dashboard.js"></script>
+<script src="ng/components/displays/dashboard/directives/display-tr/display-tr.js"></script>
+<script src="ng/components/displays/dashboard/directives/table-view/table-view.js"></script>
+<script src="ng/components/displays/campaigns/campaigns.js"></script>
+<script src="ng/components/displays/display/display.js"></script>
+<script src="ng/components/displays/display/services/nvd3-service.js"></script>
+<script src="ng/components/displays/display/services/calendar-service.js"></script>
+<script src="ng/components/displays/display/directives/campaign-stats/campaign-stats.js"></script>
+<script src="ng/components/displays/display/directives/support/support.js"></script>
+<script src="ng/components/displays/display/directives/general/general.js"></script>
+<script src="ng/components/displays/display/directives/campaign-history/campaign-history.js"></script>
+<script src="ng/components/displays/display/directives/campaign-timeline/campaign-timeline.js"></script>
+<script src="ng/components/displays/display/directives/site-info/site-info.js"></script>
+<script src="ng/components/displays/display/directives/campaign-aggregator/campaign-aggregator.js"></script>
+<script src="ng/components/displays/liftnlearn/liftnlearn.js"></script>
+<script src="ng/components/displays/touch/touch.js"></script>

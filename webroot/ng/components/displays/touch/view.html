@@ -1,0 +1,108 @@
+<div sidebar-menu></div>
+<!-- START PAGE-CONTAINER -->
+<div class="page-container ">
+    <div header></div>
+    <!-- START PAGE CONTENT WRAPPER -->
+    <div class="page-content-wrapper">
+        <!-- START PAGE CONTENT -->
+        <div class="content full-width">
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#displays">Displays</a>
+                            </li>
+                            <li><a ui-sref="display({id: display.id})">{{display.name}}</a>
+                            </li>
+                            <li><a ui-sref="deploytouch({id: display.id})" class="active">Touch Settings</a>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-5 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Getting started</div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>Touch : {{display.name}}</h3>
+                                        <p>Select any of your existing Touch collections, set both the start and end dates and that's a wrap.</p>
+                                        <p class="small hint-text m-t-5">Kevin Coates
+                                            <br> Digital Solutions Manager</p>
+                                        <br>
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="full-height">
+                                    <div class="panel-body text-center">
+
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid container-fixed-lg bg-white">
+                <!-- START PANEL -->
+                <div class="panel panel-transparent">
+                    <div class="panel-heading">
+                        <div class="panel-title">Scheduled Touch Content
+                        </div>
+                        <div class="btn-group pull-right m-b-10">
+                            <button type="button" class="btn btn-default" data-target="#modalFillIn" data-toggle="modal">Add new</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="basicTable">
+                                <thead>
+                                    <tr>
+                                        <!-- NOTE * : Inline Style Width For Table Cell is Required as it may differ from user to user
+                                                                                                        Comman Practice Followed
+                                        -->
+
+                                        <th style="width:40%">Name</th>
+                                        <th style="width:30%">Start</th>
+                                        <th style="width:30%">End</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="content in scheduled" ng-show='content.feed !== null'>
+                                        <td class="v-align-middle">
+                                            <p>{{content.feed.name}}</p>
+                                        </td>
+                                        <td class="v-align-middle">
+                                            <p>{{content.start| date : 'short'}}</p>
+                                        </td>
+                                        <td class="v-align-middle">
+                                            <p>{{content.end| date : 'short'}}</p>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PANEL -->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>

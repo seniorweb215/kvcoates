@@ -1,0 +1,38 @@
+<!-- START CONTENT INNER -->
+<div class="user-controls">
+    
+        <div class="col-md-8">
+        <div class="input-container">
+            <input id="autocomplete-input" class="form-control location_address" ng-model="location.address" type="text" placeholder="{{getPlaceholderText()}}" />
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="m-t-15">
+            <button type="button" class="btn btn-primary btn-cons btn-animated from-left fa fa-close" ng-click="cancelFn()">
+                <span>Cancel</span>
+            </button>
+            <button type="button" class="btn btn-primary btn-cons btn-animated from-top fa fa-arrow-down" ng-click="saveFn()">
+                <span>Save</span>
+            </button>
+        </div>
+    </div>
+    
+</div>
+<!-- Map -->
+<!-- START CONTENT INNER -->
+<!-- Map -->
+<div class="map-container full-width full-height">
+    <div class="map-controls m-t-50">
+        <div class="pull-left">
+            <div class="btn-group btn-group-vertical" data-toggle="buttons-radio">
+                <button id="map-zoom-in" class="btn btn-success btn-xs"><i class="fa fa-plus"></i>
+                </button>
+                <button id="map-zoom-out" class="btn btn-success btn-xs"><i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="google-map" class="full-width full-height"></div>
+</div>
+<!-- END CONTENT INNER -->
+<!-- END CONTENT INNER -->

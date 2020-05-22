@@ -1,0 +1,137 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Connected In-store Experience",
+        "description": "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
+        "version": "0.1"
+    },
+    "host": "example.com",
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/displays/register": {
+            "post": {
+                "tags": [
+                    "Displays"
+                ],
+                "summary": "general stats",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/displays/me": {
+            "post": {
+                "tags": [
+                    "Displays"
+                ],
+                "summary": "general stats",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/displays/token": {
+            "post": {
+                "tags": [
+                    "Displays"
+                ],
+                "summary": "general stats",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/displays/connectivity": {
+            "post": {
+                "tags": [
+                    "Displays"
+                ],
+                "summary": "general stats",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/statistics/dashboard": {
+            "get": {
+                "tags": [
+                    "Statistics"
+                ],
+                "summary": "general stats",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/statistics/support": {
+            "get": {
+                "tags": [
+                    "Statistics"
+                ],
+                "summary": "",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/statistics/campaign/{campaign-id}": {
+            "get": {
+                "tags": [
+                    "Statistics"
+                ],
+                "summary": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "campaign-id",
+                        "in": "path",
+                        "description": "ID of campaign to return",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

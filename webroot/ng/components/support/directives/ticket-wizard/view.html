@@ -1,0 +1,145 @@
+<div class="modal fade fill-in" id="issue-management-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <i class="pg-close"></i>
+    </button>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" ng-show="isCreating()">
+            <div class="modal-header">
+                <h5 class="text-left p-b-5"><span class="semi-bold">New</span> Issue</h5>
+                <h6 class="text-left p-b-5" ng-show="!hasDisplays()"><span class="semi-bold">Display</span> {{display.name}} - {{display.identifier}}</h6>
+            </div>
+            <div class="modal-body">
+                <form role="form" ng-show="isStep(1)">
+                    <div class="form-group-attached">
+                        <div class="form-group form-group-default" ng-show="hasDisplays()">
+                            <label>Display</label>
+                            <select class="full-width" id="displays-select">
+                                <option ng-repeat="display in data.displays" value="{{display.id}}">{{display.identifier}} - {{display.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group form-group-default">
+                            <label>Location</label>
+                            <select class="full-width" id="locations-select">
+                                <option ng-repeat="location in data.locations" value="{{location.id}}">{{location.name}}</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group form-group-default">
+                            <label>Issue</label>
+                            <select class="full-width" id="new-issue-type-select">
+                                <option ng-repeat="type in data.types" value="{{type.id}}">{{type.name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group form-group-default">
+                            <label>Details</label>
+                            <textarea rows="4" class="form-control" ng-model="issue.details" style="height: 100px;"></textarea>
+                        </div>
+                    </div>
+                </form>
+                <div class="row" ng-show="isStep(2)">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    Drag n' drop files
+                                </div>
+                            </div>
+                            <div class="panel-body no-scroll no-padding">
+                                <form action="/file-upload" class="dropzone no-margin" id="attachments-uploader">
+                                    <div class="fallback">
+                                        <input name="file" type="file" multiple/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="p-t-20 clearfix p-l-10 p-r-10">
+                            <div class="pull-left">
+                                <p class="bold font-montserrat text-uppercase"></p>
+                            </div>
+                            <div class="pull-right">
+                                <p class="bold font-montserrat text-uppercase"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 m-t-10 sm-m-t-10">
+                        <button type="button" class="btn btn-primary btn-block m-t-5" ng-class="{'disabled' : !hasSelectedIssueType()}" ng-click="save()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal-content" ng-show="!isCreating()">
+            <div class="modal-header">
+                <h5 class="text-left p-b-5"><span class="semi-bold">Edit</span> Issue</h5>
+                <h6 class="text-left p-b-5"><span class="semi-bold">Issue ID:</span> {{issue.id}}</h6>
+                <h6 class="text-left p-b-5"><span class="semi-bold">Display:</span> {{display.name}} - {{display.identifier}}</h6>
+                <h6 class="text-left p-b-5"><span class="semi-bold">Raised by:</span> {{issue.reporter.first_name + ' ' + issue.reporter.last_name}} - {{issue.created | date : 'dd/MM/yy HH:mm' : 'UTC'}}</h6>
+            </div>
+            <div class="modal-body">
+                <div class="row ">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="full-width" id="status-select">
+                                <option ng-repeat="status in data.statuses" value="{{status.id}}">{{status.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 m-t-10 sm-m-t-10">
+                        <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="save()">Save</button>
+                    </div>
+                </div>
+                <form role="form">
+                    <div class="form-group-attached">
+                        <div class="form-group form-group-default">
+                            <label>Details</label>
+                            <textarea rows="4" class="form-control" ng-model="issue.details" style="height: 100px;"></textarea>
+                        </div>
+                        <div class="form-group form-group-default">
+                            <label>Actions</label>
+                            <textarea rows="4" class="form-control" ng-model="issue.actions" style="height: 100px;"></textarea>
+                        </div>
+                        <div class="form-group form-group-default">
+                            <label>Cost</label>
+                            <input type="text" class="form-control" ng-model="issue.cost" />
+                        </div>
+                        <div class="form-group form-group-default">
+                            <label>Repair Date</label>
+                            <div class="input-prepend input-group">
+                                <input type="text" style="width: 100%" name="reservation" id="datepicker" class="form-control" ng-model="issue.repair_date" />
+                                <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    Drag n' drop images
+                                </div>
+                            </div>
+                            <div class="panel-body no-scroll no-padding">
+                                <form action="/file-upload" class="dropzone no-margin" id="attachments-uploader-1">
+                                    <div class="fallback">
+                                        <input name="file" type="file" multiple/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

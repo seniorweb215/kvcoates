@@ -1,0 +1,36 @@
+.display-plan-campaign-previewer{
+
+    #campaign-video-player{
+        width: 100%; height: auto; background: black;
+    }
+
+    .lnl-controls{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-top: 20px;
+        li{
+            display: inline-block ;
+            width: 50px;
+            height: 50px;
+            line-height: 30px;
+            border: 10px solid #FC9407;
+            border-radius: 0 20px 20px 20px;
+            margin-right: 10px;
+
+            &.empty{
+                border-color: gray;
+            }
+
+            &.playing{
+                border-color: gray;
+            }
+
+            &:hover{
+                cursor: pointer;
+            }
+
+
+        }
+    }
+}

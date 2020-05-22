@@ -1,0 +1,91 @@
+<div class="modal fade fill-in" id="campaign-mapper" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <i class="pg-close"></i>
+    </button>
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-left p-b-5"><span class="semi-bold">Mappings for </span> {{campaign.name}}</h5>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="row" ng-show="!hasMappings()">
+                        <hr />
+                        <h5 class="text-danger text-center">No Mappings</h5>
+                    </div>
+                    <div class="row" ng-show="hasMappings()">
+                        <div class="col-sm-12">
+                            <hr />
+                            <h5>Mappings</h5>
+                            <div class="table-responsive" >
+                                <table class="table table-hover displays-table" id="basicTable">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:40%">Tag</th>
+                                            <th style="width:40%">Value</th>
+                                            <th style="width:20%"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="mapping in campaign.mappings">
+                                            <td class="v-align-middle ">
+                                                <p>{{mapping.tag}}</p>
+                                            </td>
+                                            <td class="v-align-middle ">
+                                                <p>{{mapping.value}}</p>
+                                            </td>
+                                            <td class="v-align-middle ">
+                                                <button type="button" class="btn btn-default" ng-click='removeMapping(mapping)'><i class="fa fa-close"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="form-group-attached">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h5>New Mapping</h5>
+                                <div class="form-group form-group-default">
+                                    <label>Tag</label>
+                                    <input type="text" class="form-control" ng-model="newMapping.tag">
+                                </div>
+
+                                <div class="form-group form-group-default">
+                                    <label>Value</label>
+                                    <input type="text" class="form-control" ng-model="newMapping.value">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                    <div class="pull-left">
+                                        <p class="bold font-montserrat text-uppercase"></p>
+                                    </div>
+                                    <div class="pull-right">
+                                        <p class="bold font-montserrat text-uppercase"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 m-t-10 sm-m-t-10">
+                                <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="addNewMapping()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <hr />
+                <div class="row">      
+                    <div class="col-sm-6 m-t-10 sm-m-t-10">
+                        <button type="button" class="btn btn-primary btn-block m-t-2" ng-click="done()">Done</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

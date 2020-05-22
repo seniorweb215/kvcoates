@@ -1,0 +1,62 @@
+{
+    "name": "cakephp/app",
+    "description": "CakePHP skeleton app",
+    "homepage": "http://cakephp.org",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.5.9",
+        "cakephp/cakephp": "~3.2",
+        "mobiledetect/mobiledetectlib": "2.*",
+        "cakephp/migrations": "~1.0",
+        "cakephp/plugin-installer": "*",
+        "paragraph1/php-fcm": "^0.7.0",
+        "phpoffice/phpexcel": "^1.8",
+        "zircote/swagger-php": "^2.0",
+        "mirko-pagliai/cakephp-mysql-backup": "^1.1",
+        "mirko-pagliai/cakephp-database-backup": "2.1.4"
+    },
+    "require-dev": {
+        "psy/psysh": "@stable",
+        "cakephp/debug_kit": "~3.2",
+        "cakephp/bake": "~1.1"
+    },
+    "suggest": {
+        "phpunit/phpunit": "Allows automated tests to be run without system-wide install.",
+        "cakephp/cakephp-codesniffer": "Allows to check the code against the coding standards used in CakePHP."
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src",
+            "Displays\\": "./plugins/Displays/src",
+            "DisplayIssues\\": "./plugins/DisplayIssues/src",
+            "Campaigns\\": "./plugins/Campaigns/src",
+            "Manufacturers\\": "./plugins/Manufacturers/src",
+            "System\\": "./plugins/System/src",
+            "Notifications\\": "./plugins/Notifications/src",
+            "Clients\\": "./plugins/Clients/src",
+            "Statistics\\": "./plugins/Statistics/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests",
+            "Displays\\Test\\": "./plugins/Displays/tests",
+            "DisplayIssues\\Test\\": "./plugins/DisplayIssues/tests",
+            "Campaigns\\Test\\": "./plugins/Campaigns/tests",
+            "Manufacturers\\Test\\": "./plugins/Manufacturers/tests",
+            "System\\Test\\": "./plugins/System/tests",
+            "Notifications\\Test\\": "./plugins/Notifications/tests",
+            "Clients\\Test\\": "./plugins/Clients/tests",
+            "Statistics\\Test\\": "./plugins/Statistics/tests"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": "App\\Console\\Installer::postInstall",
+        "post-create-project-cmd": "App\\Console\\Installer::postInstall",
+        "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

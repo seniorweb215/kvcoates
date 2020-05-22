@@ -1,0 +1,59 @@
+<div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20 videos-campaign">
+
+    <div class="row" ng-show="campaign.status === 0">
+        <div class="col-md-12">
+            <!-- START PANEL -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        Drag n' drop your HTML5 campaign
+                    </div>
+                </div>
+                <div class="panel-body no-scroll no-padding">
+                    <form action="/file-upload" class="dropzone no-margin" id="media-uploader">
+                        <div class="fallback">
+                            <input name="file" type="file" multiple/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- END PANEL -->
+        </div>
+    </div>
+
+
+    <div class="gallery">                    
+        <div class="gallery-item gallery-item-custom" data-width="1" data-height="1" ng-repeat="content in campaign.contents">
+            <!-- START PREVIEW -->
+            <img ng-src="{{getURL(content.media.thumb)}}" alt="" class="image-responsive-height" ng-click="onVideoClick(content)">
+            <!-- END PREVIEW -->
+            <!-- START ITEM OVERLAY DESCRIPTION -->
+            <div class="overlayer bottom-left full-width">
+                <div class="overlayer-wrapper item-info ">
+                    <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
+                        <div class="">
+                            <p class="pull-left bold text-white fs-14 p-t-10">{{content.media.filename}}</p>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="m-b-10">
+                            <div class="pull-right m-t-10" ng-show="campaign.status === 0">
+                                <button class="btn btn-white btn-xs btn-mini bold fs-14" type="button" ng-click="deleteMedia(content)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PRODUCT OVERLAY DESCRIPTION -->
+            <div class="gallery-footer-content">
+                <p>Dimensions: {{content.media.dimension}}</p>
+                <p>Duration: {{content.media.duration}}</p>
+                <p>FrameRate: {{getFramerate(content.media.fps)}}</p>
+                <p>Size: {{content.media.size / 1000000}} MB</p>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- END CATEGORY -->
+</div>

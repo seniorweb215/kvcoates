@@ -1,0 +1,190 @@
+<div class="modal fade fill-in" id="campaign-creator" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <i class="pg-close"></i>
+    </button>
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-left p-b-5"><span class="semi-bold">{{getModalTitle()}}</span> campaign</h5>
+                <h5 class="text-right bold">Targeted Displays : {{totalDisplays}}</h5>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group-attached">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Campaign Name</label>
+                                    <input type="text" class="form-control" ng-model="campaign.name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="input-prepend input-group">
+                                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                    <input type="text" style="width: 100%" name="reservation" id="daterangepicker" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Type</label>
+                                    <select class="full-width" id="type-select" ng-model="campaign.type_id">
+                                        <option ng-repeat="type in campaign_types" value="{{type.id}}">{{type.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Country</label>
+                                    <select class="full-width" id="country-select" ng-model="campaign.country_id">
+                                        <optgroup label="Main Countries">
+                                            <option value="0">*All</option>
+                                            <option value="77">United Kingdom</option>
+                                            <option value="48">China</option>
+                                            <option value="57">Germany</option>
+                                        </optgroup>
+                                        <option ng-repeat="country in countries" value="{{country.id}}">{{country.countryName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Retailer</label>
+                                    <select class="full-width" id="organisation-select" ng-model="campaign.organisation_id">
+                                        <optgroup label="Main Retailers">
+                                            <option value="0">*All</option>
+                                        </optgroup>
+                                        <option ng-repeat="organisation in organisations" value="{{organisation.id}}">{{organisation.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Brand</label>
+                                    <select class="full-width" id="brand-select" ng-model="campaign.brand_id">
+                                        <option ng-repeat="brand in brands" value="{{brand.id}}">{{brand.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Orientation</label>
+                                    <select class="full-width" id="resolution-select" ng-model="campaign.resolution_id">
+                                        <option ng-repeat="orientation in orientations" value="{{orientation}}">{{orientation}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Locations</label>
+                                    <select class="full-width" id="location-select" ng-model="selectedLocation" size="6" multiple>
+                                        <option ng-repeat="location in locations" value="{{location.id}}">{{location.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+
+                        <div class="row" ng-show="settings.campaign.default === 'true'">
+                            <div class="form-group form-group-default">
+                                <label class="col-sm-4 control-label">Default</label>
+                                <div class="col-sm-8">
+                                    <div class="radio radio-primary">
+                                        <div class="col-sm-4">
+                                            <input type="radio" value="true" name="defaultyn" id="defaultyes">
+                                            <label for="defaultyes">Yes</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="radio" checked="checked"  name="defaultyn" id="defaultno">
+                                            <label for="defaultno">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="settings.campaign.tod === 'true'">
+                            <div class="form-group form-group-default">
+                                <label class="col-sm-4 control-label">Time of The Day</label>
+                                <div class="col-sm-8">
+                                    <div class="radio radio-primary">
+                                        <div class="col-sm-4">
+                                            <input type="radio" value="true" name="tod-yn" id="tod-yes">
+                                            <label for="tod-yes">Yes</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="radio" checked="checked"  name="tod-yn" id="tod-no">
+                                            <label for="tod-no">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="settings.campaign.has_facial_analytics === 'true'">
+                            <div class="form-group form-group-default">
+                                <label class="col-sm-4 control-label">Facial Analytics</label>
+                                <div class="col-sm-8">
+                                    <div class="radio radio-primary">
+                                        <div class="col-sm-4">
+                                            <input type="radio" value="true" name="fa-yn" id="fa-yes">
+                                            <label for="fa-yes">Yes</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="radio" checked="checked"  name="fa-yn" id="fa-no">
+                                            <label for="fa-no">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="p-t-20 clearfix p-l-10 p-r-10">
+                            <div class="pull-left">
+                                <p class="bold font-montserrat text-uppercase"></p>
+                            </div>
+                            <div class="pull-right">
+                                <p class="bold font-montserrat text-uppercase"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 m-t-10 sm-m-t-10">
+                        <button type="button" class="btn btn-primary btn-block m-t-5" ng-class="{'disabled' : totalDisplays === 0 || noDates()}" ng-click="go()">Add Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

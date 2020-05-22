@@ -1,0 +1,44 @@
+<div class="container lift-and-learn-campaign">
+    <div class="row">
+        <div class="col-md-3 col-lg-3" ng-repeat="i in slots track by $index">
+
+            <div class="slot">
+                <div class="tab">{{$index + 1}}</div>
+                <div class="contents" ng-show="hasContents($index + 1)">
+                    <p class="video"><i class="fa ng-binding fa-video-camera" aria-hidden="true"> {{getVideoInfo($index + 1)}}</i></p>
+                    <p class="image"><i class="fa ng-binding fa-image" aria-hidden="true"> {{getImageInfo($index + 1)}}</i></p>
+                </div>
+                <form action="/file-upload" class="dropzone no-margin lift-and-learn-dropzone" id="media-uploader-{{$index + 1}}" data-order="{{$index + 1}}" data-index="{{$index}}">
+                    <div class="fallback">
+                        <input name="file" type="file" multiple/>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-md-3 col-lg-3 col-md-offset-4 col-lg-offset-4">
+            <div class="slot default">
+                <div class="tab">Default</div>
+                <div class="contents" ng-show="hasContents(0)">
+                    <p class="video"><i class="fa ng-binding fa-video-camera" aria-hidden="true"> {{getVideoInfo(0)}}</i></p>
+                </div>
+                <form action="/file-upload" class="dropzone no-margin lift-and-learn-dropzone" id="media-uploader-0" data-order="0" data-index="20">
+                    <div class="fallback">
+                        <input name="file" type="file" multiple/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-md-offset-4">
+            <p class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> Facial Detection</p>
+            <div class="pull-right">
+                <input type="checkbox" class='module-toggle' data-module="liftlearn" ng-checked="hasMotionDetection" />
+            </div>
+        </div>
+    </div>
+</div>

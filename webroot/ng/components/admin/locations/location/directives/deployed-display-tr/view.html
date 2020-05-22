@@ -1,0 +1,32 @@
+<td class="v-align-middle" ui-sref="display({id: display.id})">
+    <p><strong>{{display.identifier}}</strong></p>
+</td>
+<td class="v-align-middle summary" ui-sref="display({id: display.id})">
+    <p class="text-primary">{{display.name}}</p>
+</td>
+<td class="v-align-middle" ui-sref="display({id: display.id})">
+    <ul class="modules">
+        <li ng-class="{'active' : display.modules.facial_detection}"><i class="fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Face Detection"></i></li>
+        <li ng-class="{'active' :display.modules.lift_n_learn}"><i class="fa fa-gamepad" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Lift and Learn"></i></li>
+        <li ng-class="{'active' : display.modules.touch}"><i class="fa fa-hand-pointer-o" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Touch"></i></li>
+    </ul>
+</td>
+
+<td class="v-align-middle">
+    <p>{{display.brand.name}}</p>
+</td>
+
+<td class="v-align-middle">
+    <p ng-class="{'text-danger': upcomingCampaign.name === 'default'}">{{upcomingCampaign.name}}  {{getUpcomingCampaignTypeName()}}</p>
+</td>
+
+<td class="v-align-middle">
+    <p>{{display.last_login| date : 'd/M/yy HH:mm'}}</p>
+</td>
+<td class="v-align-middle">
+    <span class="label {{getStatusClass()}}">{{getStatus()}}</span>
+</td>
+
+<td class="v-align-middle">
+    <button type="button" class="btn btn-default" ng-click='undeployDisplay({display : display})'><i class="fa fa-close"></i></button>
+</td>

@@ -1,0 +1,68 @@
+<div class="modal fade fill-in" id="modalSlideLeft" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <i class="pg-close"></i>
+    </button>
+
+
+
+    <div class="modal-dialog " ng-show='media.length === 0'>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-left p-b-5"><span class="semi-bold">Add</span> Media to your store</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="p-t-20 clearfix p-l-10 p-r-10">
+                            <div class="pull-left">
+                                <p class="bold font-montserrat text-uppercase"></p>
+                            </div>
+                            <div class="pull-right">
+                                <p class="bold font-montserrat text-uppercase"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 m-t-10 sm-m-t-10">
+                        <button type="button" class="btn btn-primary btn-block m-t-5" ui-sref='media'>Add Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+
+    <div class="gallery" ng-show='media.length > 0'>
+        <div class="gallery-item" data-width="1" data-height="1" ng-repeat="node in media" ng-click='select(node)'>
+            <!-- START PREVIEW -->
+            <img ng-src="{{getURL(node.thumb)}}" alt="" class="image-responsive-height">
+            <!-- END PREVIEW -->
+            <!-- START ITEM OVERLAY DESCRIPTION -->
+            <div class="overlayer bottom-left full-width">
+                <div class="overlayer-wrapper item-info ">
+                    <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
+                        <div class="">
+                            <p class="pull-left bold text-white fs-14 p-t-10">{{node.filename}}</p>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="m-t-10">
+                            <div class="thumbnail-wrapper d32 circular m-t-5">
+                                <img width="40" height="40" src="assets/img/profiles/avatar.jpg" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg" alt="">
+                            </div>
+                            <div class="inline m-l-10">
+                                <p class="no-margin text-white fs-12">Uploaded: </p>
+                                <p class="no-margin fs-12">{{ node.created | date : 'medium'}}</p>
+                            </div>
+                            <div class="pull-right m-t-10">
+                                <button class="btn btn-white btn-xs btn-mini bold fs-14" type="button" >&times;</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PRODUCT OVERLAY DESCRIPTION -->
+        </div>
+    </div>
+</div>

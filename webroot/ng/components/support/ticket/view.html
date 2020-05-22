@@ -1,0 +1,112 @@
+<div sidebar-menu></div>
+<div class="page-container ">
+    <div header></div>
+    <div class="page-content-wrapper content-manager" id="printable">    
+        <div class="content full-width">
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#support">Support</a>
+                            </li>
+                            <li><a href="javascript:;" class="active">Ticket {{ticket.id}}</a>
+                            </li>
+                        </ul>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 ">
+
+                                <div class="panel panel-transparent">
+                                    
+                                    <div class="panel-body">
+                                        <h3>{{ticket.display_issue_type.name}}</h3>
+                                        <p><span class="label {{getCurrentStatusClass()}}">{{getCurrentStatus()}}</span></p>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-9 col-md-6 ">
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Ticket Info
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p ng-show="isDisplayKnown()">Display: {{ticket.display.identifier}}</p>
+                                        <p>Raised: {{ticket.created| date : 'dd/MM/yy HH:mm' : 'UTC'}} by {{ticket.reporter.first_name}} {{ticket.reporter.last_name}}</p>
+                                        <div ng-show="ticket.status === 2">
+                                            <p>Fixed: {{ticket.modified| date : 'dd/MM/yy HH:mm' : 'UTC'}} by {{ticket.solver.first_name}} {{ticket.solver.last_name}}</p>
+                                        </div>
+                                        <p>Action:  {{getTakenAction()}}</p>
+                                        <br />
+                                        <button class="btn btn-primary" ng-click="print()">Print</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery">
+
+                <div class="gallery-item first" data-width="1" data-height="1" ng-repeat="picture in ticket.display_issue_attachments">
+                    <!-- START PREVIEW -->
+                    <img ng-src="{{picture.url}}" alt="" class="image-responsive-height" style="-webkit-print-color-adjust: exact;">
+                    <!-- END PREVIEW -->
+                    <!-- START ITEM OVERLAY DESCRIPTION -->
+                    <div class="overlayer bottom-left full-width">
+                        <div class="overlayer-wrapper item-info ">
+                            <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
+                                <div class="">
+                                    <p class="pull-left bold text-white fs-14 p-t-10"></p>
+                                    <h5 class="pull-right semi-bold text-white font-montserrat bold"></h5>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="m-t-10">
+
+
+
+                                    <div class="pull-right m-t-10">
+                                        <button class="btn btn-white btn-xs btn-mini bold fs-14" type="button">&times;</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PRODUCT OVERLAY DESCRIPTION -->
+                </div>
+                <!-- END GALLERY ITEM -->
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-transparent">
+                        <div class="panel-body">
+                            <p>Details: {{ticket.details}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>
+
+
+
+
+
+
+
+
+
+

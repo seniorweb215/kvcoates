@@ -1,0 +1,180 @@
+<div class="user-controls">
+    <div class="col-md-10">
+
+    </div>
+    <div class="col-md-2 text-right">
+        <div class="m-t-15">
+
+        </div>
+    </div>
+</div>
+
+
+<div class="content" >
+
+
+    <div class="container-fluid container-fixed-lg bg-white">
+        <!-- START PANEL -->
+        <div class="panel panel-transparent">
+            <div class="panel-heading">
+                <div class="panel-title">Opening/Closing Hours
+                </div>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-primary btn-cons btn-animated from-left fa fa-close" ng-click="cancelFn()">
+                        <span>Cancel</span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-cons btn-animated from-top fa fa-arrow-down" ng-click="saveFn()">
+                        <span>Save</span>
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+
+            </div>
+        </div>
+        <!-- END PANEL -->
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    Week
+                </div>
+            </div>
+            <div class="panel-body">
+                
+                <form class="" role="form">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h5>Monday</h5>
+                            <div class="form-group form-group-default">
+                                <label>Opens at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="0" data-open="true" data-time="{{location.location_schedule.monday.opens}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Closes at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="0" data-open="false" data-time="{{location.location_schedule.monday.closes}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <h5>Tuesday</h5>
+                            <div class="form-group form-group-default">
+                                <label>Opens at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="1" data-open="true" data-time="{{location.location_schedule.tuesday.opens}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Closes at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="1" data-open="false" data-time="{{location.location_schedule.tuesday.closes}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-3">
+                            <h5>Wednesday</h5>
+                            <div class="form-group form-group-default">
+                                <label>Opens at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="2" data-open="true" data-time="{{location.location_schedule.wednesday.opens}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Closes at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="2" data-open="false" data-time="{{location.location_schedule.wednesday.closes}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-3">
+                            <h5>Thursday</h5>
+                            <div class="form-group form-group-default">
+                                <label>Opens at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="3" data-open="true" data-time="{{location.location_schedule.thursday.opens}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Closes at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="3" data-open="false" data-time="{{location.location_schedule.thursday.closes}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <div class="col-sm-4">
+                            <h5>Friday</h5>
+                            <div class="form-group form-group-default">
+                                <label>Opens at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="4" data-open="true" data-time="{{location.location_schedule.friday.opens}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Closes at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="4" data-open="false" data-time="{{location.location_schedule.friday.closes}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-4">
+                            <h5>Saturday</h5>
+                            <div class="form-group form-group-default">
+                                <label>Opens at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="5" data-open="true" data-time="{{location.location_schedule.saturday.opens}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Closes at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="5" data-open="false" data-time="{{location.location_schedule.saturday.closes}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-4">
+                            <h5>Sunday</h5>
+                            <div class="form-group form-group-default">
+                                <label>Opens at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="6" data-open="true" data-time="{{location.location_schedule.sunday.opens}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Closes at</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <input type="text" class="store-hour-timepicker form-control" data-day="6" data-open="false" data-time="{{location.location_schedule.sunday.closes}}">
+                                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

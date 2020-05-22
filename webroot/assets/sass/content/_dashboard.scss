@@ -1,0 +1,31 @@
+.content-manager{
+    .feeds-creation-control{
+        padding-top : 50px;
+        ul{
+            list-style: none;
+            li{
+                background: white;
+                border: 1px solid lightgray;
+                width: 40px;
+                height: 40px;
+                border-radius: 15%;
+                display: inline-block;
+                font-size: 20px;
+                margin: 0;
+                padding: 4px;
+                text-align:center;
+                &:hover{
+                    cursor: pointer;
+                }
+
+                &.active{
+                    color: $active-color;
+                }
+
+                i{
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}

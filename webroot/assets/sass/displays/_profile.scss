@@ -1,0 +1,58 @@
+.display-profile{
+    .deployment-control{
+        .row > div{
+            margin-bottom: 10px;
+            p{
+                color:gray;   
+            }
+            &.active{
+                p{
+                    color: $active-color;
+                    &:hover{
+                        font-weight: bold;
+                    }
+                }
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+
+        }
+        ul{
+            list-style: none;
+            li{
+                background: white;
+                border: 1px solid lightgray;
+                width: 40px;
+                height: 40px;
+                border-radius: 15%;
+                display: inline-block;
+                font-size: 20px;
+                margin: 0;
+                padding: 4px;
+                text-align:center;
+                &:hover{
+                    cursor: pointer;
+                }
+
+                &.active{
+                    color: $active-color;
+                }
+
+                i{
+                    padding: 5px;
+                }
+            }
+        }
+    }
+    
+    .no-scheduled-playbacks{
+        padding-top: 100px;
+        padding-bottom: 100px;
+        p{
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+    }
+}

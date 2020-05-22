@@ -1,0 +1,102 @@
+<div sidebar-menu></div>
+<div class="page-container ">
+    <div header></div>
+    <div campaign-creator create-fn="addCampaign(campaign)" update-fn="updateCampaign(campaign)"></div>
+    <div campaign-duplicator create-fn="duplicateCampaign(campaign)"></div>
+    <div campaign-mapper campaign="selectedCampaign"></div>
+    <div campaign-viewer></div>
+    <div class="page-content-wrapper content-manager">    
+        <div class="content full-width">
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li><a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#campaigns" class="active">Campaigns</a>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-5 col-md-6">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Getting started</div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>Campaigns Manager</h3>
+                                        <br />
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+
+                                <!-- END PANEL -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid container-fixed-lg">
+                <!-- START PANEL -->
+                <div class="panel panel-transparent">
+                    <div class="panel-heading" ng-show="campaigns.length > 0 && !isListingDefaultCampaigns()">
+                        <div class="m-t-15 pull-right">
+                            <button ng-show="$root.isAllowedTo('campaigns', 'create')" type="button" class="btn btn-primary btn-cons btn-animated from-left pg pg-plus" data-target="#campaign-creator" data-toggle="modal">
+                                <span>Add new</span>
+                            </button>
+                            <button ng-show="false" type="button" class="btn btn-primary btn-cons btn-animated from-top fa fa-arrow-down" ng-click="exportCampaigns()">
+                                <span>Download as XLS</span>
+                            </button>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row" ng-show="campaigns.length == 0 && !isListingDefaultCampaigns()">
+                            <div class="col-md-12 text-center">
+                                <h2>No Campaigns :(</h2>
+                                <button type="button" class="btn btn-primary" data-target="#campaign-creator" data-toggle="modal">Get Started</button>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-show="campaigns.length > 0">
+
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="basicTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Campaign</th>
+                                            <th>Details</th>
+                                            <th style="width:300px">Dates</th>
+                                            <th>Brand</th>
+                                            <th>Country</th>
+                                            <th style="width:400px;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="campaign in campaigns" campaign-preview campaign="campaign" delete-fn="deleteCampaign(campaign)" edit-fn="editCampaign(campaign)" duplicate-fn="editCampaignForDuplication(campaign)" mappings-fn="editCampaignMappings(campaign)" report-fn="downloadCampaignReport(campaign)" download-fn="downloadCampaign(campaign)" stop-fn="stopCampaign(campaign)" preview-fn="previewCampaign(campaign)"></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- END PANEL -->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>

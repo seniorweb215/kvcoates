@@ -1,0 +1,47 @@
+.location-profile{
+    overflow:hidden;
+
+    .content{
+        width: 100%;
+        position: absolute;
+        left: 0;
+        transition: all 0.6 ease !important;
+        &.previous{
+            left: -3000px;
+        }
+        &.next{
+            left: 3000px;
+        }
+    }
+
+
+    .address-editor{
+
+
+        .user-controls{
+            height : 60px;
+            position:absolute;
+            width : 100%;
+            background: white;
+            z-index: 1;
+            border-bottom: 1px solid rgba(230, 230, 230, 0.7);
+            
+            
+            .input-container{
+                padding: 15px;
+            }
+        }
+    }
+    
+    
+    
+    
+    .no-deployed-displays{
+        padding-top: 100px;
+        padding-bottom: 100px;
+        p{
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+    }
+}

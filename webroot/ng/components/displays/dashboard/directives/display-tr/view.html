@@ -1,0 +1,57 @@
+<td class="v-align-middle summary">
+
+
+
+    <p><strong>{{display.identifier}}</strong></p>
+    <p><i class="fa {{getOSIcon()}}" aria-hidden="true"></i> | <span><img ng-src="assets/img/displays/mobile-{{display.orientation}}.jpg" width="30"></span> | <span ng-class="{'text-danger': !isVerified(), 'text-success': isVerified()}">{{statusMessage()}}</span></p>
+   
+    <hr />
+    <div class="deployment-details">
+        <p class="location">{{display.screensize}} - {{display.resolution.name}}</p>
+        <p class="location">{{display.brand.name}}</p>
+        <p></p>
+    </div>
+
+
+
+</td>
+<td class="v-align-middle summary">
+    <p>{{display.installed| date : 'd/M/yy HH:mm'}}</p>
+</td>
+<td class="v-align-middle summary">
+    <p class="text-primary">{{display.name}}</p>
+    <p>{{deploymentMessage()}}</p>
+    <div ng-show="hasBeenDeployed()" class="deployment-details">
+        <p class="organisation"><i class="fa fa-users" aria-hidden="true"></i> {{getOrganisationName()}}</p>
+        <p class="location"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{getLocationName()}}</p>
+        <p class="location">{{getLocationAddress()}}</p>
+    </div>
+</td>
+<td class="v-align-middle">
+    <ul class="modules">
+        <li ng-class="{'active' : hasMotionDetection(), 'text-danger': !hasMotionDetection()}"><i class="fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Face Detection"></i></li>
+        <li ng-class="{'active' : hasLiftNLearn(), 'text-danger': !hasLiftNLearn()}"><i class="fa fa-gamepad" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Lift N Learn"></i></li>
+        <li ng-class="{'active' : hasTouch(), 'text-danger': !hasTouch()}"><i class="fa fa-hand-pointer-o" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Touch"></i></li>
+        <li><i class="fa {{networkImage()}}" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{display.network}}"></i></li>
+    </ul>
+</td>
+<td class="v-align-middle">
+    <p ng-class="{'text-danger': upcomingCampaign.name === 'default'}">{{upcomingCampaign.name}}  {{getUpcomingCampaignTypeName()}}</p>
+    <!--<p>{{upcomingCampaign.start | date : 'dd/MM/yyyy hh:mm a' : 'UTC'}} - {{upcomingCampaign.end | date : 'dd/MM/yyyy hh:mm a' : 'UTC'}}</p>-->
+</td>
+
+<td class="v-align-middle">
+    <p>{{display.last_login| date : 'd/M/yy HH:mm'}}</p>
+</td>
+<td class="v-align-middle">
+    <span class="label {{getStatusClass()}}">{{getStatus()}}</span>
+</td>
+
+<td class="v-align-middle" >
+    <div class="btn-group" style="width: 210px;">
+        <button ng-show="$root.isAdmin()" type="button" class="btn btn-default" ng-click="checkForCampaigns()" data-toggle="tooltip" data-placement="top" title="Check for Campaigns"><i class="fa fa-cloud-download"></i></button>
+        <button ng-show="$root.isAdmin()"type="button" class="btn btn-default" ng-click="syncStats()" data-toggle="tooltip" data-placement="top" title="Sync Stats"><i class="fa fa-cloud-upload"></i></button>
+        <button ng-show="$root.isAllowedTo('displays', 'update')" type="button" class="btn btn-default" ui-sref="display({id: display.id})" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+        <button ng-show="$root.isAllowedTo('displays', 'delete')" type="button" class="btn btn-default" ng-click='removeFn({display: display})' data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close"></i></button>
+    </div>
+</td>

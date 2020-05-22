@@ -1,0 +1,21 @@
+<td class="v-align-middle ">
+    <p>{{user.first_name}} {{user.last_name}}</p>
+</td>
+<td class="v-align-middle">
+    <p>{{user.role.name}}</p>
+</td>
+<td class="v-align-middle">
+    <p> {{getCountry()}} </p>
+</td>
+<td class="v-align-middle">
+    <p>{{user.modified| date : 'short'}}</p>
+</td>
+<td class="v-align-middle">
+    <p> {{getStatus()}} </p>
+</td>
+<td class="v-align-middle">
+    <button type="button" class="btn btn-default" ng-click="edit(user)"><i class="fa fa-edit"></i></button>
+</td>
+<td class="v-align-middle">
+    <button type="button" class="btn btn-default" ng-click='remove()'><i class="fa fa-close"></i></button>
+</td>

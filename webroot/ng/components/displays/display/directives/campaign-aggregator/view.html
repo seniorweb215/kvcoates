@@ -1,0 +1,46 @@
+<div class="modal fade fill-in" id="campaign-aggregator" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Add to </span>Campaign</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group-attached">
+                            
+
+                            <div class="form-group form-group-default">
+                                <label>Campaign</label>
+                                <select class="full-width" id="campaign-select">
+                                    <option ng-repeat="campaign in campaigns | filter: {status : 1}" value="{{campaign.id}}">{{campaign.name}} | ({{campaign.start | date}} - {{campaign.end | date}})</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-class="{'disabled': !canSave()}" ng-click="save()">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>

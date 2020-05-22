@@ -1,0 +1,120 @@
+<div sidebar-menu></div>
+<div class="page-container ">
+    <div header></div>
+
+    <div class="page-content-wrapper content-manager">    
+        <div class="content full-width">
+
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#" class="active">Reports</a>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+                                <!--<div class="panel panel-default">
+                                    <div class="panel-body text-center">
+                                        <img class="image-responsive-height demo-mw-600" src="assets/img/demo/form_hero.gif" alt="">
+                                    </div>
+                                </div>-->
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-5 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Getting started
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>Do this and that!.</p>
+
+
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid container-fixed-lg">
+                <!-- START PANEL -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">Report Generator
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"></a>
+                            <a href="#grid-config" data-toggle="modal" class="config"></a>
+                            <a href="javascript:;" class="reload"></a>
+                            <a href="javascript:;" class="remove"></a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group ">
+                                    <label>Start Date</label>
+                                    <span class="help"></span>
+                                    <input type="text" class="form-control" placeholder="Pick a date" id="datepicker-start-date">
+
+                                </div>
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <span class="help"></span>
+                                    <input type="text" class="form-control" placeholder="Pick a date" id="datepicker-end-date">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label>Report Type</label>
+                                    <span class="help">-</span>
+                                    <select class="full-width" id="type-select">
+                                        <option ng-repeat="type in types" value="{{type.id}}">{{type.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Retailer</label>
+                                    <span class="help"></span>
+                                    <select class="full-width" id="retailer-select">
+                                        <option ng-repeat="retailer in retailers" value="{{retailer.id}}">{{retailer.name}}</option>
+                                    </select>
+                                </div>
+
+                                <button class="btn btn-primary pull-right" type="submit" ng-click="generate()">Generate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PANEL -->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>
+
+
+
+
+
+
+
+
+
+

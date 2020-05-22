@@ -1,0 +1,62 @@
+'use strict';
+var admin = angular.module('digitalMedia.admin', []);
+admin.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        $stateProvider
+                .state('organisations', {
+                    url: '/general/organisations',
+                    templateUrl: 'ng/components/admin/organisations/view.html',
+                    controller: "organisationsController"
+                }).state('bands', {
+                    url: '/general/bands',
+                    templateUrl: 'ng/components/admin/bands/view.html',
+                    controller: "bandsController"
+                }).state('brands', {
+                    url: '/general/brands',
+                    templateUrl: 'ng/components/admin/brands/view.html',
+                    controller: "brandsController"
+                }).state('manufacturers', {
+                    url: '/general/manufacturers',
+                    templateUrl: 'ng/components/admin/display-make/view.html',
+                    controller: "displayMakeController"
+                }).state('locations', {
+                    url: '/locations',
+                    templateUrl: 'ng/components/admin/locations/view.html',
+                    controller: "locationsController"
+                }).state('countries', {
+                    url: '/general/countries',
+                    templateUrl: 'ng/components/admin/countries/view.html',
+                    controller: "countriesController"
+                }).state('location', {
+                    url: '/general/location/:id',
+                    templateUrl: 'ng/components/admin/locations/location/view.html',
+                    controller: "locationController"
+                }).state('users', {
+                    url: '/users/management',
+                    templateUrl: 'ng/components/admin/users/view.html',
+                    controller: "usersController"
+                }).state('rights', {
+                    url: '/users/rights',
+                    templateUrl: 'ng/components/admin/users/rights/view.html',
+                    controller: "usersRightsController"
+                }).state('settings', {
+                    url: '/settings/general',
+                    templateUrl: 'ng/components/admin/settings/view.html',
+                    controller: "settingsController"
+                }).state('blacklist', {
+                    url: '/settings/blacklist',
+                    templateUrl: 'ng/components/admin/settings/blacklist/view.html',
+                    controller: "blacklistController"
+                }).state('api-docs', {
+                    url: '/documents/api',
+                    templateUrl: 'ng/components/admin/documents/api/view.html',
+                    controller: "apiDocsController"
+                }).state('support-docs', {
+                    url: '/documents/support',
+                    templateUrl: 'ng/components/admin/documents/support/view.html',
+                    controller: "supportDocsController"
+                }).state('pages', {
+                    url: '/pages/:id',
+                    templateUrl: 'ng/components/admin/pages/view.html',
+                    controller: "pagesController"
+                });
+    }]);

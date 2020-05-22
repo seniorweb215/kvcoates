@@ -1,0 +1,185 @@
+<div sidebar-menu></div>
+<!-- START PAGE-CONTAINER -->
+<div class="page-container ">
+    <div header></div>
+    <!-- START PAGE CONTENT WRAPPER -->
+
+    <div class="modal fade fill-in" id="modalFillIn" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Add</span> a new user to your system</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control" ng-model="newUser.first_name">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" ng-model="newUser.last_name">
+                                    </div>
+
+                                    <div class="form-group form-group-default">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" ng-model="newUser.username">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" ng-model="newUser.password">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Role</label>
+                                        <select class="form-control" id="role-select" ng-model="newUser.role_id">
+                                            <option ng-repeat="role in roles" value="{{role.id}}">{{role.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Country</label>
+                                        <select class="form-control" id="country-select" ng-model="newUser.country_id">
+                                            <option ng-repeat="country in countries" value="{{country.id}}">{{country.countryName}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Status</label>
+                                        <select class="form-control" id="status-select" ng-model="newUser.status">
+                                            <option ng-repeat="status in statuses" value="{{status.value}}">{{status.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10" ng-show="!isEditing">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="addNewUser()">Add Now</button>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10" ng-show="isEditing">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="updateUser()">Update Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="page-content-wrapper ">
+        <!-- START PAGE CONTENT -->
+        <div class="content ">
+            <!-- START JUMBOTRON -->
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#users/management" class="active">Users Management</a>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="full-height">
+                                    <div class="panel-body text-center">
+                                        <img class="image-responsive-height demo-mw-600" src="" alt="">
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-5 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Users Manager
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>It only takes a few clicks.</h3>
+                                        <p></p>
+                                        <p class="small hint-text m-t-5">Kevin Coates
+                                            <br> Digital Solutions Manager at DigitalMedia</p>
+                                        <br>
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END JUMBOTRON -->
+            <!-- START CONTAINER FLUID -->
+            <div class="container-fluid container-fixed-lg bg-white">
+                <!-- START PANEL -->
+                <div class="panel panel-transparent">
+                    <div class="panel-heading">
+                        <div class="panel-title">Users
+                        </div>
+                        <div class="btn-group pull-right m-b-10">
+                            <button type="button" class="btn btn-primary" ng-click='openNewUserModal()'>Add new</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="basicTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width:20%">Name</th>
+                                        <th style="width:20%">Role</th>
+                                        <th style="width:15%">Country</th>
+                                        <th style="width:15%">Last Update</th>
+                                        <th style="width:15%">Status</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr user-tr ng-repeat="user in users" user="user" remove-user="removeUser(user)" edit="editUser(user)" class="display-tr"></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PANEL -->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+    <!-- END PAGE CONTENT WRAPPER -->
+</div>
+<!-- END PAGE CONTAINER -->
+<div quick-view></div>
+<div overlay></div>

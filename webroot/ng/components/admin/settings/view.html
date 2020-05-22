@@ -1,0 +1,489 @@
+<div sidebar-menu></div>
+<!-- START PAGE-CONTAINER -->
+<div class="page-container ">
+    <div header></div>
+    <!-- START PAGE CONTENT WRAPPER -->
+
+
+
+    <div class="modal fade fill-in" id="pin-editing-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Update</span> Pin</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row" >
+                        <div class="col-sm-12 text-center">
+                            <img ng-src="assets/img/maps/{{selectedPin.uri}}" alt="Pin"/>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" >
+                        <div class="col-sm-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        Drag n' drop pin (48x48 .png image)
+                                    </div>
+                                </div>
+                                <div class="panel-body no-scroll no-padding">
+                                    <form action="/file-upload" class="dropzone no-margin" id="pins-uploader">
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-class="{'disabled' : !hasSelectedIssueType()}" ng-click="save()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade fill-in" id="logo-editing-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Update</span> Logo</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row" >
+                        <div class="col-sm-12 text-center">
+                            <img ng-src="assets/img/display-plan/{{selectedLogo.uri}}" alt="Pin"/>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" >
+                        <div class="col-sm-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        Drag n' drop the Logo Image
+                                    </div>
+                                </div>
+                                <div class="panel-body no-scroll no-padding">
+                                    <form action="/file-upload" class="dropzone no-margin" id="logo-uploader">
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-class="{'disabled' : !hasSelectedIssueType()}" ng-click="save()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="page-content-wrapper ">
+        <!-- START PAGE CONTENT -->
+        <div class="content ">
+            <!-- START JUMBOTRON -->
+            <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                <div class="inner">
+                    <!-- START BREADCRUMB -->
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="#dashboard">Dashboard</a>
+                        </li>
+                        <li><a href="#settings" class="active">Settings</a>
+                        </li>
+                    </ul>
+                    <!-- END BREADCRUMB -->
+
+                </div>
+            </div>
+            <div class="container-fluid container-fixed-lg">
+                <!-- START PANEL -->
+                <div class="panel panel-transparent">
+                    <div class="panel-heading">
+                        <div class="panel-title">Settings
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form id="form-work" class="form-horizontal" role="form" autocomplete="off">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Campaign Types</label>
+                                        <div class="col-sm-9">
+                                            <p></p>
+                                            <p class="hint-text small"></p>
+                                            <div class="row">
+                                                <div class="col-md-2" ng-repeat="campaign_type in settings.campaign_types">
+                                                    <p ><i class="fa {{getCampaignTypeIcon(campaign_type)}}" aria-hidden="true"></i> {{campaign_type.name}}</p>
+                                                    <div class="pull-left">
+                                                        <input type="checkbox" class='campaign-type-toggle' data-id="{{campaign_type.id}}" ng-checked="campaign_type.enabled" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Features</label>
+                                        <div class="col-sm-9">
+                                            <p></p>
+                                            <p class="hint-text small"></p>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <p ><i class="fa fa-frown-o" aria-hidden="true"></i> Facial Analytics</p>
+                                                    <div class="pull-left">
+                                                        <input type="checkbox" class='feature-toggle' data-id="fa" ng-checked="settings.campaign.has_facial_analytics" />
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-2">
+                                                    <p ><i class="fa fa-frown-o" aria-hidden="true"></i> TOD</p>
+                                                    <div class="pull-left">
+                                                        <input type="checkbox" class='feature-toggle' data-id="tod" ng-checked="settings.campaign.tod"/>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-2">
+                                                    <p ><i class="fa fa-frown-o" aria-hidden="true"></i> Default</p>
+                                                    <div class="pull-left">
+                                                        <input type="checkbox" class='feature-toggle' data-id="default" ng-checked="settings.campaign.default" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">User Generated Content</label>
+
+                                        <div class="col-sm-9">
+                                            <p></p>
+                                            <p class="hint-text small">Default Canvas</p>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <select class="full-width" id="screensize-select">
+                                                        <option ng-repeat="resolution in resolutions" value="{{resolution.id}}">{{resolution.name}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-5 sm-m-t-10">
+                                                    <div class="check check-primary">
+                                                        <input type="checkbox" id="canvas-size-options">
+                                                        <label for="canvas-size-options">Canvas Size Options</label>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">General</label>
+
+                                        <div class="col-sm-9">
+                                            <p></p>
+                                            <p class="hint-text small">Site Title and Display Prefix</p>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control" placeholder="Title" ng-model='settings.title'>
+                                                </div>
+                                                <div class="col-sm-5 sm-m-t-10">
+                                                    <input type="text" placeholder="Prefix" class="form-control" ng-model='settings.prefix'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Stats (Dwell Time)</label>
+                                        <div class="col-sm-9">
+                                            <p></p>
+                                            <p class="hint-text small">Default, time until event end, buffer</p>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control" placeholder="Latitude" ng-model='settings.stats.default'>
+                                                </div>
+                                                <div class="col-sm-5 sm-m-t-10">
+                                                    <input type="text" placeholder="Longitude" class="form-control" ng-model='settings.stats.event_end'>
+                                                </div>
+                                                <div class="col-sm-2 sm-m-t-10">
+                                                    <input type="text" placeholder="Zoom" class="form-control" ng-model='settings.stats.buffer'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Maps</label>
+                                        <div class="col-sm-9">
+                                            <p></p>
+                                            <p class="hint-text small">Default Latitude, Longitude and Zoom values. Map Theme Selector.</p>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" placeholder="Latitude" ng-model='settings.map.latitude'>
+                                                </div>
+                                                <div class="col-sm-3 sm-m-t-10">
+                                                    <input type="text" placeholder="Longitude" class="form-control" ng-model='settings.map.longitude'>
+                                                </div>
+                                                <div class="col-sm-2 sm-m-t-10">
+                                                    <input type="text" placeholder="Zoom" class="form-control" ng-model='settings.map.zoom'>
+                                                </div>
+                                                <div class="col-sm-4 sm-m-t-10">
+                                                    <select class="full-width" id="mapstyle-select">
+                                                        <option ng-repeat="style in map_styles" value="{{style.id}}">{{style.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    
+                                                    <p ><i class="fa fa-frown-o" aria-hidden="true"></i> Clustered</p>
+                                                    <div class="pull-left">
+                                                        <input type="checkbox" class='feature-toggle' data-id="clustered-map" ng-checked="settings.map.clustered" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <p ><i class="fa fa-frown-o" aria-hidden="true"></i> Show unverified</p>
+                                                    <div class="pull-left">
+                                                        <input type="checkbox" class='feature-toggle' data-id="unverified-map" ng-checked="settings.map.unverified" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <p ><i class="fa fa-frown-o" aria-hidden="true"></i> Show Minions</p>
+                                                    <div class="pull-left">
+                                                        <input type="checkbox" class='feature-toggle' data-id="minions-map" ng-checked="settings.map.minions" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <p class="hint-text small">HQ Icon & HQ Text</p>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <p>HQ Icon</p>
+                                                    <img class="btn" src="assets/img/maps/digitalmedia-hq-icon.png" alt="hq icon" ng-click='editPin({uri:"digitalmedia-hq-icon.png", type: 4})'/>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <p>HQ Text</p>
+                                                    <input type="text" placeholder="HQ Text" class="form-control" ng-model='settings.map.hq_text'>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <p class="hint-text small">Pin Images & Time (in hours)</p>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="col-md-4">
+                                                        <img class="btn" src="assets/img/maps/digitalmedia-pin-display-off.png" alt="offline 1" ng-click='editPin({uri:"digitalmedia-pin-display-off.png", type:1})'/>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" placeholder="Offline 1" ng-model='settings.map.offline_one'>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="col-md-4">
+                                                        <img class="btn" src="assets/img/maps/digitalmedia-pin-display-offline.png" alt="offline 1" ng-click='editPin({uri:"digitalmedia-pin-display-offline.png", type:2})'/>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" placeholder="Offline 2" ng-model='settings.map.offline_two'>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="col-md-4">
+                                                        <img class="btn" src="assets/img/maps/digitalmedia-pin-display-on.png" alt="offline 1" ng-click='editPin({uri:"digitalmedia-pin-display-on.png", type:3})'/>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" placeholder="Online" ng-model='settings.map.online'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <p class="hint-text small">API Key</p>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" placeholder="Google Map Key" ng-model='settings.map.api_key'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">LOGO's & Footers</label>
+                                        <div class="col-sm-9">
+                                            <p class="hint-text small">Login Logo, Login Header and Login Footer</p>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <img class="btn" style="background:none;" src="assets/img/display-plan/connie-white.png" alt="offline 1" width='200' ng-click='editLogo({uri:"connie-white.png", type:1})'/>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img class="btn" style="background:none;" src="assets/img/display-plan/logo.png" alt="offline 1" width='180' ng-click='editLogo({uri:"logo.png", type:2})'/>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img class="btn" style="background:none;" src="assets/img/display-plan/logo_white.png" alt="offline 1" width='240' ng-click='editLogo({uri:"logo_white.png", type:3})'/>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <p class="hint-text small">Login Footer Text</p>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control" placeholder="Footer" ng-model='settings.footer'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Notification</label>
+                                        <div class="col-sm-9">
+                                            <p class="hint-text small">Mode, Custom message</p>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="pull-left">
+                                                        <input type="checkbox" class='feature-toggle' data-id="notification" ng-checked="settings.notification.on" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-10 sm-m-t-10">
+                                                    <input type="text" class="form-control" ng-model='settings.notification.message'/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Maintenance</label>
+                                        <div class="col-sm-9">
+                                            <p class="hint-text small">Mode, ETA</p>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="pull-left">
+                                                        <input type="checkbox" class='feature-toggle' data-id="eta" ng-checked="settings.maintenance.on" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-4 sm-m-t-10">
+                                                    <div id="datepicker-component" class="input-group date col-sm-8">
+                                                        <input type="text" class="form-control"><span class="input-group-addon"><i
+                                                                class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Email</label>
+                                        <div class="col-sm-9">
+                                            <p></p>
+                                            <p class="hint-text small">Errors will be mailed here</p>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control" placeholder="Admin Email" ng-model='settings.mailing.admin'>
+                                                </div>
+                                                <div class="col-sm-5 sm-m-t-10">
+                                                    <input type="text" placeholder="Sending Email" class="form-control" ng-model='settings.mailing.from'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Backup</label>
+                                        <div class="col-sm-9">
+                                            <div class="check check-primary">
+                                                <input type="checkbox" ng-model="settings.backup.db" id="db">
+                                                <label for="db">DB</label>
+                                                <input type="checkbox" ng-model="settings.backup.media" id="media">
+                                                <label for="media">Media</label>
+                                                <input type="checkbox" ng-model="settings.backup.site" id="site">
+                                                <label for="site">site</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Time</label>
+                                        <div class="col-sm-6">
+                                            <div class="radio radio-primary">
+                                                <input type="radio" value="male" name="day" id="monday">
+                                                <label for="monday">Monday</label>
+                                                <input type="radio" checked="checked" value="female" name="day" id="tuesday">
+                                                <label for="tuesday">Tuesday</label>
+                                                <input type="radio" checked="checked" value="female" name="day" id="wednesday">
+                                                <label for="wednesday">Wednesday</label>
+                                                <input type="radio" checked="checked" value="female" name="day" id="thursday">
+                                                <label for="thursday">Thursday</label>
+                                                <input type="radio" checked="checked" value="female" name="day" id="friday">
+                                                <label for="friday">Friday</label>
+                                                <input type="radio" checked="checked" value="female" name="day" id="saturday">
+                                                <label for="saturday">Saturday</label>
+                                                <input type="radio" checked="checked" value="female" name="day" id="sunday">
+                                                <label for="sunday">Sunday</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 sm-m-t-10">
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input id="timepicker" type="text" class="form-control">
+                                                <span class="input-group-addon"><i class="pg-clock"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <button id="save-button" class="btn btn-primary" type="submit" ng-click='save()'>Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PANEL -->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+    <!-- END PAGE CONTENT WRAPPER -->
+</div>
+<!-- END PAGE CONTAINER -->
+<div quick-view></div>
+<div overlay></div>

@@ -1,0 +1,187 @@
+<div sidebar-menu></div>
+<!-- START PAGE-CONTAINER -->
+<div class="page-container ">
+    <div header></div>
+    <!-- START PAGE CONTENT WRAPPER -->
+    <div class="page-content-wrapper ">
+        <!-- START PAGE CONTENT -->
+        <div class="content ">
+            <!-- START JUMBOTRON -->
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#users/rights" class="active">User Rights</a>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="full-height">
+                                    <div class="panel-body text-center">
+                                        <img class="image-responsive-height demo-mw-600" src="" alt="">
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-5 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">User Rights
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>It only takes a few clicks.</h3>
+                                        <p></p>
+                                        <p class="small hint-text m-t-5">Kevin Coates
+                                            <br> Digital Solutions Manager</p>
+                                        <br>
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END JUMBOTRON -->
+            <!-- START CONTAINER FLUID -->
+            <div class="container-fluid container-fixed-lg bg-white">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- START PANEL -->
+                        <div class="panel panel-transparent">
+                            <div class="panel-heading">
+                                <div class="panel-title">Select a system role
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div role="tablist">
+                                    <a class="btn btn-default btn-cons btn-rounded btn-notification-style m-b-10" ng-repeat="role in roles" ng-class="{'active': isEditing(role.id)}" ng-click="edit(role)">{{role.name}}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PANEL -->
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-4">
+                        <!-- START PANEL -->
+                        <div class="panel panel-transparent">
+                            <div class="panel-heading">
+                                <div class="panel-title">Displays
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row" ng-repeat="display in displays">
+                                    <div class="col-md-4" >
+                                        <p><i class="fa fa-bullseye" aria-hidden="true"></i> {{display.action}}</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" class='permission-toggle' data-id="{{display.id}}" checked="checked" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PANEL -->
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- START PANEL -->
+                        <div class="panel panel-transparent">
+                            <div class="panel-heading">
+                                <div class="panel-title">Campaigns
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row" ng-repeat="campaign in campaigns">
+                                    <div class="col-md-4" >
+                                        <p><i class="fa fa-bullseye" aria-hidden="true"></i> {{campaign.action}}</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" class='permission-toggle' data-id="{{campaign.id}}" checked="checked" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PANEL -->
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- START PANEL -->
+                        <div class="panel panel-transparent">
+                            <div class="panel-heading">
+                                <div class="panel-title">Locations
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row" ng-repeat="action in locations">
+                                    <div class="col-md-4" >
+                                        <p><i class="fa fa-bullseye" aria-hidden="true"></i> {{action.action}}</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" class='permission-toggle' data-id="{{action.id}}"  checked="checked" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PANEL -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <!-- START PANEL -->
+                        <div class="panel panel-transparent">
+                            <div class="panel-heading">
+                                <div class="panel-title">Reports
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row" ng-repeat="action in reports">
+                                    <div class="col-md-4" >
+                                        <p><i class="fa fa-bullseye" aria-hidden="true"></i> {{action.action}}</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" class='permission-toggle' data-id="{{action.id}}"  checked="checked" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PANEL -->
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- START PANEL -->
+                        <div class="panel panel-transparent">
+                            <div class="panel-heading">
+                                <div class="panel-title">Support
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row" ng-repeat="action in support">
+                                    <div class="col-md-4" >
+                                        <p><i class="fa fa-bullseye" aria-hidden="true"></i> {{action.action}}</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" class='permission-toggle' data-id="{{action.id}}"  checked="checked" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PANEL -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+    <!-- END PAGE CONTENT WRAPPER -->
+</div>
+<!-- END PAGE CONTAINER -->
+<div quick-view></div>
+<div overlay></div>

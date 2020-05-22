@@ -1,0 +1,199 @@
+<div sidebar-menu></div>
+<div class="page-container">
+    <div header></div>
+    <div ticket-wizard display="display" callback-fn="reloadIssues()"></div>
+    <div campaign-aggregator display="display" callback-fn="reloadTimeline()"></div>
+    <div class="modal fade fill-in" id="modalFillIn" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Edit</span> {{display.name}}</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Display Name</label>
+                                        <input type="text" class="form-control" ng-model="display.name">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Display Identifier</label>
+                                        <input type="text" class="form-control" ng-model="display.identifier">
+                                    </div>
+                                </div>
+                            </div>-->
+
+                            <div class="form-group form-group-default">
+                                <label>Screen Size</label>
+                                <select class="full-width" id="screensize-select" ng-model="display.screensize">
+                                    <option ng-repeat="screensize in data.screensizes" value="{{screensize.name}}">{{screensize.name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Resolution</label>
+                                <select class="full-width" id="resolution-select" ng-model="display.resolution">
+                                    <option ng-repeat="resolution in data.resolutions" value="{{resolution.id}}">{{resolution.name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Orientation</label>
+                                <select class="full-width" id="orientation-select" ng-model="display.orientation">
+                                    <option ng-repeat="orientation in data.orientations" value="{{orientation}}">{{orientation}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>OS</label>
+                                <select class="full-width" id="os-select" ng-model="display.os">
+                                    <option ng-repeat="os in data.operatingSystems" value="{{os.name}}">{{os.name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Network</label>
+                                <select class="full-width" id="network-select" ng-model="display.network">
+                                    <option ng-repeat="network in data.networks" value="{{network}}">{{network}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Brands</label>
+                                <select class="full-width" id="brand-select" ng-model="display.brand">
+                                    <option ng-repeat="brand in data.brands" value="{{brand.id}}">{{brand.name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Notes</label>
+                                <textarea rows="4" cols="50" class="form-control" ng-model="display.notes">
+                                </textarea>
+                            </div>
+
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="save()">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    
+    
+    
+    
+    
+    <div class="page-content-wrapper display-profile">
+        <div class="content full-width full-height">
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#displays">Displays</a>
+                            </li>
+                            <li><a ui-sref="display({id: display.id})" class="active">{{display.name}}</a>
+                            </li>
+                        </ul>
+
+                        <div class="row">
+                            <div class="col-lg-5 col-md-6 ">
+
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Display Settings
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>{{display.name}}</h3>
+                                        <p>{{deploymentMessage()}}</p>
+                                        <div ng-show="hasBeenDeployed()" class="deployment-details">
+                                            <p class="organisation"><i class="fa fa-users" aria-hidden="true"></i> {{getOrganisationName()}}</p>
+                                            <p class="location"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{getLocationName()}} | {{getLocationAddress()}}</p>
+                                        </div>
+                                        <p ng-class="{'text-danger': !isVerified(), 'text-success': isVerified()}">{{statusMessage()}}</p>
+                                        <br />
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-success" ng-click="edit(display)"><i class="fa fa-edit"></i></button>
+                                        </div>
+
+                                        <br>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-7 col-md-6 ">
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-transparent ">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-tabs-fillup" data-init-reponsive-tabs="dropdownfx">
+                    <li class="active">
+                        <a data-toggle="tab" data-target="#general" href="javascript:;"><span>General</span></a>
+                    </li>
+                    <!--<li>
+                        <a data-toggle="tab" data-target="#history" href="javascript:;"><span>Campaign History</span></a>
+                    </li>-->
+                    <li>
+                        <a data-toggle="tab" data-target="#timeline" href="javascript:;"><span>Campaign Timeline</span></a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" data-target="#site-info" href="javascript:;"><span>Site Info</span></a>
+                    </li>
+                    <li >
+                        <a data-toggle="tab" data-target="#support" href="javascript:;"><span>Support</span></a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div display-general class="tab-pane slide-left active" id="general" display="display"></div>
+                    <!--<div campaign-history class="tab-pane slide-left" id="history" display="display"></div>-->
+                    <div campaign-timeline class="tab-pane slide-left" id="timeline" display="display"></div>
+                    <div site-info class="tab-pane slide-left" id="site-info" display="display"></div>
+                    <div display-support class="tab-pane slide-left " id="support" display="display" create-fn="createNewTicket()" edit-fn="editTicket(issue)"></div>
+                </div>
+            </div>
+        </div>
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>

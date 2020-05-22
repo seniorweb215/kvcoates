@@ -1,0 +1,35 @@
+<div class="container-fluid container-fixed-lg bg-white">
+    <!-- START PANEL -->
+    <div class="panel panel-transparent">
+        <div class="panel-heading ">
+            <div class="panel-title">Current Campaign</div>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-4 no-padding">
+                <div class="p-r-30">
+                    <h3>{{getCampaignName()}}</h3>
+                    <p>Start: {{campaign.start | date : 'short'}} | End: {{campaign.end | date : 'short'}}</p>
+                    <br>
+                    <p>What are the stats you want to see here?</p>
+                    <br>
+                    <div class="inline">
+                        <p class="small hint-text">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                
+                <!-- Tab panes -->
+                <div class="tab-content no-padding">
+                    <div class="tab-pane active" id="tab-nvd3-line">
+                        <div id="nvd3-line" class="line-chart m-t-30 text-center" data-x-grid="false">
+                            <svg></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PANEL -->
+</div>

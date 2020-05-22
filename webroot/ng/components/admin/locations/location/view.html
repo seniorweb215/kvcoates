@@ -1,0 +1,323 @@
+<div sidebar-menu></div>
+<div class="page-container ">
+    <div header></div>
+    <div class="modal fade fill-in" id="editingModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Edit</span> location</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group-attached">
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Retailer</label>
+                                        <select class="full-width" id="organisation-select" ng-model="selectedOrg">
+                                            <option ng-repeat="organisation in organisations" value="{{organisation.id}}">{{organisation.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Country</label>
+                                        <select class="full-width" id="country-select" ng-model="selectedCountry">
+                                            <optgroup label="Main Countries">
+                                                <option value="0">*All</option>
+                                                <option value="77">United Kingdom</option>
+                                                <option value="48">China</option>
+                                                <option value="57">Germany</option>
+                                            </optgroup>
+                                            <option ng-repeat="country in countries" value="{{country.id}}">{{country.countryName}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" ng-model="location.name">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Address</label>
+                                        <input type="text" class="form-control" ng-model="location.address">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Post Code</label>
+                                        <input type="text" class="form-control" ng-model="location.post_code">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Telephone</label>
+                                        <input type="text" class="form-control" ng-model="location.telephone">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" ng-model="location.email">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Card Number</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </form>
+                    <hr />
+                    <div class="row">      
+                        <div class="col-sm-6 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-default btn-block m-t-2" ng-click="cancel()">Cancel</button>
+                        </div>
+                        <div class="col-sm-6 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-2" ng-click="save()">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade fill-in" id="timezonesModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Set</span> the timezone of this location</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group-attached">
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Region</label>
+                                        <select class="full-width" id="zones-select">
+                                            <option ng-repeat="zone in zones" value="{{zone.id}}">{{zone.region}} ({{zone.iana}}, UTC {{zone.utc_offset}})</option>
+                                        </select>
+                                    </div>
+                                    <!--<div class="form-group form-group-default">
+                                        <label>Timezones</label>
+                                        <select class="full-width" id="country-select" ng-model="selectedCountry">
+                                            <option ng-repeat="timezone in timezones" value="{{country.id}}">{{country.countryName}}</option>
+                                        </select>
+                                    </div>-->
+
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Card Number</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="editingDone()">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade fill-in" id="modalFillIn" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Deploy</span> a display to this location</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group-attached">
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Available Displays</label>
+                                        <select class="full-width" id="displays-select" ng-model="selectedDisplayId">
+                                            <option ng-repeat="display in displays" value="{{display.id}}">{{display.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Card Number</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="deployDisplay()">Deploy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="page-content-wrapper location-profile displays-dashboard">
+        <div address-editor class="content full-width full-height overlay-footer address-editor previous" ng-class="{'previous': !isEditingAddress()}" location="location" save-fn="editingDone()" cancel-fn="cancelEditing()"></div>        
+        <div class="content" ng-class="{'previous': isEditingOpenings(), 'next': isEditingAddress()}">
+            <!-- START JUMBOTRON -->
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#locations">Locations</a>
+                            </li>
+                            <li>
+                                <a href="#" class="active">{{location.name}}</a>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-5 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Location Manager
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>{{location.name}}.</h3>
+                                        <p class="organisation"><i class="fa fa-envelope" aria-hidden="true"></i> {{location.email}}</p>
+                                        <p class="organisation"><i class="fa fa-phone" aria-hidden="true"></i> {{location.telephone}}</p>
+                                        <p class="location"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{location.address}}, {{location.post_code}}</p>
+                                        <p class="location"><i class="fa fa-clock-o" aria-hidden="true"></i> {{location.timezone.region}} ({{location.timezone.iana}}) UTC {{location.timezone.utc_offset}}</p>
+                                        <br />
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-success" ng-click="edit('details')" data-toggle="tooltip" data-placement="top" title="Edit Details"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-success" ng-click="edit('address')" data-toggle="tooltip" data-placement="top" title="Edit GeoLocation"><i class="fa fa-location-arrow"></i></button>
+                                            <button type="button" class="btn btn-success" ng-click="edit('timezone')" data-toggle="tooltip" data-placement="top" title="Edit Timezone"><i class="fa fa-clock-o"></i></button>
+                                            <button type="button" class="btn btn-success" ng-click="edit('openings')" data-toggle="tooltip" data-placement="top" title="Edit Opening/Closing"><i class="fa fa-calendar"></i></button>
+                                            <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Issues"><i class="fa fa-wrench"></i></button>
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="full-height">
+                                    <div class="panel-body text-center">
+                                        <img class="image-responsive-height demo-mw-600" src="" alt="">
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END JUMBOTRON -->
+            <!-- START CONTAINER FLUID -->
+
+            <div class='container-fluid container-fixed-lg bg-white no-deployed-displays' ng-show="!hasDeployedDisplays()">
+                <div class="row text-center">
+                    <p>No deployed displays.</p>
+                    <button type="button" class="btn btn-primary" data-target="#modalFillIn" data-toggle="modal">Deploy a Display</button>
+                </div>
+            </div>
+
+            <div class="container-fluid container-fixed-lg bg-white"  ng-show="hasDeployedDisplays()">
+                <!-- START PANEL -->
+                <div class="panel panel-transparent">
+                    <div class="panel-heading">
+                        <div class="panel-title">Deployed Displays
+                        </div>
+                        <div class="btn-group pull-right m-b-10">
+                            <button type="button" class="btn btn-primary" data-target="#modalFillIn" data-toggle="modal">Add new</button>
+                        </div>
+                        <div class="pull-right">
+                            <div class="col-xs-12">
+                                <input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover displays-table" id="basicTable">
+                                <thead>
+                                    <tr>
+                                        <th>Identifier</th>
+                                        <th>Name</th>
+                                        <th>Modules</th>
+                                        <th>Brand</th>
+                                        <th>Campaigns</th>
+                                        <th>Check-in</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr deployed-display-tr ng-repeat="deployment in deployments" display="deployment.display" location="location" undeploy-display="undeployDisplay(display)" class="display-tr"></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PANEL -->
+            </div>
+        </div>
+        <div hours-editor class="content full-height next" ng-class="{'next': !isEditingOpenings()}" location="location" save-fn="editingDone()" cancel-fn="cancelEditing()"></div>
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>

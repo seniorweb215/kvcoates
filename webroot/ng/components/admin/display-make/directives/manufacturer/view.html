@@ -1,0 +1,269 @@
+<div class="modal fade fill-in" id="manufacturer-management-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" class="close" ng-click="close()">
+        <i class="pg-close"></i>
+    </button>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h5 class="text-left p-b-5"><span class="semi-bold">General</span></h5>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Manufacturer</label>
+                            <select class="full-width" id="manufacturer-select">
+                                <option ng-repeat="man in data.manufacturer_brands" value="{{man.id}}">{{man.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Model</label>
+                            <input type="text" class="form-control" ng-model="manufacturer.model">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h5 class="text-left p-b-5"><span class="semi-bold">Tech</span> Specs</h5>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Size</label>
+                            <select class="full-width" id="size-select">
+                                <option ng-repeat="screensize in data.screensizes" value="{{screensize.id}}">{{screensize.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Resolution</label>
+                            <select class="full-width" id="resolution-select">
+                                <option ng-repeat="resolution in data.resolutions" value="{{resolution.id}}">{{resolution.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>OS</label>
+                            <select class="full-width" id="os-select">
+                                <option ng-repeat="os in data.operatingSystems" value="{{os.id}}">{{os.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Version</label>
+                            <select class="full-width" id="version-select">
+                                <option ng-repeat="version in data.versions" value="{{version}}">{{version}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-3">
+                        <div class="col-sm-12">
+                            <p class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> Facial</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' ng-checked="manufacturer.tech_specs.facial_analytics" data-module="facial" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <p class="pull-left"><i class="fa fa-gamepad" aria-hidden="true"></i> Lift N Learn</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' data-module="liftlearn" ng-checked="manufacturer.tech_specs.lift_n_learn" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <p class="pull-left"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i> Touch</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' data-module="touch" ng-checked="manufacturer.tech_specs.touch"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="col-sm-12">
+                            <p class="pull-left"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i>NFC</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' data-module="nfc" ng-checked="manufacturer.tech_specs.nfc"/>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <p class="pull-left"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i>Camera</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' data-module="camera" ng-checked="manufacturer.tech_specs.camera"/>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <p class="pull-left"><i class="fa fa-simplybuilt" aria-hidden="true"></i>VR</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' data-module="vr" ng-checked="manufacturer.tech_specs.vr"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div  class="col-sm-12">
+                            <p class="pull-left"><i class="fa fa-eye" aria-hidden="true"></i> USB</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' ng-checked="manufacturer.tech_specs.usb" data-module="usb" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <p class="pull-left"><i class="fa fa-gamepad" aria-hidden="true"></i> HDMI OUT</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' data-module="hdmi" ng-checked="manufacturer.tech_specs.hdmi_out" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+
+                        <div class="col-sm-12">
+                            <p class="pull-left">Rooted</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' ng-checked="manufacturer.tech_specs.rooted" data-module="rooted" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <p class="pull-left">Menu Bar Hide</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' ng-checked="manufacturer.tech_specs.menu_bar_hide" data-module="menubar" />
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-12">
+                        <h5 class="text-left p-b-5"><span class="semi-bold">Network</span></h5>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="pull-left"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i> 3G</p>
+                                <div class="pull-right">
+                                    <input type="checkbox" class='module-toggle' data-module="threeg" ng-checked="manufacturer.network.threeg"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="pull-left"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i> 4G</p>
+                                <div class="pull-right">
+                                    <input type="checkbox" class='module-toggle' data-module="fourg" ng-checked="manufacturer.network.fourg"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="pull-left"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i> WIFI 2.5G</p>
+                                <div class="pull-right">
+                                    <input type="checkbox" class='module-toggle' data-module="wifi25g" ng-checked="manufacturer.network.wifi25g"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="pull-left"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i> WIFI 5G</p>
+                                <div class="pull-right">
+                                    <input type="checkbox" class='module-toggle' data-module="wifi5g" ng-checked="manufacturer.network.wifi5g"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="pull-left"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i> BLUETOOTH</p>
+                                <div class="pull-right">
+                                    <input type="checkbox" class='module-toggle' data-module="bluetooth" ng-checked="manufacturer.network.bluetooth"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="pull-left"><i class="fa fa-hand-pointer-o" aria-hidden="true"></i> LAN</p>
+                                <div class="pull-right">
+                                    <input type="checkbox" class='module-toggle' data-module="lan" ng-checked="manufacturer.network.lan"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <h5 class="text-left p-b-5"><span class="semi-bold">Power</span></h5>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="radio radio-success">
+                                    <input type="radio" value="120/220V AC" id="network-3G" ng-model="manufacturer.tech_specs.power">
+                                    <label for="network-3G">120/220V AC</label><br>
+                                    <input type="radio" value="12V DC" id="network-4G" ng-model="manufacturer.tech_specs.power">
+                                    <label for="network-4G">12V DC</label><br>
+                                    <input type="radio" value="5V USB" id="network-wifi25G" ng-model="manufacturer.tech_specs.power">
+                                    <label for="network-wifi25G">5V USB</label>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="pull-left"><i class="fa fa-gamepad" aria-hidden="true"></i>Boot On Mains</p>
+                                <div class="pull-right">
+                                    <input type="checkbox" class='module-toggle' ng-checked="manufacturer.tech_specs.boot_on_mains" data-module="bootonmains" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="pull-left"><i class="fa fa-gamepad" aria-hidden="true"></i>POE</p>
+                                <div class="pull-right">
+                                    <input type="checkbox" class='module-toggle' ng-checked="manufacturer.tech_specs.poe" data-module="poe" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="pull-left"><i class="fa fa-gamepad" aria-hidden="true"></i>Battery</p>
+                                <div class="pull-right">
+                                    <input type="checkbox" class='module-toggle' ng-checked="manufacturer.tech_specs.battery" data-module="battery" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Notes</label>
+                            <textarea rows="4" class="form-control" ng-model="manufacturer.notes" style="height: 100px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Contact Info</label>
+                            <textarea rows="4" class="form-control" ng-model="manufacturer.contact_info" style="height: 100px;"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-12">
+                            <p class="pull-left">App Compatible</p>
+                            <div class="pull-right">
+                                <input type="checkbox" class='module-toggle' ng-checked="manufacturer.tech_specs.app_compatible" data-module="compatible" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="p-t-20 clearfix p-l-10 p-r-10">
+                            <div class="pull-left">
+                                <p class="bold font-montserrat text-uppercase"></p>
+                            </div>
+                            <div class="pull-right">
+                                <p class="bold font-montserrat text-uppercase"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 m-t-10 sm-m-t-10">
+                        <button type="button" class="btn btn-primary btn-block m-t-5" ng-class="{'disabled' : !hasSetRequiredFields()}" ng-click="save()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,160 @@
+<div sidebar-menu></div>
+<!-- START PAGE-CONTAINER -->
+<div class="page-container ">
+    <div header></div>
+    <!-- START PAGE CONTENT WRAPPER -->
+
+    <div class="modal fade fill-in" id="modalFillIn" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Add</span> a display to your inventory</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Display Name</label>
+                                        <input type="text" class="form-control" ng-model="newDisplay.name">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Manufacturer</label>
+                                <select class="full-width" id="manufacturer-select">
+                                    <option value="0"></option>
+                                    <option ng-repeat="manufacturerBrand in data.manufacturers" value="{{manufacturerBrand.id}}">{{manufacturerBrand.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Model</label>
+                                <select class="full-width" id="model-select">
+                                    <option value="0"></option>
+                                    <option ng-repeat="manufacturers in selectedManufacturer.display_manufacturers" value="{{manufacturers.id}}">{{manufacturers.model}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Screen Size</label>
+                                <select class="full-width" id="screensize-select">
+                                    <option ng-repeat="screensize in data.screensizes" value="{{screensize.name}}">{{screensize.name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Resolution</label>
+                                <select class="full-width" id="resolution-select">
+                                    <option ng-repeat="resolution in data.resolutions" value="{{resolution.id}}">{{resolution.name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>OS</label>
+                                <select class="full-width" id="os-select">
+                                    <option ng-repeat="os in data.operatingSystems" value="{{os.name}}">{{os.name}}</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group form-group-default">
+                                <label>Orientation</label>
+                                <select class="full-width" id="orientation-select">
+                                    <option ng-repeat="orientation in data.orientations" value="{{orientation}}">{{orientation}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Network</label>
+                                <select class="full-width" id="network-select">
+                                    <option ng-repeat="network in data.networks" value="{{network}}">{{network}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Brand</label>
+                                <select class="full-width" id="brand-select">
+                                    <option ng-repeat="brand in data.brands" value="{{brand.id}}">{{brand.name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group-default">
+                                <label>Notes</label>
+                                <input type="text" class="form-control" ng-model="newDisplay.notes">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="addNewDisplay()">Add Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- Import modal start -->
+    <div class="modal fade fill-in" id="modal-import" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Import</span> a document to your inventory</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form" method="post" action="http://digitalmedia.digital/api/displays/addexcel" enctype="multipart/form-data">
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Upload Your Document</label>
+                                        <br>
+                                        <input type="file" class="form-control" name= "excel">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 text-right">
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Import modal end -->
+
+    <div class="page-content-wrapper displays-dashboard" ng-class="{'full-height':isMapView()}">
+        <div class="view-toggle">
+            <ul>
+                <li ng-class="{'active':isMapView()}" ng-click="view('map')"><i class="fa fa-map-marker" aria-hidden="true"></i></li>
+                <li ng-class="{'active':!isMapView()}" ng-click="view('list')"><i class="fa fa-list" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+        <div ng-show="!isMapView()" displays-table-view displays="displays" remove-fn='removeDisplay(display)' export-fn="exportDisplays()" class="content" ></div>
+        <div ng-show="isMapView()" locations-map locations="locations" should-redraw="isMapView()" class="content full-width full-height overlay-footer"></div>
+        <div footer></div>
+    </div>
+</div>
+<div overlay></div>

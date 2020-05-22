@@ -1,0 +1,60 @@
+<div class="header">
+    <div class="container-fluid relative">
+        <div class="pull-left full-height visible-sm visible-xs">
+            <div class="header-inner">
+                <a href="#" class="btn-link toggle-sidebar visible-sm-inline-block visible-xs-inline-block padding-5" data-toggle="sidebar">
+                    <span class="icon-set menu-hambuger"></span>
+                </a>
+            </div>
+        </div>
+        <div class="pull-center hidden-md hidden-lg">
+            <div class="header-inner">
+                <div class="brand inline">
+                    <img src="assets/img/display-plan/connie-black.png" alt="logo" data-src="assets/img/display-plan/connie-black.png" data-src-retina="assets/img/display-plan/connie-black.png" width="78">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MOBILE CONTROLS -->
+    <div class="pull-left sm-table hidden-xs hidden-sm">
+        <div class="header-inner">
+            <div class="brand inline">
+                <img src="assets/img/display-plan/connie-black.png" alt="logo" data-src="assets/img/display-plan/connie-black.png" data-src-retina="assets/img/display-plan/connie-black.png" width="140">
+            </div>
+            <!--<a href="javascript:;" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a> -->
+        </div>
+    </div>
+    <div class="pull-left" ng-show="$root.notification.on === 'true'">
+        <p class="text-danger" style="padding: 18px;"><strong>{{$root.notification.message}}</strong></p>
+    </div>
+
+    <div class="pull-right">
+        <div class="visible-lg visible-md m-t-10">
+            <div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
+                <img src="assets/img/display-plan/logo.png" alt="company logo" width="100" />
+                <span class="semi-bold">{{user.first_name}}</span> <span class="text-master">{{user.last_name}}</span>
+            </div>
+            <div class="dropdown pull-right" ng-show="$root.user">
+                <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="thumbnail-wrapper d32 circular inline m-t-5">
+                        <img src="assets/img/profiles/user-profile-placeholder.png" alt="" data-src="assets/img/profiles/user-profile-placeholder.png" data-src-retina="assets/img/profiles/user-profile-placeholder.png" width="32" height="32">
+                    </span>
+                </button>
+                <ul class="dropdown-menu profile-dropdown" role="menu">
+                    <!--<li><a href="#"><i class="pg-settings_small"></i> Settings</a>
+                    </li>
+                    <li><a href="#feedback"><i class="pg-outdent"></i> Feedback</a>
+                    </li>
+                    <li><a href="#help"><i class="pg-signals"></i> Help</a>
+                    </li>-->
+                    <li class="bg-master-lighter">
+                        <a ng-click="logout()" class="clearfix">
+                            <span class="pull-left">Logout</span>
+                            <span class="pull-right"><i class="pg-power"></i></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

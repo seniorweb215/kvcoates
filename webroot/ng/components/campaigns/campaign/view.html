@@ -1,0 +1,91 @@
+<div sidebar-menu></div>
+<div class="page-container ">
+    <div header></div>
+    <div preflight-results results="preflight"></div>
+    <div class="page-content-wrapper ">
+        <div class="content display-plan-campaign">
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li><a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#campaigns/all">Campaigns</a>
+                            </li>
+                            <li><a href="#campaign/{{campaign.id}}" class="active">{{campaign.name}}</a>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-5 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title"><i class="fa" aria-hidden="true" ng-class="getCampaignTypeIcon()">   {{getCampaignTypeName()}}</i> Campaign </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>{{campaign.name}}</h3>
+                                        <p>{{getStatus()}}</p>
+                                        <p><strong>Starts: </strong><i>{{campaign.start| date : 'dd/MM/yyyy hh:mm a' : 'UTC'}}</i> <strong>- Ends: </strong><i>{{campaign.end| date : 'dd/MM/yyyy hh:mm a' : 'UTC'}}</i></p>
+                                        <hr />
+                                        <p>Locations: {{getLocations()}}</p>
+                                        <p>Displays: {{getDisplays()}}</p>
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            Important Details
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>Country: {{getCountries()}}</p>
+                                        <p>Carriers: {{getCarriers()}}</p>
+                                        <hr />
+                                        <p>Files: {{campaign.contents.length}}</p>
+                                        <p>Size: {{getCampaignSize()}} MB</p>
+                                        <p>Cost: {{getCampaignCosts()}}</p>
+                                        <hr />
+
+                                        <div ng-show="$root.isAllowedTo('campaigns', 'publish')">
+                                            <div class="pull-right" ng-show="!canOverride">
+                                                <button  class="btn btn-primary btn-cons m-b-10 publish-button" ng-class="{'disabled': campaign.status === 1, 'btn-success':campaign.status === 1}" type="button" ng-click="publish()"><i class="pg-plus"></i> <span class="bold">{{(campaign.status === 0) ? "Publish" : "Published"}}</span>
+                                                </button>
+                                            </div>
+                                            <div class="pull-right" ng-show="canOverride">
+                                                <button class="btn btn-primary btn-cons m-b-10 publish-button" ng-class="{'disabled': campaign.status === 0, 'btn-success':campaign.status === 1}" type="button" ng-click="publishWithOverrides()"><i class="pg-plus"></i> <span class="bold">Publish with Warnings</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div ng-show="!$root.isAllowedTo('campaigns', 'publish')">
+                                            <div class="pull-right" ng-show="campaign.status === 0">
+                                                <button  class="btn btn-primary btn-cons m-b-10 publish-button" type="button"><i class="pg-plus"></i> <span class="bold">Submit for Review</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div lnl-campaign campaign="campaign" ng-show="isLiftNLearnCampaign()"></div>
+            <div touch-campaign campaign="campaign" ng-show="isTouchCampaign()"></div>
+            <div videos-campaign campaign="campaign" ng-show="isVideoCampaign() || isVRCampaign()"></div>
+            <div flyers-campaign campaign="campaign" ng-show="isFlyersCampaign()"></div>
+            <!--<div vr-campaign campaign="campaign" ng-show=""></div>-->
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>

@@ -1,0 +1,33 @@
+<div class="modal fade fill-in display-plan-campaign-previewer" id="campaign-viewer" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" class="close" ng-click="close()">
+        <i class="pg-close"></i>
+    </button>
+
+    <div class="container-fluid" ng-if="contents.length > 0">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5 class="text-left p-b-5"><span class="semi-bold">Viewing: </span> {{campaign.name}}</h5>
+            </div>
+        </div>
+        <div video-campaign-viewer ng-if="campaign.type_id === 1" contents="contents"></div>
+        <div lnl-campaign-viewer ng-if="campaign.type_id === 2" contents="contents"></div>
+        <div touch-campaign-viewer ng-if="campaign.type_id === 3" contents="contents"></div>
+    </div>
+
+
+
+    <div class="container-fluid" ng-if="contents.length === 0">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5 class="text-left p-b-5"><span class="semi-bold">Viewing: </span> {{campaign.name}}</h5>
+            </div>
+            <div class="col-sm-12">
+                <p>This campaign has no contents.</p>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+
+
+
+</div>

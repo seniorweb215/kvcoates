@@ -1,0 +1,208 @@
+<div sidebar-menu></div>
+<!-- START PAGE-CONTAINER -->
+<div class="page-container ">
+    <div header></div>
+    <!-- START PAGE CONTENT WRAPPER -->
+
+
+    <div class="modal fade fill-in" id="editingModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Edit</span> {{editingBrand.name}}</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" ng-model="editingBrand.name">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+                    <hr />
+                    <div class="row">      
+                        <div class="col-sm-6 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-default btn-block m-t-2" ng-click="cancel()">Cancel</button>
+                        </div>
+                        <div class="col-sm-6 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-2" ng-click="save()">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+    <div class="modal fade fill-in" id="modalFillIn" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Add</span> a new brand to your system</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Brand Name</label>
+                                        <input type="text" class="form-control" ng-model="newBrand.name">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Card Number</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="addNewBrand()">Add Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="page-content-wrapper ">
+        <!-- START PAGE CONTENT -->
+        <div class="content ">
+            <!-- START JUMBOTRON -->
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#brands" class="active">Brands</a>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="full-height">
+                                    <div class="panel-body text-center">
+                                        <img class="image-responsive-height demo-mw-600" src="" alt="">
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-5 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Brands Manager
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>It only takes a glance.</h3>
+                                        <p></p>
+                                        <p class="small hint-text m-t-5">Kevin Coates
+                                            <br> Digital Solutions Manager</p>
+                                        <br>
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END JUMBOTRON -->
+            <!-- START CONTAINER FLUID -->
+            <div class="container-fluid container-fixed-lg bg-white">
+                <!-- START PANEL -->
+                <div class="panel panel-transparent">
+                    <div class="panel-heading">
+                        <div class="panel-title"> brands
+                        </div>
+                        <div class="btn-group pull-right m-b-10">
+                            <button type="button" class="btn btn-primary" data-target="#modalFillIn" data-toggle="modal">Add new</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="basicTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width:3%">ID</th>
+                                        <th style="width:90%">Name</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="brand in brands">
+                                        <td class="v-align-middle ">
+                                            <p>{{brand.id}}</p>
+                                        </td>
+                                        <td class="v-align-middle ">
+                                            <p>{{brand.name}}</p>
+                                        </td>
+
+                                        <td class="v-align-middle">
+                                            <button type="button" class="btn btn-default" ng-click="edit(brand)"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                        <td class="v-align-middle">
+                                            <button type="button" class="btn btn-default" ng-click='removeBrand(brand)'><i class="fa fa-close"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PANEL -->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+    <!-- END PAGE CONTENT WRAPPER -->
+</div>
+<!-- END PAGE CONTAINER -->
+<div quick-view></div>
+<div overlay></div>

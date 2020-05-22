@@ -1,0 +1,262 @@
+<div sidebar-menu></div>
+<!-- START PAGE-CONTAINER -->
+<div class="page-container ">
+    <div header></div>
+    <!-- START PAGE CONTENT WRAPPER -->
+
+    <div class="modal fade fill-in" id="modalFillIn" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Add</span> a new location to your retailer</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group-attached">
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Retailer</label>
+                                        <select class="full-width" id="organisation-select" ng-model="selectedOrg">
+                                            <option ng-repeat="organisation in organisations" value="{{organisation.id}}">{{organisation.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Country</label>
+                                        <select class="full-width" id="country-select" ng-model="selectedCountry">
+                                            <optgroup label="Main Countries">
+                                                <option value="0">*All</option>
+                                                <option value="77">United Kingdom</option>
+                                                <option value="48">China</option>
+                                                <option value="57">Germany</option>
+                                            </optgroup>
+                                            <option ng-repeat="country in countries" value="{{country.id}}">{{country.countryName}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" ng-model="newLocation.name">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Address</label>
+                                        <input type="text" class="form-control" id="retailer-address">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Post Code</label>
+                                        <input type="text" class="form-control" ng-model="newLocation.post_code">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Owner</label>
+                                        <select class="full-width" id="owner-select" ng-model="newLocation.owner_id">
+                                            <option ng-repeat="owner in owners" value="{{owner.owner_id}}">{{owner.owner_name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Install Date</label>
+                                        <div class="input-prepend input-group">
+                                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                            <input type="text" style="width: 100%" name="reservation" id="datepicker" class="form-control" ng-model="newLocation.install_date" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Size</label>
+                                        <select class="full-width" id="size-select" ng-model="newLocation.size_id">
+                                            <option ng-repeat="size in sizes" value="{{size.size_id}}">{{size.size_name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Telephone</label>
+                                        <input type="text" class="form-control" ng-model="newLocation.telephone">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" ng-model="newLocation.email">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Notes</label>
+                                        <textarea class="form-control" ng-model="newLocation.notes"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Card Number</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        Drag n' drop files
+                                    </div>
+                                </div>
+                                <div class="panel-body no-scroll no-padding">
+                                    <form action="/file-upload" class="dropzone no-margin" id="attachments-uploader">
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="addNewLocation()">Add Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="page-content-wrapper ">
+        <!-- START PAGE CONTENT -->
+        <div class="content ">
+            <!-- START JUMBOTRON -->
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#locations" class="active">Locations</a>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="full-height">
+                                    <div class="panel-body text-center">
+                                        <img class="image-responsive-height demo-mw-600" src="" alt="">
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-5 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Locations Manager
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>It only takes a glance.</h3>
+                                        <p></p>
+                                        <p class="small hint-text m-t-5">Kevin Coates
+                                            <br> Digital Solutions Manager</p>
+                                        <br>
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END JUMBOTRON -->
+            <!-- START CONTAINER FLUID -->
+            <div class="container-fluid container-fixed-lg bg-white">
+                <!-- START PANEL -->
+                <div class="panel panel-transparent">
+                    <div class="panel-heading">
+                        <div class="panel-title">Locations
+                        </div>
+                        <div class="m-t-15 pull-right">
+                            <button ng-show="$root.isAllowedTo('locations', 'create')" type="button" class="btn btn-primary btn-cons btn-animated from-left pg pg-plus" data-target="#modalFillIn" data-toggle="modal">
+                                <span>Add new</span>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-cons btn-animated from-top fa fa-arrow-down" ng-click="exportLocations()">
+                                <span>Download as XLS</span>
+                            </button>
+                        </div>
+
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="basicTable">
+                                <thead>
+                                    <tr>
+                                        <th ng-show="$root.isAdmin()">Retailers</th>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Displays</th>
+                                        <th>Country</th>
+
+                                        <th ng-show="$root.isAllowedTo('locations', 'update')"></th>
+                                        <th ng-show="$root.isAllowedTo('locations', 'delete')"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="location in locations" >
+                                        <td ng-show="$root.isAdmin()" class="v-align-middle ">
+                                            <p>{{location.organisation.name}}</p>
+                                        </td>
+
+
+                                        <td class="v-align-middle ">
+                                            <p>{{location.name}}</p>
+                                        </td>
+                                        <td class="v-align-middle ">
+                                            <p>{{location.address}}</p>
+                                        </td>
+
+                                        <td class="v-align-middle ">
+                                            <p>{{location.deployments.length}}</p>
+                                        </td>
+
+                                        <td class="v-align-middle ">
+                                            <p>{{location.country.countryName}}</p>
+                                        </td>
+                                        <td class="v-align-middle" ng-show="$root.isAllowedTo('locations', 'update')">
+                                            <button type="button" class="btn btn-default" ui-sref="location({id: location.id})"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                        <td class="v-align-middle" ng-show="$root.isAllowedTo('locations', 'delete')">
+                                            <button type="button" class="btn btn-default" ng-click='removeLocation(location)'><i class="fa fa-close"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PANEL -->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+    <!-- END PAGE CONTENT WRAPPER -->
+</div>
+<!-- END PAGE CONTAINER -->
+<div quick-view></div>
+<div overlay></div>

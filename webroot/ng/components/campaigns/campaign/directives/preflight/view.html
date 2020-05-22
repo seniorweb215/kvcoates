@@ -1,0 +1,70 @@
+<div class="modal fade fill-in" id="preflight-results" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <i class="pg-close"></i>
+    </button>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-left p-b-5"><span class="semi-bold">Preflight</span> results</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h5>Found Issues</h5>
+                        <div class="table-responsive" >
+                            <table class="table table-hover displays-table" id="basicTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width:40%">Display</th>
+                                        <th style="width:40%">Details</th>
+                                        <th style="width:20%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="result in results" ng-if="!result.preflight.success">
+                                        <td class="v-align-middle ">
+                                            <p>{{result.identifier}}</p>
+                                            <p>{{result.name}}</p>
+                                        </td>
+
+                                        <td class="v-align-middle" ng-init="preflight = result.preflight.preflight">
+                                            <div ng-show="preflight.overlaps.length > 0">
+                                                <div ng-repeat="overlapping in preflight.overlaps">
+                                                    <p>This campaign conflicts with <b>{{overlapping.campaign.name}}</b>, you need to remove <b>{{overlapping.campaign.name}}</b> before proceeding.</p>
+                                                </div>
+                                            </div>
+                                            <!--<p ng-show="!preflight.resolution">The video resolution for campaign does not match that for the selected locations, by proceeding you may incur additional data charges and image cropping.</p>-->
+                                            
+                                        </td>
+                                        <td class="v-align-middle ">
+                                            
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="p-t-20 clearfix p-l-10 p-r-10">
+                            <div class="pull-left">
+                                <p class="bold font-montserrat text-uppercase"></p>
+                            </div>
+                            <div class="pull-right">
+                                <p class="bold font-montserrat text-uppercase"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 m-t-10 sm-m-t-10">
+                        <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="go()">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

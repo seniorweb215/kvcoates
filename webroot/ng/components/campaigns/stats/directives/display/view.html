@@ -1,0 +1,37 @@
+
+<div class="col-md-4">
+    <h2>Stats for {{display.identifier}}</h2>
+    <h3>{{display.name}}</h3>
+</div>
+<div ng-show="campaign.type_id === 3">
+    <div class="col-md-4">
+        <div id="touch-display-piechart-{{display.id}}" class="widget">
+            <div class="title"></div>
+            <div class="widget-content">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div id="scan-display-piechart-{{display.id}}" class="widget">
+            <div class="title"></div>
+            <div class="widget-content" ></div>
+        </div>
+    </div>
+</div>
+<div ng-show="campaign.type_id === 2">
+    <div class="col-md-4">
+        <div id="lnl-display-piechart-{{display.id}}" class="widget">
+            <div class="title"></div>
+            <div class="widget-content">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div id="lnl-display-barchart-{{display.id}}" class="widget">
+            <div class="title"></div>
+            <div class="widget-content">
+            </div>
+        </div>
+    </div>
+</div>
+

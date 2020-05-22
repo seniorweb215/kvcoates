@@ -1,0 +1,92 @@
+<div sidebar-menu></div>
+<div class="page-container ">
+    <div header></div>
+    <div class="page-content-wrapper ">
+        <!-- START PAGE CONTENT -->
+        <div class="content ">
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#media" class="active">Media</a>
+                            </li>
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            Drag n' drop your videos
+                                        </div>
+                                        <div class="tools">
+                                            <a class="collapse" href="javascript:;"></a>
+                                            <a class="config" data-toggle="modal" href="#grid-config"></a>
+                                            <a class="reload" href="javascript:;"></a>
+                                            <a class="remove" href="javascript:;"></a>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body no-scroll no-padding">
+                                        <div class="col-md-4">
+                                            <form action="/file-upload" class="dropzone no-margin" id="media-uploader">
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple/>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-8"><h1>Management Information</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid container-fixed-lg bg-white" ng-show="media.length === 0">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <!-- START PANEL -->
+                        <div class="panel panel-transparent text-center">
+                            <div class="panel-heading">
+                                <div class="panel-title">Alert
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <p>Hey Kevin, please let me know what message I should write here. We are basically informing users they have no media in our system. </p>
+                            </div>
+                        </div>
+                        <!-- END PANEL -->
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20" ng-show="media.length > 0">
+                <div class="gallery">
+                    <div class="gallery-item" data-width="1" data-height="1" ng-repeat="node in media" >
+                        <!-- START PREVIEW -->
+                        <img ng-src="{{getURL(node.thumb)}}" alt="" class="image-responsive-height">
+                        <!-- END PREVIEW -->
+                        <!-- START ITEM OVERLAY DESCRIPTION -->
+                        <div class="overlayer bottom-left full-width">
+                            <p class="p-l-20 p-r-20 p-t-20 p-b-5 pull-left bold text-white fs-14">{{node.filename}}</p>
+                        </div>
+                        <!-- END PRODUCT OVERLAY DESCRIPTION -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>

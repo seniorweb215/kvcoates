@@ -1,0 +1,121 @@
+$active-color : #10cfbd;
+
+.daterangepicker.dropdown-menu{
+    z-index: 3000 !important;
+}
+
+
+
+.login-wrapper{
+    background: #202020;
+
+    .bg-pic{
+        > img{
+            $width : 652px;
+            $height : 190px;
+            opacity: 1;
+            position: absolute;
+            top: 50%;
+            left: 30%;
+
+            height: $height;
+            margin-top: - $height / 2;
+            margin-left: - $width / 3;
+        }
+
+        .bg-caption{
+            img{
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+
+
+.page-sidebar{
+    .sidebar-header{
+        background: #202020;
+        text-align: center;
+        padding-left: 20px;
+        .sidebar-header-controls{
+            transform: translate3d(32px, 0, 0);
+        }
+    }
+
+    .sidebar-menu{
+        .menu-items{
+            li{
+                margin-top: 10px;
+            }
+        }
+    }
+}
+@import "displays/displays";
+@import "content/content";
+@import "locations/location";
+@import "countries/countries";
+@import "campaigns/campaign";
+@import "campaigns/stats";
+@import "campaigns/viewer";
+
+/*Public dash*/
+.digitalmedia-dashboard{
+    .page-container{
+        padding-left: 0px;
+    }
+
+    .digitalmedia-location{
+        display: none;
+    }
+
+    .infowindow-scroll-fix {
+        line-height: 1.35;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 400px;
+    }
+
+    .header{
+        width: 10%;
+    }
+
+    .display-search{
+        position: absolute;
+        width: 600px;
+
+        z-index: 2;
+        left: 50%;
+        margin-left: -300px;
+        top: 10px;
+
+        .support-controls{
+            p{
+                height: 32px;
+                line-height: 32px;
+                margin-right: 10px;
+                font-size: 20px;
+            }
+        }
+        .form-group{
+            margin-bottom: 0;
+            input{
+                border: 1px solid black;
+            }
+        }
+
+
+
+        .search-result{
+            text-align: center;
+            background: white;
+            border: 1px solid black;
+            &:hover{
+                cursor: pointer;
+                background: lightgray;
+            }
+        }
+
+    }
+
+}

@@ -1,0 +1,420 @@
+/* line 3, ../sass/digitalmedia.scss */
+.daterangepicker.dropdown-menu {
+  z-index: 3000 !important;
+}
+
+/* line 9, ../sass/digitalmedia.scss */
+.login-wrapper {
+  background: #202020;
+}
+/* line 13, ../sass/digitalmedia.scss */
+.login-wrapper .bg-pic > img {
+  max-width: calc(100% - 550px);
+  max-height: calc(100% - 200px);
+  left: 50px;
+  top: 50px;
+  margin: 0 !important;
+  opacity: 1;
+  position: absolute;
+}
+/* line 27, ../sass/digitalmedia.scss */
+.login-wrapper .bg-pic .bg-caption img {
+  margin-bottom: 10px;
+}
+
+/* line 37, ../sass/digitalmedia.scss */
+.page-sidebar .sidebar-header {
+  background: #202020;
+  text-align: center;
+  padding-left: 20px;
+}
+/* line 41, ../sass/digitalmedia.scss */
+.page-sidebar .sidebar-header .sidebar-header-controls {
+  transform: translate3d(32px, 0, 0);
+}
+/* line 48, ../sass/digitalmedia.scss */
+.page-sidebar .sidebar-menu .menu-items li {
+  margin-top: 10px;
+}
+
+/* line 2, ../sass/displays/_dashboard.scss */
+.displays-dashboard .view-toggle {
+  z-index: 10;
+  position: absolute;
+  right: 10px;
+  top: 70px;
+}
+/* line 7, ../sass/displays/_dashboard.scss */
+.displays-dashboard .view-toggle ul {
+  list-style: none;
+}
+/* line 9, ../sass/displays/_dashboard.scss */
+.displays-dashboard .view-toggle ul li {
+  background: white;
+  border: 1px solid lightgray;
+  width: 28px;
+  height: 28px;
+  border-radius: 15%;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+/* line 20, ../sass/displays/_dashboard.scss */
+.displays-dashboard .view-toggle ul li:hover {
+  cursor: pointer;
+}
+/* line 24, ../sass/displays/_dashboard.scss */
+.displays-dashboard .view-toggle ul li.active {
+  color: #10cfbd;
+}
+/* line 28, ../sass/displays/_dashboard.scss */
+.displays-dashboard .view-toggle ul li i {
+  padding: 5px;
+}
+/* line 38, ../sass/displays/_dashboard.scss */
+.displays-dashboard .displays-table .display-tr .modules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+/* line 43, ../sass/displays/_dashboard.scss */
+.displays-dashboard .displays-table .display-tr .modules li {
+  float: left;
+}
+/* line 45, ../sass/displays/_dashboard.scss */
+.displays-dashboard .displays-table .display-tr .modules li.active {
+  color: #10cfbd;
+}
+/* line 53, ../sass/displays/_dashboard.scss */
+.displays-dashboard .displays-table .display-tr .summary p {
+  margin: 0;
+  padding: 0;
+}
+/* line 59, ../sass/displays/_dashboard.scss */
+.displays-dashboard .displays-table .display-tr .summary .deployment-details p.organisation {
+  font-weight: bold;
+  font-size: 13px;
+}
+/* line 63, ../sass/displays/_dashboard.scss */
+.displays-dashboard .displays-table .display-tr .summary .deployment-details p.location {
+  font-size: 12px;
+  padding-left: 5px;
+}
+/* line 67, ../sass/displays/_dashboard.scss */
+.displays-dashboard .displays-table .display-tr .summary .deployment-details p i {
+  font-size: 14px !important;
+}
+
+/* line 3, ../sass/displays/_profile.scss */
+.display-profile .deployment-control .row > div {
+  margin-bottom: 10px;
+}
+/* line 5, ../sass/displays/_profile.scss */
+.display-profile .deployment-control .row > div p {
+  color: gray;
+}
+/* line 9, ../sass/displays/_profile.scss */
+.display-profile .deployment-control .row > div.active p {
+  color: #10cfbd;
+}
+/* line 11, ../sass/displays/_profile.scss */
+.display-profile .deployment-control .row > div.active p:hover {
+  font-weight: bold;
+}
+/* line 16, ../sass/displays/_profile.scss */
+.display-profile .deployment-control .row > div.active:hover {
+  cursor: pointer;
+}
+/* line 22, ../sass/displays/_profile.scss */
+.display-profile .deployment-control ul {
+  list-style: none;
+}
+/* line 24, ../sass/displays/_profile.scss */
+.display-profile .deployment-control ul li {
+  background: white;
+  border: 1px solid lightgray;
+  width: 40px;
+  height: 40px;
+  border-radius: 15%;
+  display: inline-block;
+  font-size: 20px;
+  margin: 0;
+  padding: 4px;
+  text-align: center;
+}
+/* line 35, ../sass/displays/_profile.scss */
+.display-profile .deployment-control ul li:hover {
+  cursor: pointer;
+}
+/* line 39, ../sass/displays/_profile.scss */
+.display-profile .deployment-control ul li.active {
+  color: #10cfbd;
+}
+/* line 43, ../sass/displays/_profile.scss */
+.display-profile .deployment-control ul li i {
+  padding: 5px;
+}
+/* line 50, ../sass/displays/_profile.scss */
+.display-profile .no-scheduled-playbacks {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+/* line 53, ../sass/displays/_profile.scss */
+.display-profile .no-scheduled-playbacks p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+/* line 2, ../sass/content/_dashboard.scss */
+.content-manager .feeds-creation-control {
+  padding-top: 50px;
+}
+/* line 4, ../sass/content/_dashboard.scss */
+.content-manager .feeds-creation-control ul {
+  list-style: none;
+}
+/* line 6, ../sass/content/_dashboard.scss */
+.content-manager .feeds-creation-control ul li {
+  background: white;
+  border: 1px solid lightgray;
+  width: 40px;
+  height: 40px;
+  border-radius: 15%;
+  display: inline-block;
+  font-size: 20px;
+  margin: 0;
+  padding: 4px;
+  text-align: center;
+}
+/* line 17, ../sass/content/_dashboard.scss */
+.content-manager .feeds-creation-control ul li:hover {
+  cursor: pointer;
+}
+/* line 21, ../sass/content/_dashboard.scss */
+.content-manager .feeds-creation-control ul li.active {
+  color: #10cfbd;
+}
+/* line 25, ../sass/content/_dashboard.scss */
+.content-manager .feeds-creation-control ul li i {
+  padding: 5px;
+}
+
+/* line 1, ../sass/locations/_location.scss */
+.location-profile {
+  overflow: hidden;
+}
+/* line 4, ../sass/locations/_location.scss */
+.location-profile .content {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  transition: all 0.6 ease !important;
+}
+/* line 9, ../sass/locations/_location.scss */
+.location-profile .content.previous {
+  left: -3000px;
+}
+/* line 12, ../sass/locations/_location.scss */
+.location-profile .content.next {
+  left: 3000px;
+}
+/* line 21, ../sass/locations/_location.scss */
+.location-profile .address-editor .user-controls {
+  height: 60px;
+  position: absolute;
+  width: 100%;
+  background: white;
+  z-index: 1;
+  border-bottom: 1px solid rgba(230, 230, 230, 0.7);
+}
+/* line 30, ../sass/locations/_location.scss */
+.location-profile .address-editor .user-controls .input-container {
+  padding: 15px;
+}
+/* line 39, ../sass/locations/_location.scss */
+.location-profile .no-deployed-displays {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+/* line 42, ../sass/locations/_location.scss */
+.location-profile .no-deployed-displays p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+/* line 4, ../sass/countries/_countries.scss */
+.countries-dashboard .countries-table .carriers ul {
+  margin: 0;
+  padding: 0;
+}
+/* line 7, ../sass/countries/_countries.scss */
+.countries-dashboard .countries-table .carriers ul li {
+  font-size: 12px;
+}
+/* line 9, ../sass/countries/_countries.scss */
+.countries-dashboard .countries-table .carriers ul li span {
+  font-weight: bold;
+}
+
+/* line 11, ../sass/campaigns/_campaign.scss */
+.display-plan-campaign .videos-campaign .dropzone {
+  min-height: 200px;
+}
+/* line 17, ../sass/campaigns/_campaign.scss */
+.display-plan-campaign .lift-and-learn-campaign .slot {
+  margin-bottom: 40px;
+  border: 20px solid #FC9407;
+  border-radius: 0 20px 20px 20px;
+  position: relative;
+}
+/* line 23, ../sass/campaigns/_campaign.scss */
+.display-plan-campaign .lift-and-learn-campaign .slot .tab {
+  position: absolute;
+  padding-top: 5px;
+  top: -40px;
+  left: -20px;
+  height: 30px;
+  border-radius: 20px 20px 0 0;
+  background: #FC9407;
+  min-width: 100px;
+  text-align: center;
+}
+/* line 35, ../sass/campaigns/_campaign.scss */
+.display-plan-campaign .lift-and-learn-campaign .slot .contents {
+  position: absolute;
+  height: 50px;
+  width: 100%;
+}
+/* line 39, ../sass/campaigns/_campaign.scss */
+.display-plan-campaign .lift-and-learn-campaign .slot .contents p {
+  padding: 2px 0;
+  margin: 0;
+  width: 100%;
+  font-size: 11px;
+  text-align: center;
+}
+/* line 45, ../sass/campaigns/_campaign.scss */
+.display-plan-campaign .lift-and-learn-campaign .slot .contents p.video {
+  background: white;
+  color: gray;
+}
+/* line 49, ../sass/campaigns/_campaign.scss */
+.display-plan-campaign .lift-and-learn-campaign .slot .contents p.image {
+  background: white;
+  color: gray;
+  border-bottom: 1px solid #FC9407;
+}
+/* line 56, ../sass/campaigns/_campaign.scss */
+.display-plan-campaign .lift-and-learn-campaign .slot .dropzone {
+  min-height: 200px;
+  max-height: 200px;
+}
+/* line 62, ../sass/campaigns/_campaign.scss */
+.display-plan-campaign .lift-and-learn-campaign .slot.default {
+  border-color: #186CFE;
+}
+/* line 64, ../sass/campaigns/_campaign.scss */
+.display-plan-campaign .lift-and-learn-campaign .slot.default .tab {
+  background: #186CFE;
+  color: white;
+}
+
+/* line 2, ../sass/campaigns/_stats.scss */
+.display-plan-campaign-stats .widget {
+  margin-bottom: 30px;
+}
+
+/* line 3, ../sass/campaigns/_viewer.scss */
+.display-plan-campaign-previewer #campaign-video-player {
+  width: 100%;
+  height: auto;
+  background: black;
+}
+/* line 7, ../sass/campaigns/_viewer.scss */
+.display-plan-campaign-previewer .lnl-controls {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
+/* line 12, ../sass/campaigns/_viewer.scss */
+.display-plan-campaign-previewer .lnl-controls li {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 30px;
+  border: 10px solid #FC9407;
+  border-radius: 0 20px 20px 20px;
+  margin-right: 10px;
+}
+/* line 21, ../sass/campaigns/_viewer.scss */
+.display-plan-campaign-previewer .lnl-controls li.empty {
+  border-color: gray;
+}
+/* line 25, ../sass/campaigns/_viewer.scss */
+.display-plan-campaign-previewer .lnl-controls li.playing {
+  border-color: gray;
+}
+/* line 29, ../sass/campaigns/_viewer.scss */
+.display-plan-campaign-previewer .lnl-controls li:hover {
+  cursor: pointer;
+}
+
+/*Public dash*/
+/* line 64, ../sass/digitalmedia.scss */
+.digitalmedia-dashboard .page-container {
+  padding-left: 0px;
+}
+/* line 68, ../sass/digitalmedia.scss */
+.digitalmedia-dashboard .digitalmedia-location {
+  display: none;
+}
+/* line 72, ../sass/digitalmedia.scss */
+.digitalmedia-dashboard .infowindow-scroll-fix {
+  line-height: 1.35;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 400px;
+}
+/* line 79, ../sass/digitalmedia.scss */
+.digitalmedia-dashboard .header {
+  width: 10%;
+}
+/* line 83, ../sass/digitalmedia.scss */
+.digitalmedia-dashboard .display-search {
+  position: absolute;
+  width: 600px;
+  z-index: 2;
+  left: 50%;
+  margin-left: -300px;
+  top: 10px;
+}
+/* line 93, ../sass/digitalmedia.scss */
+.digitalmedia-dashboard .display-search .support-controls p {
+  height: 32px;
+  line-height: 32px;
+  margin-right: 10px;
+  font-size: 20px;
+}
+/* line 100, ../sass/digitalmedia.scss */
+.digitalmedia-dashboard .display-search .form-group {
+  margin-bottom: 0;
+}
+/* line 102, ../sass/digitalmedia.scss */
+.digitalmedia-dashboard .display-search .form-group input {
+  border: 1px solid black;
+}
+/* line 109, ../sass/digitalmedia.scss */
+.digitalmedia-dashboard .display-search .search-result {
+  text-align: center;
+  background: white;
+  border: 1px solid black;
+}
+/* line 113, ../sass/digitalmedia.scss */
+.digitalmedia-dashboard .display-search .search-result:hover {
+  cursor: pointer;
+  background: lightgray;
+}

@@ -1,0 +1,160 @@
+<div sidebar-menu></div>
+<div class="page-container ">
+    <div header></div>
+
+    <div class="page-content-wrapper ">
+        <div class="content display-plan-campaign-stats">
+            <div class="jumbotron" data-pages="parallax">
+                <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+                    <div class="inner">
+                        <!-- START BREADCRUMB -->
+                        <ul class="breadcrumb">
+                            <li><a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li><a href="#campaigns">Campaigns</a>
+                            </li>
+                            <li><a href="#campaign/{{campaign.id}}">{{campaign.name}}</a></li>
+                            <li><a href="#campaign/stats/{{campaign.id}}" class="active">stats</a></li>
+
+                        </ul>
+                        <!-- END BREADCRUMB -->
+                        <div class="row">
+                            <div class="col-lg-5 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title"><i class="fa" aria-hidden="true" ng-class="getCampaignTypeIcon()">   {{getCampaignTypeName()}}</i> Campaign Stats</div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3>{{campaign.name}}</h3>
+                                        <p>{{getStatus()}}</p>
+                                        <p><strong>Starts: </strong><i>{{campaign.start| date : 'dd/MM/yyyy hh:mm a' : 'UTC'}}</i> <strong>- Ends: </strong><i>{{campaign.end| date : 'dd/MM/yyyy hh:mm a' : 'UTC'}}</i></p>
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+                            <div class="col-lg-7 col-md-6 ">
+                                <!-- START PANEL -->
+                                <div class="panel panel-transparent">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+
+                                    </div>
+                                </div>
+                                <!-- END PANEL -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="container-fluid" >
+                <div class="row">
+                    <div class="col-md-8">
+                        <div id="overall-interaction" class="widget">
+                            <div class="title"></div>
+                            <div class="widget-content" style="height: 600px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+
+                        <div class="widget-11 panel no-border  no-margin widget-loader-bar">
+                            <div class="panel-heading ">
+                                <div class="panel-title">Insights
+                                </div>
+                                <div class="panel-controls">
+                                    <ul>
+                                        <li><a data-toggle="refresh" class="portlet-refresh text-black" href="#"><i
+                                                    class="portlet-icon portlet-icon-refresh"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="padding-25">
+                                <p class="small no-margin">
+                                    <a href="javascript:;"><i class="fa fs-16 fa-arrow-circle-o-down text-success m-r-10"></i></a>
+                                    <span class="hint-text ">Average Dwell Time: {{stats.overall.highlights.dwell_time | number}} seconds</span>
+                                </p>
+                                <p class="small no-margin">
+                                    <a href="javascript:;"><i class="fa fs-16 fa-arrow-circle-o-down text-success m-r-10"></i></a>
+                                    <span class="hint-text ">Top Location: {{stats.overall.highlights.devices[0].name}}</span>
+                                </p>
+                            </div>
+                            <div class="widget-11-table auto-overflow">
+                                <table class="table table-condensed table-hover">
+                                    <tbody>
+                                        <tr ng-repeat="d in overall">
+                                            <td class="font-montserrat all-caps fs-12">{{d.name}}</td>
+                                            <td class="text-right">
+                                                <span class="hint-text small"></span>
+                                            </td>
+                                            <td class="text-right b-r b-dashed b-grey">
+                                                <span class="hint-text small">{{d.tag}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="font-montserrat fs-18">{{d.count}}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row" ng-show="campaign.type_id === 3">
+                    <div class="col-md-6">
+                        <div class="widget touch-stats">
+                            <div class="title"></div>
+                            <div class="widget-content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="widget scan-stats">
+                            <div class="title"></div>
+                            <div class="widget-content" ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-show="campaign.type_id === 2">
+                    <div class="col-md-6">
+                        <div id="lnl-overall-piechart" class="widget">
+                            <div class="title"></div>
+                            <div class="widget-content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="lnl-overall-barchart" class="widget">
+                            <div class="title"></div>
+                            <div class="widget-content">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" display-stats ng-repeat="display in stats.insights" campaign="campaign" mappings="stats.mappings" display="display"></div>
+            </div>
+            <hr />
+
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div footer></div>
+    </div>
+</div>
+<div quick-view></div>
+<div overlay></div>
