@@ -58,7 +58,7 @@
 
         <link rel="stylesheet" href="ng/bower_components/html5-boilerplate/dist/css/normalize.css">
         <link rel="stylesheet" href="ng/bower_components/html5-boilerplate/dist/css/main.css">
-        <script src="ng/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="ng/bower_components/html5-boilerplate/dist/js/vendor/modernizr-3.8.0.min.js"></script>
         <script>var server = "<?= $this->Url->build(["controller" => "connie", "action" => "home"], true) ?>";</script>
         <script>var systemActions = <?php echo json_encode($system_actions); ?>;</script>
         <script>var maintenance = <?php echo $maintenance ?>;</script>
