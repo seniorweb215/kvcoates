@@ -75,7 +75,7 @@ class UsersTable extends AppTable {
     }
     
     public function locations(){
-        return $this->find()->where(['location->"$.latitude" != 0', 'location->"$.longitude" != 0'])->all();
+        return $this->find()->where(['JSON_EXTRACT(location, "$.latitude") != "0"', 'JSON_EXTRACT(location, "$.longitude") != "0"'])->all();
     }
     
     

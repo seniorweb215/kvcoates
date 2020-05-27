@@ -24,7 +24,9 @@ var shared = angular.module('digitalMedia.shared', []);
 var content = angular.module('digitalMedia.content', []);
 var support = angular.module('digitalMedia.support', []);
 var API = angular.module('digitalMedia.API', []);
-
+digitalMedia.config(['$locationProvider', function($locationProvider) {
+    $locationProvider.hashPrefix('');
+}]);
 
 digitalMedia.run(['$rootScope', '$location', 'appService', 'permissionsService',
     function ($rootScope, $location, appService, permissionsService) {
