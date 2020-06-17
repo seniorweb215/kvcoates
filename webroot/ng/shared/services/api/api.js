@@ -5,6 +5,8 @@ API.factory('digitalMediaAPI', ["usersAPI",
     "organisationsAPI",
     "bandsAPI",
     "brandsAPI",
+    "ownersAPI",
+    "sizesAPI",
     "locationsAPI",
     "campaignsAPI",
     "contentAPI",
@@ -23,6 +25,8 @@ API.factory('digitalMediaAPI', ["usersAPI",
             organisationsAPI,
             bandsAPI,
             brandsAPI,
+            ownersAPI,
+            sizesAPI,
             locationsAPI,
             campaignsAPI,
             contentAPI,
@@ -42,6 +46,8 @@ API.factory('digitalMediaAPI', ["usersAPI",
         instance.organisations = organisationsAPI;
         instance.bands = bandsAPI;
         instance.brands = brandsAPI;
+        instance.sizes = sizesAPI;
+        instance.owners = ownersAPI;
         instance.campaigns = campaignsAPI;
         instance.content = contentAPI;
         instance.media = mediaAPI;

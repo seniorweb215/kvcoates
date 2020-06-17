@@ -25,60 +25,25 @@
 
                                 </div>
                             </div>
-                            <div class="form-group form-group-default">
-                                <label>Manufacturer</label>
-                                <select class="full-width" id="manufacturer-select">
-                                    <option value="0"></option>
-                                    <option ng-repeat="manufacturerBrand in data.manufacturers" value="{{manufacturerBrand.id}}">{{manufacturerBrand.name}}</option>
-                                </select>
-                            </div>
-                            <div class="form-group form-group-default">
-                                <label>Model</label>
-                                <select class="full-width" id="model-select">
-                                    <option value="0"></option>
-                                    <option ng-repeat="manufacturers in selectedManufacturer.display_manufacturers" value="{{manufacturers.id}}">{{manufacturers.model}}</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group form-group-default">
-                                <label>Screen Size</label>
-                                <select class="full-width" id="screensize-select">
-                                    <option ng-repeat="screensize in data.screensizes" value="{{screensize.name}}">{{screensize.name}}</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group form-group-default">
-                                <label>Resolution</label>
-                                <select class="full-width" id="resolution-select">
-                                    <option ng-repeat="resolution in data.resolutions" value="{{resolution.id}}">{{resolution.name}}</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group form-group-default">
-                                <label>OS</label>
-                                <select class="full-width" id="os-select">
-                                    <option ng-repeat="os in data.operatingSystems" value="{{os.name}}">{{os.name}}</option>
-                                </select>
-                            </div>
                             
                             <div class="form-group form-group-default">
+                                <label>Screen Size</label>
+                                <select class="full-width" id="screensize-select" ng-model="newDisplay.screensize">
+                                    <option ng-repeat="screensize in data.screensizes" value="{{screensize.id}}">{{screensize.name}}</option>
+                                </select>
+                            </div>
+                                        
+                            <div class="form-group form-group-default">
                                 <label>Orientation</label>
-                                <select class="full-width" id="orientation-select">
+                                <select class="full-width" id="orientation-select" ng-model="newDisplay.orientation">
                                     <option ng-repeat="orientation in data.orientations" value="{{orientation}}">{{orientation}}</option>
                                 </select>
                             </div>
 
                             <div class="form-group form-group-default">
-                                <label>Network</label>
-                                <select class="full-width" id="network-select">
-                                    <option ng-repeat="network in data.networks" value="{{network}}">{{network}}</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group form-group-default">
-                                <label>Brand</label>
-                                <select class="full-width" id="brand-select">
-                                    <option ng-repeat="brand in data.brands" value="{{brand.id}}">{{brand.name}}</option>
+                                <label>Band</label>
+                                <select class="full-width" id="band-select" ng-model="newDisplay.band_id">
+                                    <option ng-repeat="band in data.bands" value="{{band.id}}">{{band.name}}</option>
                                 </select>
                             </div>
 

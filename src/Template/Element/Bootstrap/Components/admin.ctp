@@ -2,6 +2,8 @@
 <script src="ng/components/admin/organisations/organisations.js"></script>
 <script src="ng/components/admin/bands/bands.js"></script>
 <script src="ng/components/admin/brands/brands.js"></script>
+<script src="ng/components/admin/owners/owners.js"></script>
+<script src="ng/components/admin/sizes/sizes.js"></script>
 <script src="ng/components/admin/display-make/display-make.js"></script>
 <script src="ng/components/admin/display-make/directives/manufacturer/manufacturer.js"></script>
 <script src="ng/components/admin/users/users.js"></script>

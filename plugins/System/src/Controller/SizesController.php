@@ -3,25 +3,25 @@
 namespace System\Controller;
 
 /**
- * Description of BrandsController
+ * Description of SizesController
  *
- * @author Rauxmedia
+ * @author Yaroslav
  */
-class BrandsController extends AppController {
+class SizesController extends AppController {
 
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
-        $this->loadModel("System.Brands");
+        $this->loadModel("System.Sizes");
     }
 
     public function index() {
         $this->result["success"] = true;
-        $this->result["data"] = $this->Brands->all();
+        $this->result["data"] = $this->Sizes->all();
     }
 
     public function add() {
         if ($this->request->is("post")) {
-            $org = $this->Brands->add($this->request->data);
+            $org = $this->Sizes->add($this->request->data);
             if ($org) {
                 $this->result["success"] = true;
                 $this->result["data"] = $org;
@@ -31,7 +31,7 @@ class BrandsController extends AppController {
 
     public function update() {
         if ($this->request->is("post")) {
-            $brand = $this->Brands->update($this->request->data["id"], $this->request->data);
+            $brand = $this->Sizes->update($this->request->data["id"], $this->request->data);
             if ($brand) {
                 $this->result["success"] = true;
                 $this->result["data"] = $brand;
@@ -41,7 +41,7 @@ class BrandsController extends AppController {
 
     public function remove() {
         if ($this->request->is("post")) {
-            $brand = $this->Brands->remove($this->request->data["id"]);
+            $brand = $this->Sizes->remove($this->request->data["id"]);
             if ($brand) {
                 $this->result["success"] = true;
                 $this->result["data"] = $brand;

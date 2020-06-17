@@ -73,6 +73,8 @@ Router::scope('/api', function ($routes) {
     $routes->connect('/blacklisted-clients/:action/*', ['controller' => 'BlacklistedClients']);
     $routes->connect('/bands/:action/*', ['controller' => 'Bands']);
     $routes->connect('/brands/:action/*', ['controller' => 'Brands']);
+    $routes->connect('/owners/:action/*', ['controller' => 'Owners']);
+    $routes->connect('/sizes/:action/*', ['controller' => 'Sizes']);
     $routes->connect('/campaigns/:action/*', ['controller' => 'Campaigns']);
     $routes->connect('/countries/:action/*', ['controller' => 'Countries']);
     $routes->connect('/displays/:action/*', ['controller' => 'Displays']);

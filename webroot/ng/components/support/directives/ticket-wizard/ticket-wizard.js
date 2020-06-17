@@ -11,11 +11,20 @@ support.directive('ticketWizard', ["digitalMediaAPI", "appService", function (di
                 $scope.data = [];
                 $scope.issue = {};
                 $scope.$on('create-new-ticket', function (event, args) {
+                    $scope.data.locations = args.locations;
+                    $scope.location = {};
                     creating = true;
                     step = 1;
 
+                    $('#locations-select').select2();
+                    $scope.location.id = parseInt($scope.data.locations[0].id);
+                    $('#locations-select').on('change', function (evt) {
+                        $scope.location.id = parseInt(evt.val);
+                    });
+
                     $("#issue-management-modal").modal("show");
                 });
+
                 $scope.$on('create-new-ticket-from-displays-list', function (event, args) {
                     $scope.data.displays = args.displays;
                     $scope.display = {};
@@ -26,7 +35,7 @@ support.directive('ticketWizard', ["digitalMediaAPI", "appService", function (di
                     
                     
                     $('#displays-select').select2();
-                    $scope.display.id = parseInt($scope.data.displays[0].id);
+                    $scope.display.id = 0;
                     $('#displays-select').on('change', function (evt) {
                         $scope.display.id = parseInt(evt.val);
                     });

@@ -15,17 +15,16 @@ class BandsController extends AppController {
     }
 
     public function index() {
-        print_r($this->Bands);exit();
         $this->result["success"] = true;
         $this->result["data"] = $this->Bands->all();
     }
 
     public function add() {
         if ($this->request->is("post")) {
-            $org = $this->Bands->add($this->request->data);
-            if ($org) {
+            $band = $this->Bands->add($this->request->data);
+            if ($band) {
                 $this->result["success"] = true;
-                $this->result["data"] = $org;
+                $this->result["data"] = $band;
             }
         }
     }

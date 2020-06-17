@@ -46,6 +46,7 @@ class BaseController extends IOController {
         if ($this->request->is("post")) {
             
             $display = $this->Displays->update($this->request->data["id"], $this->request->data);
+            
             if ($display) {
                 $this->result["success"] = true;
                 $this->result["data"] = $display;

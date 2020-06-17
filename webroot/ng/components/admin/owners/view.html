@@ -12,7 +12,7 @@
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="text-left p-b-5"><span class="semi-bold">Edit</span> {{editingBand.name}}</h5>
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Edit</span> {{editingOwner.company}}</h5>
                 </div>
                 <div class="modal-body">
                     <form role="form">
@@ -20,20 +20,24 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
-                                        <label>Name</label>
-                                        <input type="text" class="form-control" ng-model="editingBand.name">
+                                        <label>Company</label>
+                                        <input type="text" class="form-control" ng-model="editingOwner.company">
                                     </div>
                                     <div class="form-group form-group-default">
-                                        <label>Price</label>
-                                        <input type="text" class="form-control" ng-model="editingBand.price">
+                                        <label>Contact Name</label>
+                                        <input type="text" class="form-control" ng-model="editingOwner.contact_name">
                                     </div>
                                     <div class="form-group form-group-default">
-                                        <label>Duration</label>
-                                        <input type="text" class="form-control" ng-model="editingBand.duration">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" ng-model="editingOwner.email">
                                     </div>
                                     <div class="form-group form-group-default">
-                                        <label>Description</label>
-                                        <textarea rows="3" class="form-control" ng-model="editingBand.description"></textarea>
+                                        <label>Tel</label>
+                                        <input type="text" class="form-control" ng-model="editingOwner.tel">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Note</label>
+                                        <textarea rows="3" class="form-control" ng-model="editingOwner.note"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +72,7 @@
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="text-left p-b-5"><span class="semi-bold">Add</span> a new band to your system</h5>
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Add</span> a new owner to your system</h5>
                 </div>
                 <div class="modal-body">
                     <form role="form">
@@ -76,20 +80,24 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
-                                        <label>Band Name</label>
-                                        <input type="text" class="form-control" ng-model="newBand.name">
+                                        <label>Company</label>
+                                        <input type="text" class="form-control" ng-model="newOwner.company">
                                     </div>
                                     <div class="form-group form-group-default">
-                                        <label>Price</label>
-                                        <input type="text" class="form-control" ng-model="newBand.price">
+                                        <label>Contact Name</label>
+                                        <input type="text" class="form-control" ng-model="newOwner.contact_name">
                                     </div>
                                     <div class="form-group form-group-default">
-                                        <label>Duration</label>
-                                        <input type="text" class="form-control" ng-model="newBand.duration">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" ng-model="newOwner.email">
                                     </div>
                                     <div class="form-group form-group-default">
-                                        <label>Description</label>
-                                        <textarea rows="3" class="form-control" ng-model="newBand.description"></textarea>
+                                        <label>Tel</label>
+                                        <input type="text" class="form-control" ng-model="newOwner.tel">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Note</label>
+                                        <textarea rows="3" class="form-control" ng-model="newOwner.note"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +123,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4 m-t-10 sm-m-t-10">
-                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="addNewBand()">Add Now</button>
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="addNewOwner()">Add Now</button>
                         </div>
                     </div>
                 </div>
@@ -139,7 +147,7 @@
                             <li>
                                 <a href="#dashboard">Dashboard</a>
                             </li>
-                            <li><a href="#bands" class="active">Bands</a>
+                            <li><a href="#owners" class="active">Owners</a>
                             </li>
                         </ul>
                         <!-- END BREADCRUMB -->
@@ -157,7 +165,7 @@
                                 <!-- START PANEL -->
                                 <div class="panel panel-transparent">
                                     <div class="panel-heading">
-                                        <div class="panel-title">Bands Manager
+                                        <div class="panel-title">Owners Manager
                                         </div>
                                     </div>
                                     <div class="panel-body">
@@ -180,7 +188,7 @@
                 <!-- START PANEL -->
                 <div class="panel panel-transparent">
                     <div class="panel-heading">
-                        <div class="panel-title"> bands
+                        <div class="panel-title"> owners
                         </div>
                         <div class="btn-group pull-right m-b-10">
                             <button type="button" class="btn btn-primary" data-target="#modalFillIn" data-toggle="modal">Add new</button>
@@ -193,37 +201,40 @@
                                 <thead>
                                     <tr>
                                         <th style="width:3%">ID</th>
-                                        <th style="width:20%">Name</th>
-                                        <th style="width:20%">Price</th>
-                                        <th style="width:20%">Duration</th>
-                                        <th style="width:37%">Description</th>
+                                        <th style="width:15%">Company</th>
+                                        <th style="width:15%">Contact Name</th>
+                                        <th style="width:15%">Email</th>
+                                        <th style="width:15%">Tel</th>
+                                        <th style="width:37%">Note</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="band in bands">
+                                    <tr ng-repeat="owners in owners">
                                         <td class="v-align-middle ">
-                                            <p>{{band.id}}</p>
+                                            <p>{{owners.id}}</p>
                                         </td>
                                         <td class="v-align-middle ">
-                                            <p>{{band.name}}</p>
+                                            <p>{{owners.company}}</p>
                                         </td>
                                         <td class="v-align-middle ">
-                                            <p>{{band.price}}</p>
+                                            <p>{{owners.contact_name}}</p>
                                         </td>
                                         <td class="v-align-middle ">
-                                            <p>{{band.duration}}</p>
+                                            <p>{{owners.email}}</p>
                                         </td>
                                         <td class="v-align-middle ">
-                                            <p>{{band.description}}</p>
+                                            <p>{{owners.tel}}</p>
                                         </td>
-
+                                        <td class="v-align-middle ">
+                                            <p>{{owners.note}}</p>
+                                        </td>
                                         <td class="v-align-middle">
-                                            <button type="button" class="btn btn-default" ng-click="edit(band)"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-default" ng-click="edit(owners)"><i class="fa fa-edit"></i></button>
                                         </td>
                                         <td class="v-align-middle">
-                                            <button type="button" class="btn btn-default" ng-click='removeBand(band)'><i class="fa fa-close"></i></button>
+                                            <button type="button" class="btn btn-default" ng-click='removeOwners(owners)'><i class="fa fa-close"></i></button>
                                         </td>
                                     </tr>
                                 </tbody>

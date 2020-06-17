@@ -52,20 +52,22 @@
                                     <div class="form-group form-group-default">
                                         <label>Owner</label>
                                         <select class="full-width" id="owner-select" ng-model="newLocation.owner_id">
-                                            <option ng-repeat="owner in owners" value="{{owner.owner_id}}">{{owner.owner_name}}</option>
+                                            <option ng-repeat="owner in owners" value="{{owner.id}}">
+                                                {{owner.company}} | {{owner.contact_name}} | {{owner.email}} | {{owner.tel}} | {{owner.note}}
+                                            </option>
                                         </select>
                                     </div>
                                     <div class="form-group form-group-default">
                                         <label>Install Date</label>
                                         <div class="input-prepend input-group">
-                                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
                                             <input type="text" style="width: 100%" name="reservation" id="datepicker" class="form-control" ng-model="newLocation.install_date" />
+                                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
                                         </div>
                                     </div>
                                     <div class="form-group form-group-default">
                                         <label>Size</label>
                                         <select class="full-width" id="size-select" ng-model="newLocation.size_id">
-                                            <option ng-repeat="size in sizes" value="{{size.size_id}}">{{size.size_name}}</option>
+                                            <option ng-repeat="size in sizes" value="{{size.id}}">{{size.size_name}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group form-group-default">

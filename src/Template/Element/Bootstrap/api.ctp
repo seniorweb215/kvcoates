@@ -4,6 +4,8 @@
 <script src="ng/shared/services/api/organisations.js"></script>
 <script src="ng/shared/services/api/bands.js"></script>
 <script src="ng/shared/services/api/brands.js"></script>
+<script src="ng/shared/services/api/sizes.js"></script>
+<script src="ng/shared/services/api/owners.js"></script>
 <script src="ng/shared/services/api/locations.js"></script>
 <script src="ng/shared/services/api/displays.js"></script>
 <script src="ng/shared/services/api/display-issues.js"></script>

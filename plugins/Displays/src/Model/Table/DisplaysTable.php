@@ -73,9 +73,11 @@ class DisplaysTable extends AppTable {
         $entity->verified = 0;
         $entity->deployed = 0;
         $entity->heartbeat = 12;
-        $entity->modules = \Displays\Services\General::getModules(["Touch"]);
+        $entity->modules = json_encode(\Displays\Services\General::getModules(["Touch"]));
         $entity->installed = date("Y-m-d H:i:s");
         $entity->last_login = date("Y-m-d H:i:s");
+        $entity->volume = 0;
+
         if ($this->save($entity)) {
             return $entity;
         } else {
@@ -84,7 +86,10 @@ class DisplaysTable extends AppTable {
     }
 
     public function update($id, $data = array()) {
-        $data["modules"] = json_decode($data["modules"]);
+        if($data['connectivity'] == '') {
+            $data['connectivity'] = '{}';
+        }
+        
         return parent::update($id, $data);
     }
 

@@ -44,6 +44,7 @@ displays.directive('displayGeneral', ["digitalMediaAPI", function (digitalMediaA
                     var el = $(e.target);
                     $scope.display.modules[el.data("module")] = el.is(':checked');
                     digitalMediaAPI.displays.update($scope.display, function(data){
+                        data.modules = JSON.parse(data.modules);
                         $scope.display = data;
                     }, function(){});
                 };
@@ -71,6 +72,7 @@ displays.directive('displayGeneral', ["digitalMediaAPI", function (digitalMediaA
                     $("#slider-tooltips").on("change", function(event, values){
                         $scope.display.volume = parseFloat(values);
                         digitalMediaAPI.displays.update($scope.display, function(data){
+                            data.modules = JSON.parse(data.modules);
                             $scope.display = data;
                         }, function(){});
                     });

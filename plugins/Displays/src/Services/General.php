@@ -18,6 +18,7 @@ class General {
 
     public static function getFormData() {
         $brandsTable = \Cake\ORM\TableRegistry::get("Manufacturers.DisplayManufacturerBrands");
+        $bandsTable = \Cake\ORM\TableRegistry::get("Manufacturers.DisplayManufacturerBands");
         $osTable = \Cake\ORM\TableRegistry::get("Manufacturers.DisplayOperatingSystems");
         $sizesTable = \Cake\ORM\TableRegistry::get("Manufacturers.DisplaySizes");
         $resolutionsTable = \Cake\ORM\TableRegistry::get("Displays.Resolutions"); // Refactor alert!
@@ -25,6 +26,7 @@ class General {
             "manufacturers" => $brandsTable->find()->contain(["DisplayManufacturers"])->all(),
             "resolutions" => $resolutionsTable->find()->all(),
             "brands" => TableRegistry::get("System.Brands")->find()->all(),
+            "bands" => TableRegistry::get("System.Bands")->find()->all(),
             "operatingSystems" => $osTable->find()->all(),
             "orientations" => array("Portrait", "Landscape"),
             "networks" => array("3G", "Wifi", "Lan", "Independent"),

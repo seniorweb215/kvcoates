@@ -14,6 +14,14 @@ admin.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
                     url: '/general/brands',
                     templateUrl: 'ng/components/admin/brands/view.html',
                     controller: "brandsController"
+                }).state('owners', {
+                    url: '/general/owners',
+                    templateUrl: 'ng/components/admin/owners/view.html',
+                    controller: "ownersController"
+                }).state('sizes', {
+                    url: '/general/sizes',
+                    templateUrl: 'ng/components/admin/sizes/view.html',
+                    controller: "sizesController"
                 }).state('manufacturers', {
                     url: '/general/manufacturers',
                     templateUrl: 'ng/components/admin/display-make/view.html',

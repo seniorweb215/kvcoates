@@ -1,8 +1,9 @@
 'use strict';
-displays.controller("displayController", ["$rootScope", "$scope", "$state", "$stateParams", "digitalMediaAPI", "calendarService", function ($rootScope, $scope, $state, $stateParams, digitalMediaAPI, calendarService) {
+displays.controller("displayController", ["$rootScope", "$scope", "$state", "$stateParams", "digitalMediaAPI", "calendarService", "appService", function ($rootScope, $scope, $state, $stateParams, digitalMediaAPI, calendarService, appService) {
         $rootScope.title = "Displays";
         var displayId = $stateParams.id;
         $scope.display = null;
+        var locations = [];
 
         $scope.statusMessage = function () {
             return ($scope.display !== null && $scope.display.verified === 1) ? "This unit is already verified" : "This unit has not been verified";
@@ -44,7 +45,7 @@ displays.controller("displayController", ["$rootScope", "$scope", "$state", "$st
         
 
         $scope.createNewTicket = function () {
-            $scope.$broadcast('create-new-ticket');
+            $scope.$broadcast('create-new-ticket', {locations: locations});
         };
 
         $scope.editTicket = function (issue) {
@@ -58,11 +59,12 @@ displays.controller("displayController", ["$rootScope", "$scope", "$state", "$st
         
         $scope.edit = function (display) {
             $('#screensize-select').val(display.screensize).change();
-            $('#resolution-select').val(display.resolution).change();
+            // $('#resolution-select').val(display.resolution).change();
             $('#orientation-select').val(display.orientation).change();
-            $('#os-select').val(display.os).change();
-            $('#network-select').val(display.network).change();
-            $('#brand-select').val(display.brand_id).change();
+            // $('#os-select').val(display.os).change();
+            // $('#network-select').val(display.network).change();
+            // $('#brand-select').val(display.brand_id).change();
+            $('#band-select').val(display.band_id).change();
 
             $("#modalFillIn").modal("show");
         };
@@ -87,35 +89,61 @@ displays.controller("displayController", ["$rootScope", "$scope", "$state", "$st
             });
         };
 
+        var loadBands = function () {
+            digitalMediaAPI.bands.getAll(function (data) {
+                $scope.data.bands = data;
+                console.log($scope.data);
+                $('#band-select').on('change', function (evt) {
+                    $scope.display.band = evt.val;
+                });
+            }, function (data) {
+            });
+        };
+
+        var loadLocations = function() {
+            var uid = appService.getLoggedUserId();
+            var oid = appService.getLoggedUserOrganisationId();
+            digitalMediaAPI.locations.getAll(uid, oid, function (data) {
+                locations = data;
+            }, function (data) {
+
+            });
+        }
+
         var loadFormData = function () {
             digitalMediaAPI.displays.getFormData(function (data) {
                 $scope.data = data;
-                $('#resolution-select').select2();
+                // $('#resolution-select').select2();
                 $('#orientation-select').select2();
-                $('#os-select').select2();
-                $('#network-select').select2();
-                $('#brand-select').select2();
+                // $('#os-select').select2();
+                // $('#network-select').select2();
+                // $('#brand-select').select2();
+                $('#band-select').select2();
                 $('#screensize-select').select2();
-                $('#resolution-select').on('change', function (evt) {
-                    $scope.display.resolution_id = evt.val;
-                });
+                // $('#resolution-select').on('change', function (evt) {
+                //     $scope.display.resolution_id = evt.val;
+                // });
                 $('#orientation-select').on('change', function (evt) {
                     $scope.display.orientation = evt.val;
                 });
-                $('#os-select').on('change', function (evt) {
-                    $scope.display.os = evt.val;
-                });
-                $('#network-select').on('change', function (evt) {
-                    $scope.display.network = evt.val;
-                });
+                // $('#os-select').on('change', function (evt) {
+                //     $scope.display.os = evt.val;
+                // });
+                // $('#network-select').on('change', function (evt) {
+                //     $scope.display.network = evt.val;
+                // });
                 $('#screensize-select').on('change', function (evt) {
                     $scope.display.screensize = evt.val;
                 });
 
-                $('#brand-select').on('change', function (evt) {
-                    $scope.display.brand_id = evt.val;
+                // $('#brand-select').on('change', function (evt) {
+                //     $scope.display.brand_id = evt.val;
+                // });
+                $('#band-select').on('change', function (evt) {
+                    $scope.display.band_id = evt.val;
                 });
-                loadBrands();
+                loadBands();
+                loadLocations();
             }, function (data) {
 
             });
@@ -132,6 +160,7 @@ displays.controller("displayController", ["$rootScope", "$scope", "$state", "$st
             if (displayId !== null) {
                 digitalMediaAPI.displays.profile(displayId, function (data) {
                     $scope.display = data.display;
+                    $scope.display.modules = JSON.parse($scope.display.modules);
                     loadFormData();
                 }, function () {
                     console.log("error");

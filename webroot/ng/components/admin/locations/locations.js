@@ -16,6 +16,7 @@ admin.controller("locationsController", ["$rootScope", "$scope", "digitalMediaAP
                 $("#modalFillIn").modal("hide");
                 $scope.newLocationId = data.id;
                 $scope.dropzone1.processQueue();
+                loadLocations();
             }, function (data) {
 
             });
@@ -101,7 +102,7 @@ admin.controller("locationsController", ["$rootScope", "$scope", "digitalMediaAP
         };
 
         var onSuccess = function (file, response) {
-            loadLocations();
+            
         };
 
         var onSending = function (file, xhr, formData) {

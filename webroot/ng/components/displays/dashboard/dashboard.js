@@ -6,11 +6,7 @@ displays.controller("displaysDashboardController", ["$rootScope", "$scope", "dig
         $scope.locations = [];
         $scope.data = {};
 
-
-
-
         $scope.addNewDisplay = function () {
-            console.log($scope.newDisplay.notes);
             digitalMediaAPI.displays.add($scope.newDisplay, function (data) {
                 $("#modalFillIn").modal("hide");
                 $('.displays-table').dataTable().fnDestroy();
@@ -111,55 +107,59 @@ displays.controller("displaysDashboardController", ["$rootScope", "$scope", "dig
         var loadFormData = function () {
             digitalMediaAPI.displays.getFormData(function (data) {
                 $scope.data = data;
-                $('#manufacturer-select').select2();
-                $('#model-select').select2();
-                $('#resolution-select').select2();
+                // $('#manufacturer-select').select2();
+                // $('#model-select').select2();
+                // $('#resolution-select').select2();
                 $('#orientation-select').select2();
-                $('#os-select').select2();
-                $('#network-select').select2();
-                $('#brand-select').select2();
+                // $('#os-select').select2();
+                // $('#network-select').select2();
+                // $('#brand-select').select2();
+                $('#band-select').select2();
                 $('#screensize-select').select2();
 
-                $('#manufacturer-select').on('change', function (evt) {
-                    var id = parseInt(evt.val);
-                    $scope.selectedManufacturer = $scope.data.manufacturers.find(function (el) {
-                        return (el.id === id);
-                    });
-                    $scope.$apply();
-                    $('#model-select').select2();
-                });
+                // $('#manufacturer-select').on('change', function (evt) {
+                //     var id = parseInt(evt.val);
+                //     $scope.selectedManufacturer = $scope.data.manufacturers.find(function (el) {
+                //         return (el.id === id);
+                //     });
+                //     $scope.$apply();
+                //     $('#model-select').select2();
+                // });
 
-                $('#model-select').on('change', function (evt) {
-                    var id = parseInt(evt.val);
-                    var model = $scope.selectedManufacturer.display_manufacturers.find(function (el) {
-                        return (el.id === id);
-                    });
-                    $('#resolution-select').select2('val', model.tech_specs.resolution);
-                    $('#os-select').select2('val', model.tech_specs.os);
-                    $('#screensize-select').select2('val', model.tech_specs.size);
-                    $scope.newDisplay.resolution_id = model.tech_specs.resolution;
-                    $scope.newDisplay.os = getOSName(model.tech_specs.os);
-                    $scope.newDisplay.screensize = getScreensizeName(model.tech_specs.size);
-                });
+                // $('#model-select').on('change', function (evt) {
+                //     var id = parseInt(evt.val);
+                //     var model = $scope.selectedManufacturer.display_manufacturers.find(function (el) {
+                //         return (el.id === id);
+                //     });
+                //     $('#resolution-select').select2('val', model.tech_specs.resolution);
+                //     $('#os-select').select2('val', model.tech_specs.os);
+                //     $('#screensize-select').select2('val', model.tech_specs.size);
+                //     $scope.newDisplay.resolution_id = model.tech_specs.resolution;
+                //     $scope.newDisplay.os = getOSName(model.tech_specs.os);
+                //     $scope.newDisplay.screensize = getScreensizeName(model.tech_specs.size);
+                // });
 
-                $('#resolution-select').on('change', function (evt) {
-                    $scope.newDisplay.resolution_id = evt.val;
-                });
+                // $('#resolution-select').on('change', function (evt) {
+                //     $scope.newDisplay.resolution_id = evt.val;
+                // });
                 $('#orientation-select').on('change', function (evt) {
                     $scope.newDisplay.orientation = evt.val;
                 });
-                $('#os-select').on('change', function (evt) {
-                    $scope.newDisplay.os = getOSName(parseInt(evt.val));
-                });
-                $('#network-select').on('change', function (evt) {
-                    $scope.newDisplay.network = evt.val;
-                });
+                // $('#os-select').on('change', function (evt) {
+                //     $scope.newDisplay.os = getOSName(parseInt(evt.val));
+                // });
+                // $('#network-select').on('change', function (evt) {
+                //     $scope.newDisplay.network = evt.val;
+                // });
                 $('#screensize-select').on('change', function (evt) {
                     $scope.newDisplay.screensize = getScreensizeName(parseInt(evt.val));
                 });
 
-                $('#brand-select').on('change', function (evt) {
-                    $scope.newDisplay.brand_id = evt.val;
+                // $('#brand-select').on('change', function (evt) {
+                //     $scope.newDisplay.brand_id = evt.val;
+                // });
+                $('#band-select').on('change', function (evt) {
+                    $scope.newDisplay.band_id = evt.val;
                 });
             }, function (data) {
 

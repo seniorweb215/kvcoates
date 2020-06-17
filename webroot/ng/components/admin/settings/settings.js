@@ -2,7 +2,8 @@
 admin.controller("settingsController", ["$rootScope", "$scope", "digitalMediaAPI", function ($rootScope, $scope, digitalMediaAPI) {
         $rootScope.title = "Settings";
         $scope.settings = {};
-
+        $scope.dropzonePIN = '';
+        $scope.dropzoneLogo = '';
 
         $scope.save = function () {
             $("#save-button").toggleClass("disabled");
@@ -13,6 +14,16 @@ admin.controller("settingsController", ["$rootScope", "$scope", "digitalMediaAPI
             }, function () {
                 $("#save-button").text("There has been an error!");
             });
+        };
+
+        $scope.savePIN = function() {
+            $scope.dropzonePIN.processQueue();
+            $("#pin-editing-modal").modal("hide");
+        };
+
+        $scope.saveLogo = function() {
+            $scope.dropzoneLogo.processQueue();
+            $("#logo-editing-modal").modal("hide");
         };
 
         $scope.getCampaignTypeIcon = function (campaign_type) {
@@ -50,6 +61,7 @@ admin.controller("settingsController", ["$rootScope", "$scope", "digitalMediaAPI
             var requiredWidth = 48, requiredHeight = 48;
             var dropzone = new Dropzone("#pins-uploader", {
                 url: digitalMediaAPI.organisations.pinEndpoint(),
+                autoProcessQueue: false,
                 acceptedFiles: 'image/png',
                 accept: function (file, done) {
                     file.acceptDimensions = done;
@@ -71,11 +83,13 @@ admin.controller("settingsController", ["$rootScope", "$scope", "digitalMediaAPI
                     file.acceptDimensions();
                 }
             });
+            $scope.dropzonePIN = dropzone;
         };
 
         var initLogoDropZone = function () {
             var dropzone = new Dropzone("#logo-uploader", {
                 url: digitalMediaAPI.organisations.logoEndpoint(),
+                autoProcessQueue: false,
                 acceptedFiles: 'image/png'
             });
             dropzone.on("sending", function (file, xhr, formData) {
@@ -84,6 +98,7 @@ admin.controller("settingsController", ["$rootScope", "$scope", "digitalMediaAPI
             dropzone.on("success", function (file, response) {
 
             });
+            $scope.dropzoneLogo = dropzone;
         };
 
 
