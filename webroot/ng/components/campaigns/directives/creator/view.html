@@ -6,7 +6,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="text-left p-b-5"><span class="semi-bold">{{getModalTitle()}}</span> campaign</h5>
-                <h5 class="text-right bold">Targeted Displays : {{totalDisplays}}</h5>
+                <h5 class="text-left bold">
+                    <span class="text-left">€ {{totalCost}}</span>
+                    <span class="text-right" style="float: right;">Targeted Displays : {{totalDisplays}}</span>
+                </h5>
             </div>
             <div class="modal-body">
                 <form role="form">
@@ -51,6 +54,7 @@
                                             <option value="77">United Kingdom</option>
                                             <option value="48">China</option>
                                             <option value="57">Germany</option>
+                                            <option value="55">Cyprus</option>
                                         </optgroup>
                                         <option ng-repeat="country in countries" value="{{country.id}}">{{country.countryName}}</option>
                                     </select>
@@ -58,7 +62,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group form-group-default">
                                     <label>Retailer</label>
@@ -70,13 +74,13 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
                         
 
 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group form-group-default">
                                     <label>Brand</label>
@@ -96,7 +100,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <div class="row">

@@ -62,6 +62,7 @@ content.directive('campaignCreator', ["$rootScope", "$state", "appService", "dig
                     $scope.campaign.set_as_default = isSetAsDefault();
                     $scope.campaign.tod = isTimeOfTheDay();
                     $scope.campaign.has_facial_analytics = hasFacialAnalytics();
+                    $scope.campaign.cost = $scope.totalCost;
                     if (isEditing) {
                         $scope.updateFn({campaign: $scope.campaign});
                     } else {
@@ -110,6 +111,7 @@ content.directive('campaignCreator', ["$rootScope", "$state", "appService", "dig
                         $scope.orientations = data.orientations;
                         $scope.settings = data.settings;
                         $scope.totalDisplays = data.displays;
+                        $scope.bands = data.bands;
                         initSelectors();
                     }, function (data) {
 
@@ -173,18 +175,52 @@ content.directive('campaignCreator', ["$rootScope", "$state", "appService", "dig
                     });
                 };
                 var getTargetedDisplays = function () {
-                    var criteria = {country: cid, organisation: oid, brand: brandid, orientation: orientation};
+                    var criteria = {country: cid};
                     digitalMediaAPI.campaigns.getTargetedDisplays(criteria, function (data) {
                         $scope.totalDisplays = data.displays;
                         $scope.locations = data.locations;
                         $scope.locations.unshift({id: 0, name: "* All", deployments: []});
                         $scope.$apply();
+                        calcPrice();
 
                         //$('#location-select').select2();
                         $('#location-select').select2("val", locations);
                     }, function () {
 
                     });
+                };
+
+                var calcPrice = function() {
+                    var totalPrice = 0;
+                    $scope.locations.forEach(function (location) {
+                        location.deployments.forEach(function (deployment) {
+                            totalPrice += getPriceByBand(deployment.display.band_id);
+                        });
+                    });
+
+                    $scope.totalCost = totalPrice;
+                    $scope.$apply();
+                }
+
+                var getPriceByBand = function(band_id) {
+                    var band_price = 0;
+                    $scope.bands.forEach(function (band) {
+                        if (band_id == band.id) {
+                            band_price = band.price;
+                        }
+                    });
+                    var start_date = $scope.campaign.start;
+                    var end_date = $scope.campaign.end;
+
+                    if(start_date == '' || start_date == undefined) {
+                        return 0;
+                    }
+
+                    var date1 = new Date(start_date);
+                    var date2 = new Date(end_date);
+                    var week = Math.ceil((date2 - date1) / (1000 * 60 * 60 * 24 * 7));
+
+                    return band_price * week;
                 };
 
                 var getOrgs = function (oid) {
@@ -244,6 +280,7 @@ content.directive('campaignCreator', ["$rootScope", "$state", "appService", "dig
                         $scope.campaign.start = start.format('YYYY-MM-DD HH:mm:ss');
                         $scope.campaign.end = end.format('YYYY-MM-DD HH:mm:ss');
                         $scope.$apply();
+                        calcPrice();
                     });
                 };
                 var init = function () {

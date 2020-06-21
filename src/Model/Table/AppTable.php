@@ -91,7 +91,6 @@ class AppTable extends Table{
         
         $entity = $query->first();
         $this->patchEntity($entity, $data);
-        
         if ($this->save($entity)) {
             return $entity;
         }   

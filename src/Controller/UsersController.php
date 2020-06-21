@@ -41,7 +41,9 @@ class UsersController extends AppController {
 
     public function update() {
         if ($this->request->is("post")) {
-            $user = $this->Users->update($this->request->data("id"), $this->request->data);
+            $data = $this->request->data;
+            $data['location'] = '{}';
+            $user = $this->Users->update($this->request->data("id"), $data);
             if ($user) {
                 $this->result["success"] = true;
                 $this->result["data"] = $user;

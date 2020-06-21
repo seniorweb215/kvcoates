@@ -66,14 +66,7 @@ class OrganisationsController extends AppController {
 
     public function settings() {
         $this->loadModel("Clients.OrganisationsSettings");
-        // $shell = new Shell();
-        $shell = new ShellDispatcher();
-        // $output = $shell->runCommand("../bin/cake backup");
-        // echo $output;exit();
-        // $output = $shell->run(['1 * * * *  cake', 'backup']);
-        // $output = $shell->run(["1 * * * * cd ../bin && cake backup"]);
         
-        // exec('../bin/cake backup');
         if ($this->request->is("post")) {
             $temp = $this->request->data;
             $temp['maintenance'] = json_encode($temp['maintenance']);

@@ -48,7 +48,7 @@
                                         <hr />
                                         <p>Files: {{campaign.contents.length}}</p>
                                         <p>Size: {{getCampaignSize()}} MB</p>
-                                        <p>Cost: {{getCampaignCosts()}}</p>
+                                        <p>Cost: {{campaign.cost}}</p>
                                         <hr />
 
                                         <div ng-show="$root.isAllowedTo('campaigns', 'publish')">

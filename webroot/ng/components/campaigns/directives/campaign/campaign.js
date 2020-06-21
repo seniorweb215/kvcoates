@@ -93,9 +93,7 @@ content.directive('campaignPreview', ["$rootScope", "$state", "appService", "dig
                         var deployments = clocation.location.deployments;
                         deployments.forEach(function (deployment) {
                             display = deployment.display;
-                            if (display.brand_id === $scope.campaign.brand.id && display.orientation === $scope.campaign.orientation) {
-                                displays.push(display.name);
-                            }
+                            displays.push(display.name);
                         });
                     });
                     return displays.length;

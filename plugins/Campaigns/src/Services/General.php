@@ -19,6 +19,7 @@ class General {
         $data["countries"] = TableRegistry::get("System.Countries")->find()->all();
         $data["organisations"] = TableRegistry::get("Clients.Organisations")->find()->all();
         $data["brands"] = TableRegistry::get("System.Brands")->find()->all();
+        $data["bands"] = TableRegistry::get("System.Bands")->find()->all();
         $data["settings"] = TableRegistry::get("Client.OrganisationsSettings")->find()->first();
         $data["displays"] = TableRegistry::get("Displays.Displays")->find('all')->count();
         return $data;
@@ -34,13 +35,15 @@ class General {
         foreach ($locations as $location) {
             $deployments = $deploymentsTable->getDeploymentsByCriteria($location->id, $data);
             if (count($deployments) > 0) {
-                if ($data["organisation"] == 0) {
-                    $displays += count($deployments);
-                    array_push($filteredLocations, $location);
-                } else if ($location->organisation_id == $data["organisation"]) {
-                    $displays += count($deployments);
-                    array_push($filteredLocations, $location);
-                }
+                // if ($data["organisation"] == 0) {
+                //     $displays += count($deployments);
+                //     array_push($filteredLocations, $location);
+                // } else if ($location->organisation_id == $data["organisation"]) {
+                //     $displays += count($deployments);
+                //     array_push($filteredLocations, $location);
+                // }
+                $displays += count($deployments);
+                array_push($filteredLocations, $location);
             }
         }
         return array("displays" => $displays, "locations" => $filteredLocations);
