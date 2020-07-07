@@ -30,6 +30,12 @@ class LocationsController extends AppController {
         $this->result["data"] = $this->Countries->all();
     }
 
+    public function attachments($id) {
+        $this->loadModel("Clients.LocationAttachments");
+        $this->result["success"] = true;
+        $this->result["data"] = $this->LocationAttachments->getByLocationId($id);
+    }
+
     public function owners() {
         $this->loadModel("System.Owners");
         $this->result["success"] = true;
@@ -80,6 +86,12 @@ class LocationsController extends AppController {
     public function attachUpload() {
         if ($this->request->is("post")) {
             $this->loadModel("Clients.LocationAttachments");
+            if($this->request->data['removed_items'] && $this->request->data['removed_items'] != '') {
+                $removed_items = explode(',', $this->request->data['removed_items']);
+                foreach($removed_items as $item) {
+                    $this->LocationAttachments->remove($item);
+                }
+            }
             $attachment = $this->LocationAttachments->upload($this->request->data);
             if ($attachment) {
                 $this->result["success"] = true;
@@ -104,6 +116,24 @@ class LocationsController extends AppController {
             if ($location) {
                 $this->result["success"] = true;
                 $this->result["data"] = $location;
+            }
+        }
+    }
+
+    public function updateContact() {
+        $this->loadModel("Clients.LocationContacts");
+        if ($this->request->is("post")) {
+            $data = $this->request->data;
+            if($data['id'] == 0) {
+                unset($data['id']);
+                $contact = $this->LocationContacts->add($data);
+            } else {
+                $contact = $this->LocationContacts->update($data['id'], $data);
+            }
+
+            if ($contact) {
+                $this->result["success"] = true;
+                $this->result["data"] = $contact;
             }
         }
     }

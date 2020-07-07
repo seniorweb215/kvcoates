@@ -12,9 +12,9 @@ class LocationsTable extends AppTable {
     public function initialize(array $config) {
         parent::initialize($config);
         $this->addAssociations([
-            'hasOne' => ['Clients.LocationSchedules'],
-            'belongsTo' => ['Clients.Organisations', 'System.Countries', 'System.Timezones'],
-            'hasMany' => ["Displays.Deployments"]
+            'hasOne' => ['Clients.LocationSchedules', "Clients.LocationContacts"],
+            'belongsTo' => ['Clients.Organisations', 'System.Countries', 'System.Timezones', "System.Sizes"],
+            'hasMany' => ["Displays.Deployments", "Clients.LocationAttachments"]
         ]);
         
     }
@@ -73,7 +73,7 @@ class LocationsTable extends AppTable {
     
     public function dashboard(){
         $query = $this->find();
-        $query->contain(["Organisations", "Countries", "Deployments.Displays.ScheduledPlaybacks.Campaigns", "Deployments.Displays.DisplayIssues" => function($q){
+        $query->contain(["Organisations", "LocationContacts", "Sizes", "LocationAttachments", "Countries", "Deployments.Displays.ScheduledPlaybacks.Campaigns", "Deployments.Displays.DisplayIssues" => function($q){
             return $q->where(["status !=" => 2]);
         }, "Deployments.Displays.DisplayIssues.DisplayIssueTypes"]);
         return $query->all();
@@ -115,13 +115,25 @@ class LocationsTable extends AppTable {
 
     public function profile($id = null) {
         if ($id != null) {
-            $location = $this->findById($id)->contain(["Timezones", "LocationSchedules"])->first();
+            $location = $this->findById($id)->contain(["Timezones", "LocationSchedules", "LocationContacts"])->first();
             $deploymentsTable = \Cake\ORM\TableRegistry::get("Displays.Deployments");
             $deployments = $deploymentsTable->findByLocationId($location->id)->contain(["Displays.ScheduledPlaybacks.Campaigns", "Displays.Brands"])->all();
             return array("location" => $location, "deployments" => $deployments);
         } else {
             return false;
         }
+    }
+
+    public function updateContact($id, $data) {
+        $locationContactTable = \Cake\ORM\TableRegistry::get("Clients.LocationContacts");
+        if($id == 0) {
+            unset($data['id']);
+            $entity = $locationContactTable->add($data);
+        } else {
+            $entity = $locationContactTable->update($id, $data);
+        }
+
+        return $entity;
     }
     
     

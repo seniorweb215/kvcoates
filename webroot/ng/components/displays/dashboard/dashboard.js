@@ -116,6 +116,7 @@ displays.controller("displaysDashboardController", ["$rootScope", "$scope", "dig
                 // $('#brand-select').select2();
                 $('#band-select').select2();
                 $('#screensize-select').select2();
+                $('#type-select').select2();
 
                 // $('#manufacturer-select').on('change', function (evt) {
                 //     var id = parseInt(evt.val);
@@ -160,6 +161,9 @@ displays.controller("displaysDashboardController", ["$rootScope", "$scope", "dig
                 // });
                 $('#band-select').on('change', function (evt) {
                     $scope.newDisplay.band_id = evt.val;
+                });
+                $('#type-select').on('change', function (evt) {
+                    $scope.newDisplay.type_id = evt.val;
                 });
             }, function (data) {
 

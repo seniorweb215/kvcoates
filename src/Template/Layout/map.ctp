@@ -46,7 +46,7 @@
                     <div class="pull-center hidden-md hidden-lg">
                         <div class="header-inner">
                             <div class="brand inline">
-                                <img src="assets/img/display-plan/logo.png" alt="logo" data-src="assets/img/display-plan/logo.png" data-src-retina="assets/img/display-plan/logo_2x.png" width="78" height="22">
+                                <img src="assets/img/digital-media/logo.png" alt="logo" data-src="assets/img/digital-media/logo.png" data-src-retina="assets/img/digital-media/logo_2x.png" width="78" height="22">
                             </div>
                             <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a>
                         </div>
@@ -66,7 +66,7 @@
                 <div class=" pull-left sm-table hidden-xs hidden-sm">
                     <div class="header-inner">
                         <div class="brand inline">
-                            <img src="assets/img/display-plan/logo.png" alt="logo" data-src="assets/img/display-plan/logo.png" data-src-retina="assets/img/display-plan/logo_2x.png" width="78" height="22">
+                            <img src="assets/img/digital-media/connie-white.png" alt="logo" data-src="assets/img/digital-media/connie-white.png" data-src-retina="assets/img/digital-media/connie-white_2x.png" width="78" height="22">
                         </div>
                         
                     </div>

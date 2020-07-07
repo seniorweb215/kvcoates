@@ -27,10 +27,10 @@
                                         <select class="full-width" id="country-select" ng-model="selectedCountry">
                                             <optgroup label="Main Countries">
                                                 <option value="0">*All</option>
+                                                <option value="55">Cyprus</option>
                                                 <option value="77">United Kingdom</option>
                                                 <option value="48">China</option>
                                                 <option value="57">Germany</option>
-                                                <option value="55">Cyprus</option>
                                             </optgroup>
                                             <option ng-repeat="country in countries" value="{{country.id}}">{{country.countryName}}</option>
                                         </select>
@@ -54,6 +54,10 @@
                                     <div class="form-group form-group-default">
                                         <label>Email</label>
                                         <input type="text" class="form-control" ng-model="location.email">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Daily Users</label>
+                                        <input type="text" class="form-control" ng-model="location.daily_users">
                                     </div>
                                 </div>
                             </div>
@@ -137,6 +141,141 @@
                         </div>
                         <div class="col-sm-4 m-t-10 sm-m-t-10">
                             <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="editingDone()">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade fill-in" id="attachmentsModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Edit</span> attachments of this location</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group-attached">
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            Drag n' drop files
+                                        </div>
+                                    </div>
+                                    <div class="panel-body no-scroll no-padding">
+                                        <form action="/file-upload" class="dropzone no-margin" id="location-attachments-uploader">
+                                            <div class="fallback">
+                                                <input name="file" type="file" multiple/>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Card Number</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="attachEditingDone()">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade fill-in" id="contactModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close"></i>
+        </button>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5"><span class="semi-bold">Location Contact</span></h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" ng-model="owner.name">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" ng-model="owner.email">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Tel</label>
+                                        <input type="text" class="form-control" ng-model="owner.tel">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Password</label>
+                                        <input type="text" class="form-control" ng-model="owner.password">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Commission(%)</label>
+                                        <input type="text" class="form-control" ng-model="owner.commission">
+                                    </div>
+                                    <div class="form-group form-group-default">
+                                        <label>Note</label>
+                                        <textarea rows="3" class="form-control" ng-model="owner.note"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Card Number</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="p-t-20 clearfix p-l-10 p-r-10">
+                                <div class="pull-left">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                                <div class="pull-right">
+                                    <p class="bold font-montserrat text-uppercase"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 m-t-10 sm-m-t-10">
+                            <button type="button" class="btn btn-primary btn-block m-t-5" ng-click="ownerEditingDone()">Save</button>
                         </div>
                     </div>
                 </div>
@@ -245,6 +384,8 @@
                                             <button type="button" class="btn btn-success" ng-click="edit('timezone')" data-toggle="tooltip" data-placement="top" title="Edit Timezone"><i class="fa fa-clock-o"></i></button>
                                             <button type="button" class="btn btn-success" ng-click="edit('openings')" data-toggle="tooltip" data-placement="top" title="Edit Opening/Closing"><i class="fa fa-calendar"></i></button>
                                             <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Issues"><i class="fa fa-wrench"></i></button>
+                                            <button type="button" class="btn btn-success" ng-click="edit('attachments')" data-toggle="tooltip" data-placement="top" title="Attachments"><i class="fa fa-image"></i></button>
+                                            <button type="button" class="btn btn-success" ng-click="edit('contact')" data-toggle="tooltip" data-placement="top" title="Contact"><i class="fa fa-user"></i></button>
                                         </div>
                                         <br />
                                     </div>
@@ -255,7 +396,7 @@
                                 <!-- START PANEL -->
                                 <div class="full-height">
                                     <div class="panel-body text-center">
-                                        <img class="image-responsive-height demo-mw-600" src="" alt="">
+                                        <img class="image-responsive-height demo-mw-600" ng-src="{{attachments[0].url}}" alt="">
                                     </div>
                                 </div>
                                 <!-- END PANEL -->

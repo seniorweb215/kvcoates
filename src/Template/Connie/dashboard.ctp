@@ -49,18 +49,20 @@
         </div>
         <hr />
         <div class="row">
-            <div class="col-md-6">
-                <p class="phone">9181761661</p>
-                <p class="email">a@a.com</p>
+            <div class="col-sm-6">
+                <img class="image" src="" alt="" style="width: 100%;">
             </div>
-            <div class="col-md-6">
-                <div class="displays">
-                </div>
+            <div class="col-sm-6">
+                <p class="daily-users"></p>
+                <p class="displays"></p>
+                <p class="size"></p>
+                <p class="price-band"></p>
+                <p class="owner"></p>
             </div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <div class="tickets"></div>
             </div>
         </div>

@@ -64,6 +64,7 @@
                             <div class="panel-body">
                                 <div role="tablist">
                                     <a class="btn btn-default btn-cons btn-rounded btn-notification-style m-b-10" ng-repeat="role in roles" ng-class="{'active': isEditing(role.id)}" ng-click="edit(role)">{{role.name}}</a>
+                                    <a class="btn btn-default btn-cons btn-rounded btn-notification-style m-b-10">Advertiser</a>
                                 </div>
                             </div>
                         </div>
@@ -168,6 +169,50 @@
                                     </div>
                                     <div class="col-md-8">
                                         <input type="checkbox" class='permission-toggle' data-id="{{action.id}}"  checked="checked" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PANEL -->
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- START PANEL -->
+                        <div class="panel panel-transparent">
+                            <div class="panel-heading">
+                                <div class="panel-title">Advertiser
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-4" >
+                                        <p><i class="fa fa-bullseye" aria-hidden="true"></i> Create a Campaign</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" class='permission-toggle' checked="checked" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4" >
+                                        <p><i class="fa fa-bullseye" aria-hidden="true"></i> View Locations</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" class='permission-toggle' checked="checked" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4" >
+                                        <p><i class="fa fa-bullseye" aria-hidden="true"></i> View Stats</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" class='permission-toggle' checked="checked" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4" >
+                                        <p><i class="fa fa-bullseye" aria-hidden="true"></i> View Invoice</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="checkbox" class='permission-toggle' checked="checked" />
                                     </div>
                                 </div>
                             </div>

@@ -27,6 +27,7 @@ class General {
             "resolutions" => $resolutionsTable->find()->all(),
             "brands" => TableRegistry::get("System.Brands")->find()->all(),
             "bands" => TableRegistry::get("System.Bands")->find()->all(),
+            "campaignTypes"=> TableRegistry::get("Campaigns.CampaignTypes")->getEnabled(),
             "operatingSystems" => $osTable->find()->all(),
             "orientations" => array("Portrait", "Landscape"),
             "networks" => array("3G", "Wifi", "Lan", "Independent"),

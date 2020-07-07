@@ -46,6 +46,12 @@
                                     <option ng-repeat="band in data.bands" value="{{band.id}}">{{band.name}}</option>
                                 </select>
                             </div>
+                            <div class="form-group form-group-default">
+                                <label>Type</label>
+                                <select class="full-width" id="type-select" ng-model="newDisplay.type_id">
+                                    <option ng-repeat="type in data.campaignTypes" value="{{type.id}}">{{type.name}}</option>
+                                </select>
+                            </div>
 
                             <div class="form-group form-group-default">
                                 <label>Notes</label>

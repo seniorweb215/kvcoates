@@ -4,17 +4,14 @@ namespace System\Model\Table;
 use App\Model\Table\AppTable;
 
 /**
- * Description of SizesTable
+ * Description of LocationContactsTable
  *
- * @author Yaroslav Z
+ * @author Yaroslav
  */
-class SizesTable extends AppTable {
+class LocationContactsTable extends AppTable {
 
     public function initialize(array $config) {
         parent::initialize($config);
-        $this->addAssociations([
-            'hasMany' => ['Clients.Locations']
-        ]);
     }
     
     

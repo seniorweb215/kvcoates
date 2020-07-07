@@ -30,10 +30,10 @@
                                         <select class="full-width" id="country-select" ng-model="selectedCountry">
                                             <optgroup label="Main Countries">
                                                 <option value="0">*All</option>
+                                                <option value="55">Cyprus</option>
                                                 <option value="77">United Kingdom</option>
                                                 <option value="48">China</option>
                                                 <option value="57">Germany</option>
-                                                <option value="55">Cyprus</option>
                                             </optgroup>
                                             <option ng-repeat="country in countries" value="{{country.id}}">{{country.countryName}}</option>
                                         </select>
@@ -49,14 +49,6 @@
                                     <div class="form-group form-group-default">
                                         <label>Post Code</label>
                                         <input type="text" class="form-control" ng-model="newLocation.post_code">
-                                    </div>
-                                    <div class="form-group form-group-default">
-                                        <label>Owner</label>
-                                        <select class="full-width" id="owner-select" ng-model="newLocation.owner_id">
-                                            <option ng-repeat="owner in owners" value="{{owner.id}}">
-                                                {{owner.company}} | {{owner.contact_name}} | {{owner.email}} | {{owner.tel}} | {{owner.note}}
-                                            </option>
-                                        </select>
                                     </div>
                                     <div class="form-group form-group-default">
                                         <label>Install Date</label>

@@ -65,6 +65,7 @@ displays.controller("displayController", ["$rootScope", "$scope", "$state", "$st
             // $('#network-select').val(display.network).change();
             // $('#brand-select').val(display.brand_id).change();
             $('#band-select').val(display.band_id).change();
+            $('#type-select').val(display.type_id).change();
 
             $("#modalFillIn").modal("show");
         };
@@ -92,7 +93,6 @@ displays.controller("displayController", ["$rootScope", "$scope", "$state", "$st
         var loadBands = function () {
             digitalMediaAPI.bands.getAll(function (data) {
                 $scope.data.bands = data;
-                console.log($scope.data);
                 $('#band-select').on('change', function (evt) {
                     $scope.display.band = evt.val;
                 });
@@ -119,6 +119,7 @@ displays.controller("displayController", ["$rootScope", "$scope", "$state", "$st
                 // $('#network-select').select2();
                 // $('#brand-select').select2();
                 $('#band-select').select2();
+                $('#type-select').select2();
                 $('#screensize-select').select2();
                 // $('#resolution-select').on('change', function (evt) {
                 //     $scope.display.resolution_id = evt.val;
@@ -141,6 +142,9 @@ displays.controller("displayController", ["$rootScope", "$scope", "$state", "$st
                 // });
                 $('#band-select').on('change', function (evt) {
                     $scope.display.band_id = evt.val;
+                });
+                $('#type-select').on('change', function (evt) {
+                    $scope.display.type_id = evt.val;
                 });
                 loadBands();
                 loadLocations();

@@ -139,9 +139,18 @@ DigitalMedia.Views.Location = function (map, model, callbacks) {
         var el = ".digitalmedia-location";
         $(el + " .name").text(model.name);
         $(el + " .address").text(model.address);
-        $(el + " .phone").text("Phone: " + model.telephone);
-        $(el + " .email").text("Email: " + model.email);
-        $(el + " .displays").html(getDisplaysHTML());
+        $(el + " .daily-users").html("<strong>Daily Users: </strong>" + model.daily_users);
+        $(el + " .displays").html("<strong>Displays: </strong>" + model.deployments.length);
+        $(el + " .size").html("<strong>Size: </strong>" + model.size.size_name);
+        $(el + " .price-band").html("<strong>Price Band: </strong>" + model.deployments[0].display.band_id);
+        $(el + " .owner").html("<strong>Owner: </strong>" + model.location_contact.name);
+        if(model.location_attachments.length > 0) {
+            $(el + " .image").attr("src", model.location_attachments[0].url);
+        } else {
+            $(el + " .image").attr("src", "");
+        }
+        
+        // $(el + " .displays").html(getDisplaysHTML());
         $(el + " .tickets").html(getSupportHTML());
         return $(el).html();
     };

@@ -8,6 +8,19 @@ admin.controller("locationController", ["$rootScope", "$stateParams", "$scope", 
             return (editing === 'openings');
         };
 
+        $scope.ownerEditingDone = function() {
+            $scope.owner.location_id = $stateParams.id;
+            if(!$scope.owner.id) {
+                $scope.owner.id = 0;
+            }
+            digitalMediaAPI.locations.updateLocationContact($scope.owner, function (data) {
+                console.log(data);
+                $("#contactModal").modal("hide");
+            }, function (data) {
+                console.log(data);
+            });
+        };
+
         $scope.edit = function (section) {
             editing = section;
             switch (section) {
@@ -17,6 +30,15 @@ admin.controller("locationController", ["$rootScope", "$stateParams", "$scope", 
                 case "details":
                     $("#editingModal").modal("show");
                     break;
+
+                case "attachments":
+                    // $scope.dropzone1.removeAllFiles(true);
+                    // $scope.dropzone1.destroy();
+                    // loadAttachments();
+                    $("#attachmentsModal").modal("show");
+
+                case "contact":
+                    $("#contactModal").modal("show");
             }
         };
 
@@ -90,6 +112,7 @@ admin.controller("locationController", ["$rootScope", "$stateParams", "$scope", 
             digitalMediaAPI.locations.profile($stateParams.id, function (data) {
                 $scope.location = data.location;
                 $scope.deployments = data.deployments;
+                $scope.owner = data.location.location_contact;
                 $rootScope.title = $scope.location.name;
                 if ($scope.location.latitude === 0) {
                     $scope.edit("address");
@@ -151,6 +174,69 @@ admin.controller("locationController", ["$rootScope", "$stateParams", "$scope", 
             });
         };
 
+        var loadAttachments = function () {
+            digitalMediaAPI.locations.getAttachments($stateParams.id, function (data) {
+                if(data.length > 0) {
+                    $scope.attachments = data;
+                } else {
+                    $scope.attachments[0] = {'url': ''};
+                }
+                initDropZone();
+            }, function (data) {
+                if(data.length > 0) {
+                    $scope.attachments = data;
+                } else {
+                    $scope.attachments[0] = {'url': ''};
+                }       
+                initDropZone();
+            });
+        };
+
+        $scope.attachEditingDone = function() {
+            $scope.dropzone1.processQueue();
+            $("#attachmentsModal").modal('hide');
+            // $scope.dropzone1.removeAllFiles(true);
+            // $scope.dropzone1.destroy();
+            // loadAttachments();
+        }
+
+        var initDropZone = function () {
+            if($("#location-attachments-uploader").length) {
+                $scope.removedItems = [];
+                $scope.dropzone1 = new Dropzone("#location-attachments-uploader", {
+                    url: digitalMediaAPI.locations.attachmentEndpoint(),
+                    autoProcessQueue: false,
+                    acceptedFiles: '.jpg,.jpeg,.png',
+                    addRemoveLinks: true
+                });
+                $scope.dropzone1.on("sending", onSending);
+                $scope.dropzone1.on("success", onSuccess);
+
+                $scope.dropzone1.on("removedfile", function(file){
+                    if(file.id !== undefined) {
+                        $scope.removedItems.push(file.id);
+                    }
+                });
+    
+                $scope.attachments.forEach(function (item) {
+                    if(item.id) {
+                        var mockFile = {id: item.id, name: item.id, size: 12345 };
+                        $scope.dropzone1.emit("addedfile", mockFile);
+                        $scope.dropzone1.emit("thumbnail", mockFile, item.url);
+                    }
+                });
+            }
+        };
+
+        var onSuccess = function (file, response) {
+            
+        };
+
+        var onSending = function (file, xhr, formData) {
+            formData.append("location_id", $stateParams.id);
+            formData.append("removed_items", $scope.removedItems);
+        };
+
         $scope.save = function () {
             console.log("Save", $scope.location);
             digitalMediaAPI.locations.update($scope.location, function (data) {
@@ -171,6 +257,7 @@ admin.controller("locationController", ["$rootScope", "$stateParams", "$scope", 
             loadAvailableZones();
             loadCountries();
             loadOrganisations();
+            loadAttachments();
             setTimeout(function(){
                  $('[data-toggle="tooltip"]').tooltip();
             }, 1000);
@@ -181,6 +268,9 @@ admin.controller("locationController", ["$rootScope", "$stateParams", "$scope", 
         $scope.selectedZoneId = '';
         $scope.location = null;
         $scope.deployments = [];
+        $scope.attachments = [];
+        $scope.dropzone1 = [];
+        $scope.removedItems = [];
         var editing = '';
         var displayId;
         var zoneId;

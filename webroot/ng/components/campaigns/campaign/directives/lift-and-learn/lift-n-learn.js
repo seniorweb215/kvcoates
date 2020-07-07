@@ -6,7 +6,7 @@ content.directive('lnlCampaign', ["$rootScope", "$state", "appService", "digital
                 campaign: '='
             },
             controller: function ($scope) {
-                $scope.totalSlots = 20;
+                $scope.totalSlots = 1;
                 $scope.slots = new Array($scope.totalSlots);
                 $scope.hasMotionDetection = false;
 

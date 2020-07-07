@@ -45,7 +45,7 @@ class OrganisationsSettingsTable extends AppTable {
         if (isset($data['file'])) {
             $file = $data['file'];
             $uri = $data['uri'];
-            if (move_uploaded_file($file['tmp_name'], WWW_ROOT . 'assets' . DS . 'img' . DS . 'display-plan' . DS . $uri)) {
+            if (move_uploaded_file($file['tmp_name'], WWW_ROOT . 'assets' . DS . 'img' . DS . 'digital-media' . DS . $uri)) {
                 return true;
             } else {
                 return false;

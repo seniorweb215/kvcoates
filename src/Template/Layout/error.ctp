@@ -44,7 +44,7 @@
                 <div class="error-container-innner">
                     <div class="m-b-30 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix">
                         <div class="col-sm-12 text-center">
-                            <?= $this->Html->image('/assets/img/display-plan/connie-black.png', ["class" => "m-t-5", "alt" => "logo", "width" => 250]) ?>
+                            <?= $this->Html->image('/assets/img/digital-media/connie-black.png', ["class" => "m-t-5", "alt" => "logo", "width" => 250]) ?>
                         </div>
                     </div>
                 </div>

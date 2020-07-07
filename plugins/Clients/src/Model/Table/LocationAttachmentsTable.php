@@ -13,6 +13,13 @@ class LocationAttachmentsTable extends AppTable {
 
     public function initialize(array $config) {
         parent::initialize($config);
+        $this->addAssociations([
+            'belongsTo' => ['Clients.Locations']
+        ]);
+    }
+
+    public function getByLocationId($id) {
+        return $this->find()->where(['location_id' => $id]);
     }
 
     public function upload($data) {

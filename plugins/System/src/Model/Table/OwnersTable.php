@@ -12,6 +12,9 @@ class OwnersTable extends AppTable {
 
     public function initialize(array $config) {
         parent::initialize($config);
+        $this->addAssociations([
+            'hasMany' => ['Clients.Locations']
+        ]);
     }
     
     

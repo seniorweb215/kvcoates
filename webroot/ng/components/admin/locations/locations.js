@@ -5,7 +5,6 @@ admin.controller("locationsController", ["$rootScope", "$scope", "digitalMediaAP
         $scope.locations = [];
         $scope.countries = [];
         $scope.organisations = [];
-        $scope.owners = [];
         $scope.sizes = [];
         $scope.dropzone1 = {};
         $scope.newLocationId = 0;
@@ -61,18 +60,6 @@ admin.controller("locationsController", ["$rootScope", "$scope", "digitalMediaAP
                 $('#country-select').select2();
                 $('#country-select').on('change', function (evt) {
                     $scope.newLocation.country_id = parseInt(evt.val);
-                });
-            }, function (data) {
-
-            });
-        };
-
-        var loadOwners = function () {
-            digitalMediaAPI.locations.getAllOwners(function (data) {
-                $scope.owners = data;
-                $('#owner-select').select2();
-                $('#owner-select').on('change', function (evt) {
-                    $scope.newLocation.owner_id = parseInt(evt.val);
                 });
             }, function (data) {
 
@@ -140,7 +127,6 @@ admin.controller("locationsController", ["$rootScope", "$scope", "digitalMediaAP
             loadLocations();
             loadCountries();
             loadSizes();
-            loadOwners();
             initDropZone();
             initDatePicker();
             loadOrganisations();

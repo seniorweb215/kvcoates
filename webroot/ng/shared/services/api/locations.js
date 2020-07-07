@@ -13,6 +13,9 @@ API.factory("locationsAPI", ['apiRequest', function (apiRequest) {
         extended.getAllCountries = function (onSuccess, onError) {
             apiRequest.ng("GET", endpoint + "/countries", {}, onSuccess, onError);
         };
+        extended.getAttachments = function(locationId, onSuccess, onError) {
+            apiRequest.ng("GET", endpoint + "/attachments/" + locationId, onSuccess, onError);
+        };
         extended.getAllOwners = function (onSuccess, onError) {
             apiRequest.ng("GET", endpoint + "/owners", {}, onSuccess, onError);
         };
@@ -39,6 +42,10 @@ API.factory("locationsAPI", ['apiRequest', function (apiRequest) {
         };
         extended.update = function(location, onSuccess, onError){
             apiRequest.jq("POST", endpoint + "/update", location, onSuccess, onError);
+        };
+
+        extended.updateLocationContact = function(contact, onSuccess, onError){
+            apiRequest.jq("POST", endpoint + "/updateContact", contact, onSuccess, onError);
         };
         
         extended.exportToXLS = function(){
